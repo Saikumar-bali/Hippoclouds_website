@@ -157,7 +157,7 @@ const ContactForm = () => {
     try {
       // *** THIS IS THE FIX ***
       // Use the absolute URL just like in your successful PowerShell test
-      const response = await fetch('https://hippochatbot.netlify.app/.netlify/functions/submit-contact', {
+      const response = await fetch(`${process.env.REACT_APP_CHATBOT_API_URL}/submit-contact`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

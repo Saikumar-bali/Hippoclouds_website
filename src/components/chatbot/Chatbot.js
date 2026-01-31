@@ -124,7 +124,7 @@ const Chatbot = ({ open, onOpen, onClose }) => {
       setIsLoading(true);
 
       try {
-        const targetUrl = 'https://hippochatbot.netlify.app/.netlify/functions/chat';
+        const targetUrl = `${process.env.REACT_APP_CHATBOT_API_URL}/chat`;
          
         const response = await fetch(targetUrl, {
           method: 'POST',

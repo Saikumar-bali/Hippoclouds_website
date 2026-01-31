@@ -23,7 +23,7 @@ const LiveChatDialog = ({ open, onClose }) => {
   const [status, setStatus] = useState('Start a conversation with our support team!');
   const messagesEndRef = useRef(null);
   
-  const workerUrl = 'https://hippoclouds2025.saikumarbali555.workers.dev';
+  const workerUrl = process.env.REACT_APP_WORKER_URL;
 
   const scrollToBottom = () => {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
