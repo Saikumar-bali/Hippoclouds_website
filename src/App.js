@@ -25,6 +25,7 @@ import InfraSupportPage from './components/infrasupport/InfraSupportPage';
 import StaffAugmentationPage from './components/staffaugmentation/StaffAugmentationPage';
 import PartnershipPage from './components/partnership/PartnershipPage';
 import AboutUsPage from './components/about/AboutUsPage';
+import ServicesPage from './components/services/ServicesPage';
 // import ThreePage from './components/three/ThreePage';
 import Footer from './components/layout/Footer';
 import ContactForm from './components/contact/contact';
@@ -85,6 +86,7 @@ function App() {
             <Route path="/staffaugmentation" element={<StaffAugmentationPage />} />
             <Route path="/partnership" element={<PartnershipPage />} />
             <Route path="/about" element={<AboutUsPage />} />
+            <Route path="/services" element={<ServicesPage />} />
             <Route path="/contact" element={<ContactForm />} />
             {/* <Route path="/three" element={<ThreePage />} /> */}
           </Routes>

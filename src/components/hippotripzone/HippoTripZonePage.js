@@ -1,6 +1,7 @@
 
 import React from 'react';
 import { Box, Typography, Container, Paper, Link } from '@mui/material';
+import { Link as RouterLink } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { styled } from '@mui/material/styles';
 
@@ -54,8 +55,8 @@ export default function HippoTripZonePage() {
           <Typography variant="body1" paragraph>
             Plan your next adventure with HippoTripZone.
           </Typography>
-          <Link href="/contact" sx={{ textDecoration: 'none' }}>
-              Start Planning
+          <Link component={RouterLink} to="/contact" sx={{ textDecoration: 'none' }}>
+              Learn More
           </Link>
         </Box>
       </Container>

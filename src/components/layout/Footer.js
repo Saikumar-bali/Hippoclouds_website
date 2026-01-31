@@ -79,8 +79,8 @@ export default function Footer() {
                 <Stack>
                   <FooterLink href="/about" variant="body2">About Us</FooterLink>
                   <FooterLink href="/contact" variant="body2">Contact</FooterLink>
-                  <FooterLink href="/careers" variant="body2">Careers</FooterLink>
-                  <FooterLink href="/blog" variant="body2">Blog</FooterLink>
+                  <FooterLink href="/partnership" variant="body2">Partnership</FooterLink>
+                  <FooterLink href="/internships" variant="body2">Internships</FooterLink>
                 </Stack>
               </Grid>
 
@@ -90,10 +90,10 @@ export default function Footer() {
                   Services
                 </Typography>
                 <Stack>
-                  <FooterLink href="/services" variant="body2">App Development</FooterLink>
-                  <FooterLink href="/services" variant="body2">Web Development</FooterLink>
-                  <FooterLink href="/services" variant="body2">Digital Marketing</FooterLink>
-                  <FooterLink href="/services" variant="body2">Graphic Design</FooterLink>
+                  <FooterLink href="/services" variant="body2">Services</FooterLink>
+                  <FooterLink href="/consultancy" variant="body2">Consultancy</FooterLink>
+                  <FooterLink href="/bpo" variant="body2">BPO</FooterLink>
+                  <FooterLink href="/digitalmarketing" variant="body2">Digital Marketing</FooterLink>
                 </Stack>
               </Grid>
 
@@ -103,10 +103,10 @@ export default function Footer() {
                   Solutions
                 </Typography>
                 <Stack>
-                  <FooterLink href="/solutions" variant="body2">Cloud Solutions</FooterLink>
-                  <FooterLink href="/solutions" variant="body2">Enterprise Modernization</FooterLink>
-                  <FooterLink href="/solutions" variant="body2">Data Analytics</FooterLink>
-                  <FooterLink href="/solutions" variant="body2">Security</FooterLink>
+                  <FooterLink href="/erpnext" variant="body2">ERPNext</FooterLink>
+                  <FooterLink href="/hippohrm" variant="body2">HippoHRM</FooterLink>
+                  <FooterLink href="/hippocrm" variant="body2">HippoCRM</FooterLink>
+                  <FooterLink href="/hippomint" variant="body2">HippoMint</FooterLink>
                 </Stack>
               </Grid>
 

@@ -1,6 +1,7 @@
 
 import React from 'react';
 import { Box, Typography, Container, Paper, Link } from '@mui/material';
+import { Link as RouterLink } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { styled } from '@mui/material/styles';
 
@@ -54,8 +55,8 @@ export default function HippoHRMPage() {
           <Typography variant="body1" paragraph>
             Learn more about how HippoHRM can transform your HR department.
           </Typography>
-          <Link href="/contact" sx={{ textDecoration: 'none' }}>
-              Get a Demo
+          <Link component={RouterLink} to="/contact" sx={{ textDecoration: 'none' }}>
+              Learn More
           </Link>
         </Box>
       </Container>
