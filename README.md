@@ -2,6 +2,13 @@
 
 **Visit Website:** [https://saikumar-bali.github.io/hippoclouds_website/](https://saikumar-bali.github.io/hippoclouds_website/)
 
+## Key Features
+- 🤖 **AI Chatbot**: Intelligent conversational interface for user engagement.
+- ✨ **AI Assistant**: Advanced AI-powered tools to assist users in real-time.
+
+> [!TIP]
+> You can test these features directly by visiting our website!
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
