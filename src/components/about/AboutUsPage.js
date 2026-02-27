@@ -418,7 +418,7 @@ export default function AboutUsPage() {
         </Box>
 
         {/* Team Section */}
-        <Box sx={{ mb: 8 }}>
+        {/* <Box sx={{ mb: 8 }}>
           <SectionTitle variant="h3">Meet Our Leadership Team</SectionTitle>
           <Typography sx={{ textAlign: 'center', fontSize: '1.1rem', color: '#666', mb: 6, maxWidth: '600px', mx: 'auto' }}>
             Experienced professionals dedicated to driving innovation and excellence across all operations.
@@ -483,7 +483,7 @@ export default function AboutUsPage() {
               </Grid>
             ))}
           </Grid>
-        </Box>
+        </Box> */}
 
         {/* CTA Section */}
         <motion.div

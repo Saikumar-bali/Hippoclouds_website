@@ -200,7 +200,7 @@ const Navbar = () => {
             </Link>
           </Stack>
         </Box>
-        <Box sx={{ minWidth: 200, flex: 1 }}>
+        {/* <Box sx={{ minWidth: 200, flex: 1 }}>
           <Typography variant="subtitle2" sx={{ fontSize: '0.875rem', fontWeight: 400, color: 'var(--ds-gray-900, #11181C)', lineHeight: '1.25rem', mb: 1 }}>
             IT & Infrastructure Services
           </Typography>
@@ -230,7 +230,7 @@ const Navbar = () => {
               </MenuItem>
             </Link>
           </Stack>
-        </Box>
+        </Box> */}
       </Stack>
     </Box>
   );
@@ -362,13 +362,13 @@ const Navbar = () => {
             { label: 'HippoBuildX – Asset', path: '/hippobuildx-asset', icon: <AssetManagementIcon /> },
           ]
         },
-        { 
-          category: 'IT & Infrastructure Services',
-          items: [
-            { label: 'App Dev & Support', path: '/appdevsupport', icon: <DevelopmentIcon /> },
-            { label: 'IT Ops & Support', path: '/itopssupport', icon: <InfrastructureIcon /> },
-          ]
-        }
+        // { 
+        //   category: 'IT & Infrastructure Services',
+        //   items: [
+        //     { label: 'App Dev & Support', path: '/appdevsupport', icon: <DevelopmentIcon /> },
+        //     { label: 'IT Ops & Support', path: '/itopssupport', icon: <InfrastructureIcon /> },
+        //   ]
+        // }
       ]
     },
     { 
