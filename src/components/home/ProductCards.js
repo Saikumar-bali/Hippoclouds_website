@@ -16,7 +16,7 @@ import {
 } from '@mui/material';
 import { motion } from 'framer-motion';
 import { styled } from '@mui/material/styles';
-import { Code, Smartphone, PenTool, Boxes, UserCheck, Cloud, Zap, TestTube, LayoutDashboard } from "lucide-react";
+import { Code, Smartphone, PenTool, Boxes, UserCheck, Cloud, Zap, TestTube, LayoutDashboard, Shield } from "lucide-react";
 import { LayoutGrid, Target, Search, Database } from "lucide-react";
 
 // --- STYLED COMPONENTS ---
@@ -940,6 +940,341 @@ const ProductCards = forwardRef((props, ref) => {
           </Container>
         </Box>
       </Container>
+
+      {/* WHY HIPPOCLOUD SECTION - Premium UI */}
+      <Box
+        sx={{
+          py: { xs: 10, md: 16 },
+          position: 'relative',
+          overflow: 'hidden',
+          background: 'linear-gradient(180deg, #f8fafc 0%, #ffffff 50%, #f1f5f9 100%)',
+        }}
+      >
+        {/* Background decoration */}
+        <Box
+          sx={{
+            position: 'absolute',
+            top: 0,
+            left: 0,
+            right: 0,
+            bottom: 0,
+            opacity: 0.4,
+            background: `
+              radial-gradient(circle at 20% 20%, rgba(66, 165, 245, 0.08) 0%, transparent 50%),
+              radial-gradient(circle at 80% 80%, rgba(102, 187, 106, 0.08) 0%, transparent 50%),
+              radial-gradient(circle at 50% 50%, rgba(171, 71, 188, 0.05) 0%, transparent 70%)
+            `,
+            zIndex: 0,
+          }}
+        />
+        
+        {/* Floating accent shapes */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          transition={{ duration: 1 }}
+        >
+          <Box
+            sx={{
+              position: 'absolute',
+              top: '10%',
+              right: '5%',
+              width: 300,
+              height: 300,
+              borderRadius: '50%',
+              background: 'linear-gradient(135deg, rgba(66, 165, 245, 0.1) 0%, transparent 70%)',
+              filter: 'blur(60px)',
+              zIndex: 0,
+            }}
+          />
+          <Box
+            sx={{
+              position: 'absolute',
+              bottom: '20%',
+              left: '5%',
+              width: 200,
+              height: 200,
+              borderRadius: '50%',
+              background: 'linear-gradient(135deg, rgba(102, 187, 106, 0.1) 0%, transparent 70%)',
+              filter: 'blur(50px)',
+              zIndex: 0,
+            }}
+          />
+        </motion.div>
+
+        <Container maxWidth="lg" sx={{ position: 'relative', zIndex: 1 }}>
+          {/* Header */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            viewport={{ once: true }}
+          >
+            <Box sx={{ textAlign: 'center', mb: { xs: 6, md: 10 } }}>
+              <Typography
+                variant="overline"
+                sx={{
+                  color: 'primary.main',
+                  fontWeight: 600,
+                  letterSpacing: 3,
+                  fontSize: '0.875rem',
+                  display: 'block',
+                  mb: 2,
+                }}
+              >
+                WHY CHOOSE US
+              </Typography>
+              <Typography
+                variant="h3"
+                sx={{
+                  fontWeight: 800,
+                  fontSize: { xs: '2.2rem', md: '3.5rem' },
+                  lineHeight: 1.15,
+                  mb: 3,
+                  background: 'linear-gradient(135deg, #1a1a1a 0%, #4a5568 100%)',
+                  backgroundClip: 'text',
+                  WebkitBackgroundClip: 'text',
+                  WebkitTextFillColor: 'transparent',
+                }}
+              >
+                Why HippoCloud?
+              </Typography>
+              <Typography
+                variant="body1"
+                sx={{
+                  color: 'text.secondary',
+                  maxWidth: 600,
+                  mx: 'auto',
+                  fontSize: { xs: '1rem', md: '1.15rem' },
+                  lineHeight: 1.7,
+                }}
+              >
+                We don't just build technology—we build partnerships that drive measurable business growth.
+              </Typography>
+            </Box>
+          </motion.div>
+
+          {/* Feature Cards */}
+          <Grid container spacing={4}>
+            {[
+              {
+                icon: UserCheck,
+                title: 'Dedicated Teams',
+                description: 'Access pre-vetted, full-stack developers who integrate seamlessly with your in-house team.',
+                color: '#42a5f5',
+                gradient: 'linear-gradient(135deg, #42a5f5 0%, #1976d2 100%)',
+              },
+              {
+                icon: Zap,
+                title: 'Fast Execution',
+                description: 'Agile methodologies ensure rapid delivery without compromising on quality or security.',
+                color: '#ffa726',
+                gradient: 'linear-gradient(135deg, #ffa726 0%, #f57c00 100%)',
+              },
+              {
+                icon: Code,
+                title: 'Clean Code',
+                description: 'Maintainable, scalable architecture built on industry best practices and modern standards.',
+                color: '#66bb6a',
+                gradient: 'linear-gradient(135deg, #66bb6a 0%, #43a047 100%)',
+              },
+              {
+                icon: Cloud,
+                title: 'Cloud Experts',
+                description: 'AWS, Azure, and GCP certified professionals optimizing your infrastructure for scale.',
+                color: '#5c6bc0',
+                gradient: 'linear-gradient(135deg, #5c6bc0 0%, #3949ab 100%)',
+              },
+              {
+                icon: Shield,
+                title: 'Enterprise Security',
+                description: 'Bank-grade security protocols protecting your data with compliance certifications.',
+                color: '#ef5350',
+                gradient: 'linear-gradient(135deg, #ef5350 0%, #c62828 100%)',
+              },
+              {
+                icon: Target,
+                title: 'Result-Driven',
+                description: 'Every line of code aligned with your business KPIs and measurable outcomes.',
+                color: '#ab47bc',
+                gradient: 'linear-gradient(135deg, #ab47bc 0%, #7b1fa2 100%)',
+              },
+            ].map((item, index) => (
+              <Grid item xs={12} sm={6} md={4} key={index}>
+                <motion.div
+                  initial={{ opacity: 0, y: 40 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, delay: index * 0.1 }}
+                  viewport={{ once: true }}
+                  whileHover={{ y: -8 }}
+                >
+                  <Paper
+                    elevation={0}
+                    sx={{
+                      p: 4,
+                      height: '100%',
+                      borderRadius: 3,
+                      background: 'rgba(255, 255, 255, 0.8)',
+                      backdropFilter: 'blur(20px)',
+                      border: '1px solid rgba(255, 255, 255, 0.6)',
+                      boxShadow: '0 4px 24px rgba(0, 0, 0, 0.06)',
+                      transition: 'all 0.4s cubic-bezier(0.4, 0, 0.2, 1)',
+                      cursor: 'pointer',
+                      position: 'relative',
+                      overflow: 'hidden',
+                      '&:hover': {
+                        boxShadow: `0 20px 50px ${item.color}20`,
+                        borderColor: `${item.color}30`,
+                        '& .icon-box': {
+                          transform: 'scale(1.1) rotateY(15deg)',
+                          boxShadow: `0 12px 30px ${item.color}50`,
+                        },
+                      },
+                      '&::before': {
+                        content: '""',
+                        position: 'absolute',
+                        top: 0,
+                        left: 0,
+                        right: 0,
+                        height: '4px',
+                        background: item.gradient,
+                      },
+                    }}
+                  >
+                    {/* Icon */}
+                    <Box
+                      className="icon-box"
+                      sx={{
+                        width: 64,
+                        height: 64,
+                        borderRadius: 2,
+                        background: item.gradient,
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        mb: 3,
+                        boxShadow: `0 6px 20px ${item.color}40`,
+                        transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
+                      }}
+                    >
+                      <item.icon size={28} color="#ffffff" strokeWidth={2} />
+                    </Box>
+
+                    {/* Title */}
+                    <Typography
+                      variant="h6"
+                      sx={{
+                        fontWeight: 700,
+                        fontSize: '1.25rem',
+                        mb: 1.5,
+                        color: '#1a1a1a',
+                      }}
+                    >
+                      {item.title}
+                    </Typography>
+
+                    {/* Description */}
+                    <Typography
+                      variant="body2"
+                      sx={{
+                        color: 'text.secondary',
+                        lineHeight: 1.7,
+                        fontSize: '0.95rem',
+                      }}
+                    >
+                      {item.description}
+                    </Typography>
+                  </Paper>
+                </motion.div>
+              </Grid>
+            ))}
+          </Grid>
+
+          {/* Stats Section */}
+          <motion.div
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.3 }}
+            viewport={{ once: true }}
+          >
+            <Box
+              sx={{
+                mt: { xs: 6, md: 10 },
+                p: { xs: 4, md: 6 },
+                borderRadius: 4,
+                background: 'linear-gradient(135deg, #1a1a1a 0%, #2d3748 100%)',
+                position: 'relative',
+                overflow: 'hidden',
+              }}
+            >
+              {/* Glow effect */}
+              <Box
+                sx={{
+                  position: 'absolute',
+                  top: -100,
+                  right: -100,
+                  width: 300,
+                  height: 300,
+                  borderRadius: '50%',
+                  background: 'radial-gradient(circle, rgba(66, 165, 245, 0.3) 0%, transparent 70%)',
+                }}
+              />
+              
+              <Grid container spacing={4} alignItems="center">
+                <Grid item xs={12} md={7}>
+                  <Typography
+                    variant="h4"
+                    sx={{
+                      fontWeight: 700,
+                      color: '#ffffff',
+                      mb: 2,
+                      fontSize: { xs: '1.75rem', md: '2.25rem' },
+                    }}
+                  >
+                    Ready to transform your business?
+                  </Typography>
+                  <Typography
+                    variant="body1"
+                    sx={{
+                      color: 'rgba(255, 255, 255, 0.7)',
+                      fontSize: { xs: '1rem', md: '1.1rem' },
+                      lineHeight: 1.7,
+                    }}
+                  >
+                    Let's discuss how we can help you achieve your technology goals with our expert team.
+                  </Typography>
+                </Grid>
+                <Grid item xs={12} md={5} sx={{ textAlign: { xs: 'center', md: 'right' } }}>
+                  <Button
+                    variant="contained"
+                    size="large"
+                    endIcon={<Box component="span" sx={{ ml: 1 }}>→</Box>}
+                    sx={{
+                      background: '#ffffff',
+                      color: '#1a1a1a',
+                      fontWeight: 700,
+                      borderRadius: 2,
+                      px: 4,
+                      py: 1.5,
+                      fontSize: '1rem',
+                      textTransform: 'none',
+                      boxShadow: '0 4px 20px rgba(255, 255, 255, 0.2)',
+                      transition: 'all 0.3s ease',
+                      '&:hover': {
+                        background: '#f1f5f9',
+                        transform: 'translateY(-2px)',
+                        boxShadow: '0 8px 30px rgba(255, 255, 255, 0.3)',
+                      },
+                    }}
+                  >
+                    Get Started
+                  </Button>
+                </Grid>
+              </Grid>
+            </Box>
+          </motion.div>
+        </Container>
+      </Box>
 
       <Container maxWidth="lg" sx={{ mt: -5 }}>
         {/* Header Section */}
