@@ -250,12 +250,6 @@ const servicesData = [
     color: "#26a69a",
     description: "Closing the gap between academia and industry with curriculum-aligned training.",
   },
-  {
-    icon: Cloud,
-    title: "Cloud Solutions",
-    color: "#5c6bc0",
-    description: "Scalable cloud infrastructure with seamless migration and optimized performance for your business.",
-  },
 ];
 
 // --- ABSTRACT GRAPHIC COMPONENTS ---
@@ -362,12 +356,11 @@ const TECHNOLOGY_DATA = [
     icon: Code,
     heading: 'Frontend',
     description:
-      "Our expertise spans leading JavaScript frameworks, including Angular, React, and Vue.js, along with core technologies like Express JS and Knockout JS, to build dynamic, responsive, and high-performance user interfaces.",
+      "Our expertise spans leading JavaScript frameworks, including Angular, React, and Vue.js, along with core technologies like Knockout JS, to build dynamic, responsive, and high-performance user interfaces.",
     technologies: [
       { name: 'Angular JS', link: '/angular-development', image: '/technologies/angular.png' },
       { name: 'React', link: '/top-reactjs-development-company', image: '/technologies/react.png' },
       { name: 'Vue JS', link: '/vue-js-development', image: '/technologies/vue.png' },
-      { name: 'Express JS', link: '#', image: '/technologies/express_js.png' },
       { name: 'Knockout JS', link: '#', image: '/technologies/knockout_js.png' },
       { name: 'Javascript', link: '/javascript-application-development', image: '/technologies/javascript.png' },
     ],
@@ -753,7 +746,7 @@ const ProductCards = forwardRef((props, ref) => {
             sx={{
               display: 'flex',
               flexDirection: 'column',
-              alignItems: { xs: 'center', md: 'flex-start' },
+              alignItems: 'center',
               mt: 4,
               position: 'relative'
             }}
@@ -762,7 +755,7 @@ const ProductCards = forwardRef((props, ref) => {
             {isDesktop && (
               <DiamondBox
                 style={{
-                  left: '125px',
+                  left: '440px',
                   top: '135px',
                   transform: 'translate(-50%, -50%)',
                   zIndex: 10
@@ -780,7 +773,7 @@ const ProductCards = forwardRef((props, ref) => {
               sx={{
                 display: 'flex',
                 flexWrap: 'wrap',
-                justifyContent: { xs: 'center', md: 'flex-start' },
+                justifyContent: 'center',
                 width: '100%',
                 gap: 0,
                 position: 'relative',
@@ -835,7 +828,7 @@ const ProductCards = forwardRef((props, ref) => {
 
             <DiamondBox
               style={{
-                left: '300px',
+                left: '615px',
                 top: '135px',
                 transform: 'translate(-50%, -50%)',
                 zIndex: 10
@@ -852,7 +845,7 @@ const ProductCards = forwardRef((props, ref) => {
               sx={{
                 display: 'flex',
                 flexWrap: 'wrap',
-                justifyContent: { xs: 'center', md: 'flex-start' },
+                justifyContent: 'center',
                 width: '100%',
                 gap: 0,
               }}
@@ -902,7 +895,7 @@ const ProductCards = forwardRef((props, ref) => {
                 </OctagonBox>
               ))}
             </Box>
-            <DiamondBox
+            {/* <DiamondBox
               style={{
                 left: '480px',
                 top: '135px',
@@ -914,7 +907,7 @@ const ProductCards = forwardRef((props, ref) => {
               transition={{ duration: 0.6, delay: 0.8 }}
             >
               <DiamondBorderAnimated />
-            </DiamondBox>
+            </DiamondBox> */}
           </Box>
         </Container>
       </Box>
@@ -966,15 +959,16 @@ const ProductCards = forwardRef((props, ref) => {
             </Box>
           </motion.div>
 
+          {/* Mobile: 2x2 Grid, Desktop: Arc Layout */}
           <Box
             sx={{
-              position: "relative",
-              height: { xs: "auto", md: "280px" },
-              display: "flex",
-              flexDirection: { xs: "column", md: "row" },
-              justifyContent: "center",
-              alignItems: "center",
-              gap: { xs: 4, md: 0 }
+              display: { xs: 'grid', md: 'block' },
+              gridTemplateColumns: { xs: 'repeat(2, 1fr)', md: 'auto' },
+              gap: { xs: 1, md: 0 },
+              width: '100%',
+              maxWidth: { xs: '100%', md: '800px', },
+              mx: 'auto',
+              px: { xs: 0.5, md: 0 },
             }}
           >
             {[
@@ -1013,13 +1007,14 @@ const ProductCards = forwardRef((props, ref) => {
                 <Box
                   key={index}
                   sx={{
-                    position: { xs: "relative", md: "absolute" },
-                    top: { xs: "auto", md: positions[index].top },
-                    left: { xs: "auto", md: positions[index].left },
-                    transform: { xs: "none", md: "translateX(-50%)" },
-                    width: { xs: "100%", md: "200px" },
-                    textAlign: "center",
+                    position: { xs: 'relative', md: 'absolute' },
+                    top: { xs: 'auto', md: positions[index].top },
+                    left: { xs: 'auto', md: positions[index].left },
+                    transform: { xs: 'none', md: 'translateX(-50%)' },
+                    width: { xs: '100%', md: '200px' },
+                    textAlign: 'center',
                     zIndex: 2,
+                    p: { xs: 0.25, md: 0 },
                   }}
                 >
                   <motion.div
@@ -1030,35 +1025,38 @@ const ProductCards = forwardRef((props, ref) => {
                   >
                     <Box
                       sx={{
-                        width: 60,
-                        height: 60,
+                        width: { xs: 28, md: 60 },
+                        height: { xs: 28, md: 60 },
                         borderRadius: "50%",
                         background: "rgba(255, 255, 255, 0.9)",
                         backdropFilter: "blur(8px)",
                         display: "flex",
                         alignItems: "center",
                         justifyContent: "center",
-                        margin: "0 auto 12px",
-                        boxShadow: "0 4px 12px rgba(0,0,0,0.1)",
+                        margin: { xs: "0 auto 4px", md: "0 auto 12px" },
+                        boxShadow: "0 2px 8px rgba(0,0,0,0.1)",
                         border: `2px solid ${item.color}`,
                       }}
                     >
-                      <item.icon size={24} color={item.color} strokeWidth={2} />
+                      <item.icon size={12} color={item.color} strokeWidth={2} />
                     </Box>
                     <Paper
                       elevation={0}
                       sx={{
-                        p: 1.5,
-                        borderRadius: 3,
+                        p: { xs: 0.25, md: 1.5 },
+                        borderRadius: 1,
                         background: "rgba(255, 255, 255, 0.8)",
                         backdropFilter: "blur(10px)",
                         border: "1px solid rgba(255, 255, 255, 0.5)",
+                        width: '100%',
+                        maxWidth: { xs: '90px', md: '200px' },
+                        mx: 'auto',
                       }}
                     >
-                      <Typography variant="subtitle2" sx={{ fontWeight: 800, mb: 0.5 }}>
+                      <Typography variant="subtitle2" sx={{ fontWeight: 800, mb: 0.1, fontSize: { xs: '0.45rem', md: '0.875rem' } }}>
                         {item.title}
                       </Typography>
-                      <Typography variant="caption" sx={{ color: "text.secondary", display: "block", lineHeight: 1.2 }}>
+                      <Typography variant="caption" sx={{ color: "text.secondary", display: "block", lineHeight: 1.1, fontSize: { xs: '0.35rem', md: '0.75rem' } }}>
                         {item.description}
                       </Typography>
                     </Paper>
@@ -1070,7 +1068,272 @@ const ProductCards = forwardRef((props, ref) => {
         </Container>
       </Box>
 
-      <Container maxWidth="lg" sx={{ mt: -5 }}>
+      {/* OUR CORE EXPERTISE SECTION */}
+      <Box
+        sx={{
+          py: { xs: 6, md: 10 },
+          background: 'linear-gradient(180deg, #f8fafc 0%, #ffffff 50%, #f1f5f9 100%)',
+          position: 'relative',
+          overflow: 'hidden',
+        }}
+      >
+        {/* Background decoration */}
+        <Box
+          sx={{
+            position: 'absolute',
+            top: 0,
+            left: 0,
+            right: 0,
+            bottom: 0,
+            opacity: 0.5,
+            background: `
+              radial-gradient(circle at 20% 20%, rgba(66, 165, 245, 0.08) 0%, transparent 50%),
+              radial-gradient(circle at 80% 80%, rgba(102, 187, 106, 0.08) 0%, transparent 50%)
+            `,
+            zIndex: 0,
+          }}
+        />
+
+        <Container maxWidth="lg" sx={{ position: 'relative', zIndex: 1 }}>
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            viewport={{ once: true }}
+          >
+            <Box sx={{ textAlign: 'center', mb: { xs: 4, md: 6 } }}>
+              <Typography
+                variant="overline"
+                sx={{
+                  color: 'primary.main',
+                  fontWeight: 600,
+                  letterSpacing: 3,
+                  fontSize: '0.875rem',
+                  display: 'block',
+                  mb: 1,
+                }}
+              >
+                WHAT WE OFFER
+              </Typography>
+              <Typography
+                variant="h3"
+                sx={{
+                  fontWeight: 800,
+                  fontSize: { xs: '2rem', md: '2.75rem' },
+                  lineHeight: 1.15,
+                  mb: 2,
+                  background: 'linear-gradient(135deg, #1a1a1a 0%, #4a5568 100%)',
+                  backgroundClip: 'text',
+                  WebkitBackgroundClip: 'text',
+                  WebkitTextFillColor: 'transparent',
+                }}
+              >
+                Our Core Expertise
+              </Typography>
+              <Typography
+                variant="body1"
+                sx={{
+                  color: 'text.secondary',
+                  maxWidth: 650,
+                  mx: 'auto',
+                  fontSize: { xs: '0.95rem', md: '1.1rem' },
+                  lineHeight: 1.7,
+                }}
+              >
+                Empowering businesses through cutting-edge technology and strategic offshore partnership.
+              </Typography>
+            </Box>
+          </motion.div>
+
+          <Box
+            sx={{
+              display: 'grid',
+              gridTemplateColumns: { xs: '1fr', sm: 'repeat(2, 1fr)', md: 'repeat(3, 1fr)' },
+              gap: { xs: 3, md: 5 },
+            }}
+          >
+            {[
+              {
+                number: '01',
+                title: 'Software Development',
+                focus: 'The Focus:',
+                focusDesc: 'End-to-end custom application development using the latest tech stacks.',
+                value: 'The Value:',
+                valueDesc: 'We build scalable, high-performance software tailored to solve complex business challenges, ensuring your digital products are future-proof.',
+                color: '#42a5f5',
+              },
+              {
+                number: '02',
+                title: 'Dedicated Offshore Development Centre (ODC)',
+                focus: 'The Focus:',
+                focusDesc: 'Your own specialized team, managed by us, operating as your remote office.',
+                value: 'The Value:',
+                valueDesc: 'Reduce operational overhead while maintaining full control. We provide top-tier infrastructure, security, and talent that aligns perfectly with your company culture.',
+                color: '#66bb6a',
+              },
+              {
+                number: '03',
+                title: 'Product Support & Maintenance',
+                focus: 'The Focus:',
+                focusDesc: '24/7 reliability, bug fixes, and feature enhancements.',
+                value: 'The Value:',
+                valueDesc: 'A product is never "finished." We ensure your platform stays secure, fast, and up-to-date, allowing you to focus on growth while we handle the stability.',
+                color: '#ffa726',
+              },
+              {
+                number: '04',
+                title: 'Digital Marketing',
+                focus: 'The Focus:',
+                focusDesc: 'SEO, SEM, content strategy, and brand positioning.',
+                value: 'The Value:',
+                valueDesc: 'Building the product is only half the battle. We drive measurable traffic and high-intent users to your platform through data-backed marketing funnels.',
+                color: '#ef5350',
+              },
+              {
+                number: '05',
+                title: 'IT Consultancy',
+                focus: 'The Focus:',
+                focusDesc: 'Digital transformation and technical roadmap strategy.',
+                value: 'The Value:',
+                valueDesc: "Not sure which tech to choose? Our consultants provide the blueprint for your digital journey, optimizing your ROI and minimizing technical debt.",
+                color: '#ab47bc',
+              },
+              {
+                number: '06',
+                title: 'Skill Development',
+                focus: 'The Focus:',
+                focusDesc: 'Industry-aligned training and talent grooming.',
+                value: 'The Value:',
+                valueDesc: 'We bridge the gap between academic knowledge and industry demands, ensuring our teams (and yours) are always proficient in the most relevant technologies.',
+                color: '#26a69a',
+              },
+            ].map((item, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+                viewport={{ once: true }}
+                whileHover={{ y: -5 }}
+              >
+                <Paper
+                  elevation={0}
+                  sx={{
+                    p: { xs: 1.5, md: 2 },
+                    minHeight: '280px',
+                    height: '100%',
+                    borderRadius: 4,
+                    background: 'linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(255, 255, 255, 0.7) 100%)',
+                    backdropFilter: 'blur(20px)',
+                    WebkitBackdropFilter: 'blur(20px)',
+                    border: '1px solid rgba(255, 255, 255, 0.8)',
+                    boxShadow: '0 8px 32px rgba(0, 0, 0, 0.08)',
+                    transition: 'all 0.4s cubic-bezier(0.4, 0, 0.2, 1)',
+                    cursor: 'pointer',
+                    position: 'relative',
+                    overflow: 'hidden',
+                    '&:hover': {
+                      boxShadow: `0 20px 60px ${item.color}30, 0 8px 24px rgba(0, 0, 0, 0.12)`,
+                      borderColor: `${item.color}50`,
+                      transform: 'translateY(-8px)',
+                      '& .expertise-glow': {
+                        opacity: 1,
+                      },
+                    },
+                    '&::before': {
+                      content: '""',
+                      position: 'absolute',
+                      top: 0,
+                      left: 0,
+                      width: '4px',
+                      height: '100%',
+                      background: item.color,
+                    },
+                    '&::after': {
+                      content: '""',
+                      position: 'absolute',
+                      top: '-50%',
+                      left: '-50%',
+                      width: '200%',
+                      height: '200%',
+                      background: `radial-gradient(circle, ${item.color}10 0%, transparent 70%)`,
+                      opacity: 0,
+                      transition: 'opacity 0.4s ease',
+                      pointerEvents: 'none',
+                    },
+                  }}
+                >
+                  {/* Glow effect on hover */}
+                  <Box
+                    className="expertise-glow"
+                    sx={{
+                      position: 'absolute',
+                      top: 0,
+                      left: 0,
+                      right: 0,
+                      bottom: 0,
+                      background: `linear-gradient(135deg, ${item.color}08 0%, transparent 100%)`,
+                      opacity: 0,
+                      transition: 'opacity 0.4s ease',
+                      pointerEvents: 'none',
+                    }}
+                  />
+                  <Box sx={{ display: 'flex', alignItems: 'flex-start', gap: 2 }}>
+                    <Typography
+                      sx={{
+                        fontWeight: 800,
+                        fontSize: { xs: '1.5rem', md: '2rem' },
+                        color: item.color,
+                        lineHeight: 1,
+                        fontFamily: 'Inter, sans-serif',
+                      }}
+                    >
+                      {item.number}
+                    </Typography>
+                    <Box sx={{ flex: 1 }}>
+                      <Typography
+                        variant="h6"
+                        sx={{
+                          fontWeight: 700,
+                          fontSize: { xs: '1.1rem', md: '1.25rem' },
+                          mb: 1.5,
+                          color: '#1a1a1a',
+                          fontFamily: 'Inter, sans-serif',
+                        }}
+                      >
+                        {item.title}
+                      </Typography>
+                      <Typography
+                        variant="body2"
+                        sx={{
+                          color: 'text.secondary',
+                          fontSize: { xs: '0.85rem', md: '0.9rem' },
+                          lineHeight: 1.6,
+                          mb: 1,
+                        }}
+                      >
+                        <Box component="span" sx={{ fontWeight: 600, color: item.color }}>{item.focus}</Box> {item.focusDesc}
+                      </Typography>
+                      <Typography
+                        variant="body2"
+                        sx={{
+                          color: 'text.secondary',
+                          fontSize: { xs: '0.85rem', md: '0.9rem' },
+                          lineHeight: 1.6,
+                        }}
+                      >
+                        <Box component="span" sx={{ fontWeight: 600, color: item.color }}>{item.value}</Box> {item.valueDesc}
+                      </Typography>
+                    </Box>
+                  </Box>
+                </Paper>
+              </motion.div>
+            ))}
+          </Box>
+        </Container>
+      </Box>
+
+      <Container maxWidth="lg" sx={{ mt: 6, mb: 4 }}>
         {/* Header Section */}
         <Grid container justifyContent="center">
           <Grid item xs={12} md={10} sx={{ textAlign: "center" }}>
@@ -1205,6 +1468,185 @@ const ProductCards = forwardRef((props, ref) => {
           </Grid>
         </Box>
       </Container>
+
+      {/* WHY CHOOSE HIPPOCLOUD SECTION */}
+      <Box
+        sx={{
+          py: { xs: 6, md: 10 },
+          position: 'relative',
+          overflow: 'hidden',
+          background: 'linear-gradient(180deg, #f8fafc 0%, #ffffff 50%, #f1f5f9 100%)',
+        }}
+      >
+        {/* Background decoration */}
+        <Box
+          sx={{
+            position: 'absolute',
+            top: 0,
+            left: 0,
+            right: 0,
+            bottom: 0,
+            opacity: 0.5,
+            background: `
+              radial-gradient(circle at 20% 20%, rgba(66, 165, 245, 0.1) 0%, transparent 50%),
+              radial-gradient(circle at 80% 80%, rgba(102, 187, 106, 0.1) 0%, transparent 50%),
+              radial-gradient(circle at 50% 50%, rgba(171, 71, 188, 0.05) 0%, transparent 70%)
+            `,
+            zIndex: 0,
+          }}
+        />
+
+        <Container maxWidth="lg" sx={{ position: 'relative', zIndex: 1 }}>
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            viewport={{ once: true }}
+          >
+            <Box sx={{ textAlign: 'center', mb: { xs: 5, md: 8 } }}>
+              <Typography
+                variant="h4"
+                sx={{
+                  fontWeight: 800,
+                  fontSize: { xs: '1.75rem', md: '2.5rem' },
+                  mb: 2,
+                  background: 'linear-gradient(135deg, #1a1a1a 0%, #4a5568 100%)',
+                  backgroundClip: 'text',
+                  WebkitBackgroundClip: 'text',
+                  WebkitTextFillColor: 'transparent',
+                }}
+              >
+                Why Choose HippoCloud?
+              </Typography>
+            </Box>
+          </motion.div>
+
+          <Box
+            sx={{
+              display: 'flex',
+              flexWrap: 'wrap',
+              gap: { xs: 0.5, sm: 4 },
+              width: '100%',
+              maxWidth: '100%',
+              px: 0.5,
+              boxSizing: 'border-box',
+              '& > div': {
+                width: { xs: 'calc(50% - 0.25rem)', sm: 'calc(50% - 0.5rem)' },
+                boxSizing: 'border-box',
+              }
+            }}
+          >
+            {[
+              {
+                icon: TrendingUp,
+                title: 'Industry Alignment',
+                description: 'Our processes and training are strictly mapped to 2026\'s global tech standards.',
+                color: '#42a5f5',
+                gradient: 'linear-gradient(135deg, #42a5f5 0%, #1976d2 100%)',
+              },
+              {
+                icon: Handshake,
+                title: 'Agile Partnership',
+                description: 'We don\'t just deliver; we integrate seamlessly into your existing workflows.',
+                color: '#66bb6a',
+                gradient: 'linear-gradient(135deg, #66bb6a 0%, #43a047 100%)',
+              },
+              {
+                icon: Scale,
+                title: 'Scalable Models',
+                description: 'From a single consultant to a 50-person ODC, we scale as you grow.',
+                color: '#ab47bc',
+                gradient: 'linear-gradient(135deg, #ab47bc 0%, #7b1fa2 100%)',
+              },
+              {
+                icon: Zap,
+                title: 'Fast Delivery',
+                description: 'Accelerated development cycles with agile methodologies for quicker time-to-market.',
+                color: '#ff7043',
+                gradient: 'linear-gradient(135deg, #ff7043 0%, #e64a19 100%)',
+              },
+            ].map((item, index) => (
+                <motion.div
+                  initial={{ opacity: 0, y: 40 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, delay: index * 0.1 }}
+                  viewport={{ once: true }}
+                  whileHover={{ y: -5 }}
+                  style={{ width: '100%', minWidth: 0, boxSizing: 'border-box' }}
+                >
+                  <Paper
+                    elevation={0}
+                    sx={{
+                      p: { xs: 0.75, sm: 2 },
+                      height: '100%',
+                      borderRadius: 1,
+                      background: 'rgba(255, 255, 255, 0.9)',
+                      backdropFilter: 'blur(20px)',
+                      WebkitBackdropFilter: 'blur(20px)',
+                      border: '1px solid rgba(255, 255, 255, 0.6)',
+                      boxShadow: '0 2px 12px rgba(0, 0, 0, 0.04)',
+                      transition: 'all 0.4s cubic-bezier(0.4, 0, 0.2, 1)',
+                      cursor: 'pointer',
+                      position: 'relative',
+                      overflow: 'hidden',
+                      minWidth: 0,
+                      boxSizing: 'border-box',
+                      '&:hover': {
+                        boxShadow: `0 12px 30px ${item.color}20`,
+                        borderColor: `${item.color}30`,
+                      },
+                      '&::before': {
+                        content: '""',
+                        position: 'absolute',
+                        top: 0,
+                        left: 0,
+                        right: 0,
+                        height: '2px',
+                        background: item.gradient,
+                      },
+                    }}
+                  >
+                    <Box
+                      sx={{
+                        width: { xs: 20, sm: 36 },
+                        height: { xs: 20, sm: 36 },
+                        borderRadius: 0.5,
+                        background: item.gradient,
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        mb: { xs: 0.25, sm: 1 },
+                        boxShadow: `0 2px 6px ${item.color}40`,
+                      }}
+                    >
+                      <item.icon size={10} color="#ffffff" strokeWidth={2.5} />
+                    </Box>
+                    <Typography
+                      sx={{
+                        fontWeight: 700,
+                        fontSize: { xs: '0.55rem', sm: '0.9rem' },
+                        mb: 0.15,
+                        color: '#1a1a1a',
+                        lineHeight: 1.1,
+                      }}
+                    >
+                      {item.title}
+                    </Typography>
+                    <Typography
+                      sx={{
+                        color: 'text.secondary',
+                        lineHeight: 1.2,
+                        fontSize: { xs: '0.45rem', sm: '0.75rem' },
+                      }}
+                    >
+                      {item.description}
+                    </Typography>
+                  </Paper>
+                </motion.div>
+            ))}
+          </Box>
+        </Container>
+      </Box>
 
 
       {/* Free up time section */}
