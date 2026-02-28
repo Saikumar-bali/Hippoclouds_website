@@ -962,13 +962,13 @@ const ProductCards = forwardRef((props, ref) => {
           {/* Mobile: 2x2 Grid, Desktop: Arc Layout */}
           <Box
             sx={{
-              display: { xs: 'grid', md: 'block' },
-              gridTemplateColumns: { xs: 'repeat(2, 1fr)', md: 'auto' },
-              gap: { xs: 1, md: 0 },
-              width: '100%',
-              maxWidth: { xs: '100%', md: '800px', },
-              mx: 'auto',
-              px: { xs: 0.5, md: 0 },
+              position: { xs: 'relative', md: 'relative' },
+              height: { xs: 'auto', md: '280px' },
+              display: 'flex',
+              flexDirection: { xs: 'column', md: 'row' },
+              justifyContent: 'center',
+              alignItems: 'center',
+              gap: { xs: 2, md: 0 }
             }}
           >
             {[
@@ -1014,7 +1014,6 @@ const ProductCards = forwardRef((props, ref) => {
                     width: { xs: '100%', md: '200px' },
                     textAlign: 'center',
                     zIndex: 2,
-                    p: { xs: 0.25, md: 0 },
                   }}
                 >
                   <motion.div
@@ -1025,20 +1024,20 @@ const ProductCards = forwardRef((props, ref) => {
                   >
                     <Box
                       sx={{
-                        width: { xs: 28, md: 60 },
-                        height: { xs: 28, md: 60 },
+                        width: { xs: 36, md: 70 },
+                        height: { xs: 36, md: 70 },
                         borderRadius: "50%",
                         background: "rgba(255, 255, 255, 0.9)",
                         backdropFilter: "blur(8px)",
                         display: "flex",
                         alignItems: "center",
                         justifyContent: "center",
-                        margin: { xs: "0 auto 4px", md: "0 auto 12px" },
-                        boxShadow: "0 2px 8px rgba(0,0,0,0.1)",
+                        margin: { xs: "0 auto 6px", md: "0 auto 12px" },
+                        boxShadow: "0 4px 12px rgba(0,0,0,0.1)",
                         border: `2px solid ${item.color}`,
                       }}
                     >
-                      <item.icon size={12} color={item.color} strokeWidth={2} />
+                      <item.icon size={{ xs: 16, md: 28 }} color={item.color} strokeWidth={2} />
                     </Box>
                     <Paper
                       elevation={0}
@@ -1523,17 +1522,13 @@ const ProductCards = forwardRef((props, ref) => {
 
           <Box
             sx={{
-              display: 'flex',
-              flexWrap: 'wrap',
-              gap: { xs: 0.5, sm: 4 },
+              display: 'grid',
+              gridTemplateColumns: { xs: 'repeat(2, 1fr)', md: 'repeat(2, 1fr)' },
+              gap: { xs: 1, md: 3 },
               width: '100%',
-              maxWidth: '100%',
-              px: 0.5,
-              boxSizing: 'border-box',
-              '& > div': {
-                width: { xs: 'calc(50% - 0.25rem)', sm: 'calc(50% - 0.5rem)' },
-                boxSizing: 'border-box',
-              }
+              maxWidth: '900px',
+              mx: 'auto',
+              px: 1,
             }}
           >
             {[
@@ -1572,7 +1567,7 @@ const ProductCards = forwardRef((props, ref) => {
                   transition={{ duration: 0.5, delay: index * 0.1 }}
                   viewport={{ once: true }}
                   whileHover={{ y: -5 }}
-                  style={{ width: '100%', minWidth: 0, boxSizing: 'border-box' }}
+                  sx={{ width: '100%', minWidth: 0 }}
                 >
                   <Paper
                     elevation={0}
