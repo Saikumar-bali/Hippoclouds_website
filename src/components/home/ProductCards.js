@@ -46,15 +46,15 @@ const SectionSubtitle = styled(Typography)(({ theme }) => ({
 }));
 
 const OctagonBox = styled(motion.div)(({ theme, bgcolor }) => ({
-  width: '200px',
-  minHeight: '220px',
+  width: '140px',
+  minHeight: '150px',
   height: 'auto',
   display: 'flex',
   flexDirection: 'column',
   alignItems: 'center',
   justifyContent: 'center',
   textAlign: 'center',
-  padding: '20px',
+  padding: '12px',
   background: 'transparent', // Fully transparent background
   backdropFilter: 'blur(8px)',
   WebkitBackdropFilter: 'blur(8px)',
@@ -63,7 +63,7 @@ const OctagonBox = styled(motion.div)(({ theme, bgcolor }) => ({
   clipPath: 'polygon(30% 0%, 70% 0%, 100% 30%, 100% 70%, 70% 100%, 30% 100%, 0% 70%, 0% 30%)',
   transition: 'all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275)',
   cursor: 'pointer',
-  margin: '10px',
+  margin: '6px',
   '&:hover': {
     transform: 'translateY(-12px) scale(1.05)',
     '& .octagon-beam-path': {
@@ -99,16 +99,16 @@ const OctagonBox = styled(motion.div)(({ theme, bgcolor }) => ({
     '100%': { strokeDashoffset: 0 },
   },
   [theme.breakpoints.down('md')]: {
-    width: '170px',
-    minHeight: '180px',
-    padding: '12px',
-    margin: '6px',
+    width: '120px',
+    minHeight: '130px',
+    padding: '10px',
+    margin: '4px',
   },
   [theme.breakpoints.down('sm')]: {
-    width: '140px',
-    minHeight: '160px',
-    padding: '8px',
-    margin: '5px',
+    width: '100px',
+    minHeight: '110px',
+    padding: '6px',
+    margin: '3px',
   }
 }));
 
@@ -133,8 +133,8 @@ const OctagonBorderAnimated = () => (
 );
 
 const DiamondBox = styled(motion.div)(({ theme }) => ({
-  width: '140px',
-  height: '140px',
+  width: '100px',
+  height: '100px',
   display: 'flex',
   alignItems: 'center',
   justifyContent: 'center',
@@ -691,567 +691,382 @@ const ProductCards = forwardRef((props, ref) => {
                 slidesToShow={5}
                 slidesToScroll={1}
                 responsive={[
-                  {
-                    breakpoint: 1024,
-                    settings: {
-                      slidesToShow: 4,
-                    },
-                  },
-                  {
-                    breakpoint: 600,
-                    settings: {
-                      slidesToShow: 3,
-                    },
-                  },
-                  {
-                    breakpoint: 480,
-                    settings: {
-                      slidesToShow: 2,
-                    },
-                  },
+                  { breakpoint: 1024, settings: { slidesToShow: 4 } },
+                  { breakpoint: 768, settings: { slidesToShow: 3 } },
+                  { breakpoint: 480, settings: { slidesToShow: 2 } },
                 ]}
               >
                 {clients.map((client, index) => (
-                  <motion.div
-                    key={index}
-                    whileHover={{ scale: 1.1 }}
-                    transition={{ duration: 0.3 }}
-                  >
-                    <Box sx={{ px: 2, textAlign: 'center', py: 1 }}>
-                      <Box
-                        component="img"
-                        src={client.logo}
-                        alt={client.name}
-                        sx={{
-                          maxWidth: '100%',
-                          height: 'auto',
-                          maxHeight: 80,
-                          display: 'block',
-                          margin: '0 auto',
-                          transition: 'all 0.3s ease',
-                          filter: 'grayscale(100%)',
-                          opacity: 0.7,
-                          '&:hover': {
-                            filter: 'grayscale(0%)',
-                            opacity: 1,
-                          }
-                        }}
-                      />
-                    </Box>
-                  </motion.div>
+                  <Box key={index} sx={{ px: 2 }}>
+                    <Box
+                      component="img"
+                      src={client.logo}
+                      alt={client.name}
+                      sx={{
+                        height: { xs: '40px', md: '60px' },
+                        width: 'auto',
+                        maxWidth: '150px',
+                        objectFit: 'contain',
+                        filter: 'grayscale(100%)',
+                        opacity: 0.6,
+                        transition: 'all 0.3s ease',
+                        '&:hover': {
+                          filter: 'grayscale(0%)',
+                          opacity: 1,
+                          transform: 'scale(1.1)',
+                        }
+                      }}
+                    />
+                  </Box>
                 ))}
               </Slider>
             </Box>
           </motion.div>
         </Box>
+      </Container>
 
-        {/* Services Section with ref */}
-        <Box
-          ref={ref}
-          sx={{
-            fontFamily: 'Inter, sans-serif',
-            backgroundImage: `url(${process.env.PUBLIC_URL}/sky_bg.png)`,
-            backgroundSize: 'cover',
-            backgroundPosition: 'center',
-            backgroundRepeat: 'no-repeat',
-            py: { xs: 8, md: 16 },
-          }}
-        >
-          <Container maxWidth="lg">
-            {/* Header Section */}
-            <Box sx={{ mb: { xs: 6, md: 10 }, textAlign: 'center' }}>
-              <SectionTitle sx={{ color: '#ffffff', WebkitTextFillColor: '#ffffff' }}>
-                Scalable Solutions. Human-Centric Innovation.
-              </SectionTitle>
-              <SectionSubtitle sx={{ color: 'rgba(255, 255, 255, 0.9)', mb: 1, maxWidth: 800, mx: 'auto' }}>
-                From building robust offshore centers to mastering digital growth, HippoCloud provides the technical backbone your business needs to lead the market.
-              </SectionSubtitle>
-            </Box>
+      {/* Services Section with ref */}
+      <Box
+        ref={ref}
+        sx={{
+          fontFamily: 'Inter, sans-serif',
+          backgroundImage: `url(${process.env.PUBLIC_URL}/sky_bg.png)`,
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          backgroundRepeat: 'no-repeat',
+          py: { xs: 3, md: 5 },
+        }}
+      >
+        <Container maxWidth="lg">
+          {/* Header Section */}
+          <Box sx={{ mb: { xs: 2, md: 3 }, textAlign: 'center' }}>
+            <SectionTitle sx={{ color: '#ffffff', WebkitTextFillColor: '#ffffff', fontSize: { xs: '1.2rem', md: '1.5rem' } }}>
+              Scalable Solutions. Human-Centric Innovation.
+            </SectionTitle>
+            <SectionSubtitle sx={{ color: 'rgba(255, 255, 255, 0.9)', mb: 1, maxWidth: 800, mx: 'auto', fontSize: '0.85rem' }}>
+              From building robust offshore centers to mastering digital growth, HippoCloud provides the technical backbone your business needs to lead the market.
+            </SectionSubtitle>
+          </Box>
 
-            {/* Services Octagon Layout */}
+          {/* Services Octagon Layout */}
+          <Box
+            sx={{
+              display: 'flex',
+              flexDirection: 'column',
+              alignItems: { xs: 'center', md: 'flex-start' },
+              mt: 4,
+              position: 'relative'
+            }}
+          >
+            {/* Single Large Diamond between Card 1, 2, 4, 5 (Desktop Only) */}
+            {isDesktop && (
+              <DiamondBox
+                style={{
+                  left: '125px',
+                  top: '135px',
+                  transform: 'translate(-50%, -50%)',
+                  zIndex: 10
+                }}
+                initial={{ opacity: 0, scale: 0 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.6, delay: 0.8 }}
+              >
+                <DiamondBorderAnimated />
+              </DiamondBox>
+            )}
+
+            {/* Row 1: 3 Octagons */}
             <Box
               sx={{
                 display: 'flex',
-                flexDirection: 'column',
-                alignItems: { xs: 'center', md: 'flex-start' },
-                mt: 4,
-                position: 'relative'
+                flexWrap: 'wrap',
+                justifyContent: { xs: 'center', md: 'flex-start' },
+                width: '100%',
+                gap: 0,
+                position: 'relative',
+                zIndex: 2,
               }}
             >
-              {/* Single Large Diamond between Card 1, 2, 4, 5 (Desktop Only) */}
-              {isDesktop && (
-                <DiamondBox
-                  style={{
-                    left: '190px',
-                    top: '210px',
-                    transform: 'translate(-50%, -50%)',
-                    zIndex: 10
-                  }}
-                  initial={{ opacity: 0, scale: 0 }}
+              {servicesData.slice(0, 3).map((service, index) => (
+                <OctagonBox
+                  key={index}
+                  bgcolor={service.color}
+                  initial={{ opacity: 0, scale: 0.8 }}
                   whileInView={{ opacity: 1, scale: 1 }}
-                  transition={{ duration: 0.6, delay: 0.8 }}
+                  transition={{ duration: 0.5, delay: index * 0.1 }}
+                  viewport={{ once: true }}
+                  className="octagon-item"
                 >
-                  <DiamondBorderAnimated />
-                </DiamondBox>
-              )}
-
-
-
-              {/* Row 1: 3 Octagons */}
-              <Box
-                sx={{
-                  display: 'flex',
-                  flexWrap: 'wrap',
-                  justifyContent: { xs: 'center', md: 'flex-start' },
-                  width: '100%',
-                  gap: 0,
-                  position: 'relative',
-                  zIndex: 2,
-                }}
-              >
-                {servicesData.slice(0, 3).map((service, index) => (
-                  <OctagonBox
-                    key={index}
-                    bgcolor={service.color}
-                    initial={{ opacity: 0, scale: 0.8 }}
-                    whileInView={{ opacity: 1, scale: 1 }}
-                    transition={{ duration: 0.5, delay: index * 0.1 }}
-                    viewport={{ once: true }}
-                    className="octagon-item"
+                  <OctagonBorderAnimated />
+                  <service.icon size={24} strokeWidth={1.5} style={{ marginBottom: '6px', color: '#ffffff', zIndex: 3 }} />
+                  <Typography
+                    variant="h6"
+                    className="octagon-title"
+                    sx={{
+                      fontWeight: 700,
+                      fontSize: { xs: '0.65rem', md: '0.75rem' },
+                      lineHeight: 1.2,
+                      color: '#ffffff',
+                      px: 1,
+                      transition: 'color 0.3s ease',
+                      zIndex: 3
+                    }}
                   >
-                    <OctagonBorderAnimated />
-                    <service.icon size={36} strokeWidth={1.5} style={{ marginBottom: '12px', color: '#ffffff', zIndex: 3 }} />
-                    <Typography
-                      variant="h6"
-                      className="octagon-title"
-                      sx={{
-                        fontWeight: 700,
-                        fontSize: { xs: '0.85rem', md: '1rem' },
-                        lineHeight: 1.2,
-                        color: '#ffffff',
-                        px: 2,
-                        transition: 'color 0.3s ease',
-                        zIndex: 3
-                      }}
-                    >
-                      {service.title}
-                    </Typography>
-                    <Typography
-                      variant="body2"
-                      className="octagon-description"
-                      sx={{
-                        fontSize: { xs: '0.7rem', md: '0.75rem' },
-                        lineHeight: 1.3,
-                        color: 'rgba(255, 255, 255, 0.85)',
-                        px: 1.5,
-                        mt: 1,
-                        zIndex: 3,
-                        display: 'block'
-                      }}
-                    >
-                      {service.description}
-                    </Typography>
-                  </OctagonBox>
-                ))}
-              </Box>
-
-              <DiamondBox
-                style={{
-                  left: '450px',
-                  top: '210px',
-                  transform: 'translate(-50%, -50%)',
-                  zIndex: 10
-                }}
-                initial={{ opacity: 0, scale: 0 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.6, delay: 0.8 }}
-              >
-                <DiamondBorderAnimated />
-              </DiamondBox>
-              {/* Row 2: 4 Octagons */}
-              <Box
-                sx={{
-                  display: 'flex',
-                  flexWrap: 'wrap',
-                  justifyContent: { xs: 'center', md: 'flex-start' },
-                  width: '100%',
-                  gap: 0,
-                }}
-              >
-                {servicesData.slice(3, 7).map((service, index) => (
-                  <OctagonBox
-                    key={index + 3}
-                    bgcolor={service.color}
-                    initial={{ opacity: 0, scale: 0.8 }}
-                    whileInView={{ opacity: 1, scale: 1 }}
-                    transition={{ duration: 0.5, delay: (index + 3) * 0.1 }}
-                    viewport={{ once: true }}
-                    className="octagon-item"
+                    {service.title}
+                  </Typography>
+                  <Typography
+                    variant="body2"
+                    className="octagon-description"
+                    sx={{
+                      fontSize: { xs: '0.5rem', md: '0.6rem' },
+                      lineHeight: 1.2,
+                      color: 'rgba(255, 255, 255, 0.85)',
+                      px: 0.5,
+                      mt: 0.5,
+                      zIndex: 3,
+                      display: 'block'
+                    }}
                   >
-                    <OctagonBorderAnimated />
-                    <service.icon size={36} strokeWidth={1.5} style={{ marginBottom: '12px', color: '#ffffff', zIndex: 3 }} />
-                    <Typography
-                      variant="h6"
-                      className="octagon-title"
-                      sx={{
-                        fontWeight: 700,
-                        fontSize: { xs: '0.85rem', md: '1rem' },
-                        lineHeight: 1.2,
-                        color: '#ffffff',
-                        px: 2,
-                        transition: 'color 0.3s ease',
-                        zIndex: 3
-                      }}
-                    >
-                      {service.title}
-                    </Typography>
-                    <Typography
-                      variant="body2"
-                      className="octagon-description"
-                      sx={{
-                        fontSize: { xs: '0.7rem', md: '0.75rem' },
-                        lineHeight: 1.3,
-                        color: 'rgba(255, 255, 255, 0.85)',
-                        px: 1.5,
-                        mt: 1,
-                        zIndex: 3,
-                        display: 'block'
-                      }}
-                    >
-                      {service.description}
-                    </Typography>
-                  </OctagonBox>
-                ))}
-              </Box>
-              <DiamondBox
-                style={{
-                  left: '710px',
-                  top: '210px',
-                  transform: 'translate(-50%, -50%)',
-                  zIndex: 10
-                }}
-                initial={{ opacity: 0, scale: 0 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.6, delay: 0.8 }}
-              >
-                <DiamondBorderAnimated />
-              </DiamondBox>
+                    {service.description}
+                  </Typography>
+                </OctagonBox>
+              ))}
             </Box>
-          </Container>
-        </Box>
-      </Container>
 
-      {/* WHY HIPPOCLOUD SECTION - Premium UI */}
+            <DiamondBox
+              style={{
+                left: '300px',
+                top: '135px',
+                transform: 'translate(-50%, -50%)',
+                zIndex: 10
+              }}
+              initial={{ opacity: 0, scale: 0 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.6, delay: 0.8 }}
+            >
+              <DiamondBorderAnimated />
+            </DiamondBox>
+
+            {/* Row 2: 4 Octagons */}
+            <Box
+              sx={{
+                display: 'flex',
+                flexWrap: 'wrap',
+                justifyContent: { xs: 'center', md: 'flex-start' },
+                width: '100%',
+                gap: 0,
+              }}
+            >
+              {servicesData.slice(3, 7).map((service, index) => (
+                <OctagonBox
+                  key={index + 3}
+                  bgcolor={service.color}
+                  initial={{ opacity: 0, scale: 0.8 }}
+                  whileInView={{ opacity: 1, scale: 1 }}
+                  transition={{ duration: 0.5, delay: (index + 3) * 0.1 }}
+                  viewport={{ once: true }}
+                  className="octagon-item"
+                >
+                  <OctagonBorderAnimated />
+                  <service.icon size={24} strokeWidth={1.5} style={{ marginBottom: '6px', color: '#ffffff', zIndex: 3 }} />
+                  <Typography
+                    variant="h6"
+                    className="octagon-title"
+                    sx={{
+                      fontWeight: 700,
+                      fontSize: { xs: '0.65rem', md: '0.75rem' },
+                      lineHeight: 1.2,
+                      color: '#ffffff',
+                      px: 1,
+                      transition: 'color 0.3s ease',
+                      zIndex: 3
+                    }}
+                  >
+                    {service.title}
+                  </Typography>
+                  <Typography
+                    variant="body2"
+                    className="octagon-description"
+                    sx={{
+                      fontSize: { xs: '0.5rem', md: '0.6rem' },
+                      lineHeight: 1.2,
+                      color: 'rgba(255, 255, 255, 0.85)',
+                      px: 0.5,
+                      mt: 0.5,
+                      zIndex: 3,
+                      display: 'block'
+                    }}
+                  >
+                    {service.description}
+                  </Typography>
+                </OctagonBox>
+              ))}
+            </Box>
+            <DiamondBox
+              style={{
+                left: '480px',
+                top: '135px',
+                transform: 'translate(-50%, -50%)',
+                zIndex: 10
+              }}
+              initial={{ opacity: 0, scale: 0 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.6, delay: 0.8 }}
+            >
+              <DiamondBorderAnimated />
+            </DiamondBox>
+          </Box>
+        </Container>
+      </Box>
+
+      {/* WHY HIPPOCLOUD SECTION - Compact Arc Layout */}
       <Box
         sx={{
-          py: { xs: 10, md: 16 },
-          position: 'relative',
-          overflow: 'hidden',
-          background: 'linear-gradient(180deg, #f8fafc 0%, #ffffff 50%, #f1f5f9 100%)',
+          py: { xs: 4, md: 6 },
+          position: "relative",
+          overflow: "hidden",
+          backgroundImage: `url(${process.env.PUBLIC_URL}/why_choose_us.png)`,
+          backgroundSize: "cover",
+          backgroundPosition: "center 30%",
+          minHeight: { xs: "auto", md: "450px" },
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+          "&::before": {
+            content: '""',
+            position: "absolute",
+            top: 0, left: 0, right: 0, bottom: 0,
+            background: "linear-gradient(180deg, rgba(255,255,255,0.2) 0%, rgba(255,255,255,0.1) 50%, rgba(255,255,255,0.2) 100%)",
+            zIndex: 0
+          }
         }}
       >
-        {/* Background decoration */}
-        <Box
-          sx={{
-            position: 'absolute',
-            top: 0,
-            left: 0,
-            right: 0,
-            bottom: 0,
-            opacity: 0.4,
-            background: `
-              radial-gradient(circle at 20% 20%, rgba(66, 165, 245, 0.08) 0%, transparent 50%),
-              radial-gradient(circle at 80% 80%, rgba(102, 187, 106, 0.08) 0%, transparent 50%),
-              radial-gradient(circle at 50% 50%, rgba(171, 71, 188, 0.05) 0%, transparent 70%)
-            `,
-            zIndex: 0,
-          }}
-        />
-        
-        {/* Floating accent shapes */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          transition={{ duration: 1 }}
-        >
-          <Box
-            sx={{
-              position: 'absolute',
-              top: '10%',
-              right: '5%',
-              width: 300,
-              height: 300,
-              borderRadius: '50%',
-              background: 'linear-gradient(135deg, rgba(66, 165, 245, 0.1) 0%, transparent 70%)',
-              filter: 'blur(60px)',
-              zIndex: 0,
-            }}
-          />
-          <Box
-            sx={{
-              position: 'absolute',
-              bottom: '20%',
-              left: '5%',
-              width: 200,
-              height: 200,
-              borderRadius: '50%',
-              background: 'linear-gradient(135deg, rgba(102, 187, 106, 0.1) 0%, transparent 70%)',
-              filter: 'blur(50px)',
-              zIndex: 0,
-            }}
-          />
-        </motion.div>
-
-        <Container maxWidth="lg" sx={{ position: 'relative', zIndex: 1 }}>
-          {/* Header */}
+        <Container maxWidth="lg" sx={{ position: "relative", zIndex: 1 }}>
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
+            initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
             viewport={{ once: true }}
           >
-            <Box sx={{ textAlign: 'center', mb: { xs: 6, md: 10 } }}>
+            <Box sx={{ textAlign: "center", mb: { xs: 2, md: 4 } }}>
               <Typography
-                variant="overline"
-                sx={{
-                  color: 'primary.main',
-                  fontWeight: 600,
-                  letterSpacing: 3,
-                  fontSize: '0.875rem',
-                  display: 'block',
-                  mb: 2,
-                }}
-              >
-                WHY CHOOSE US
-              </Typography>
-              <Typography
-                variant="h3"
+                variant="h4"
                 sx={{
                   fontWeight: 800,
-                  fontSize: { xs: '2.2rem', md: '3.5rem' },
-                  lineHeight: 1.15,
-                  mb: 3,
-                  background: 'linear-gradient(135deg, #1a1a1a 0%, #4a5568 100%)',
-                  backgroundClip: 'text',
-                  WebkitBackgroundClip: 'text',
-                  WebkitTextFillColor: 'transparent',
+                  fontSize: { xs: "1.8rem", md: "2.5rem" },
+                  mb: 1,
+                  background: "linear-gradient(135deg, #1a1a1a 0%, #4a5568 100%)",
+                  backgroundClip: "text",
+                  WebkitBackgroundClip: "text",
+                  WebkitTextFillColor: "transparent",
                 }}
               >
                 Why HippoCloud?
               </Typography>
-              <Typography
-                variant="body1"
-                sx={{
-                  color: 'text.secondary',
-                  maxWidth: 600,
-                  mx: 'auto',
-                  fontSize: { xs: '1rem', md: '1.15rem' },
-                  lineHeight: 1.7,
-                }}
-              >
-                We don't just build technology—we build partnerships that drive measurable business growth.
-              </Typography>
             </Box>
           </motion.div>
 
-          {/* Feature Cards */}
-          <Grid container spacing={4}>
+          <Box
+            sx={{
+              position: "relative",
+              height: { xs: "auto", md: "280px" },
+              display: "flex",
+              flexDirection: { xs: "column", md: "row" },
+              justifyContent: "center",
+              alignItems: "center",
+              gap: { xs: 4, md: 0 }
+            }}
+          >
             {[
               {
                 icon: Handshake,
-                title: 'Agile Integration',
-                description: "We don't just work for you; we work with you.",
-                color: '#42a5f5',
-                gradient: 'linear-gradient(135deg, #42a5f5 0%, #1976d2 100%)',
+                title: "Agile Integration",
+                description: "We work with you, not just for you.",
+                color: "#42a5f5",
               },
               {
                 icon: TrendingUp,
-                title: 'Industry Alignment',
-                description: 'Our training and development are always synced with 2026\'s latest tech trends.',
-                color: '#66bb6a',
-                gradient: 'linear-gradient(135deg, #66bb6a 0%, #43a047 100%)',
+                title: "Industry Alignment",
+                description: "Synced with latest trends.",
+                color: "#66bb6a",
+              },
+              {
+                icon: Target,
+                title: "Goal Focused",
+                description: "Built to drive your results.",
+                color: "#ff9800",
               },
               {
                 icon: Scale,
-                title: 'Scalability',
-                description: 'Start with one developer or a full offshore center.',
-                color: '#ab47bc',
-                gradient: 'linear-gradient(135deg, #ab47bc 0%, #7b1fa2 100%)',
+                title: "Scalability",
+                description: "From one developer to full teams.",
+                color: "#ab47bc",
               },
-            ].map((item, index) => (
-              <Grid item xs={12} sm={6} md={4} key={index}>
-                <motion.div
-                  initial={{ opacity: 0, y: 40 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5, delay: index * 0.1 }}
-                  viewport={{ once: true }}
-                  whileHover={{ y: -8 }}
+            ].map((item, index) => {
+              const positions = [
+                { top: "25%", left: "10%" },
+                { top: "0%", left: "35%" },
+                { top: "0%", left: "65%" },
+                { top: "25%", left: "90%" },
+              ];
+              return (
+                <Box
+                  key={index}
+                  sx={{
+                    position: { xs: "relative", md: "absolute" },
+                    top: { xs: "auto", md: positions[index].top },
+                    left: { xs: "auto", md: positions[index].left },
+                    transform: { xs: "none", md: "translateX(-50%)" },
+                    width: { xs: "100%", md: "200px" },
+                    textAlign: "center",
+                    zIndex: 2,
+                  }}
                 >
-                  <Paper
-                    elevation={0}
-                    sx={{
-                      p: 4,
-                      height: '100%',
-                      borderRadius: 3,
-                      background: 'rgba(255, 255, 255, 0.8)',
-                      backdropFilter: 'blur(20px)',
-                      border: '1px solid rgba(255, 255, 255, 0.6)',
-                      boxShadow: '0 4px 24px rgba(0, 0, 0, 0.06)',
-                      transition: 'all 0.4s cubic-bezier(0.4, 0, 0.2, 1)',
-                      cursor: 'pointer',
-                      position: 'relative',
-                      overflow: 'hidden',
-                      '&:hover': {
-                        boxShadow: `0 20px 50px ${item.color}20`,
-                        borderColor: `${item.color}30`,
-                        '& .icon-box': {
-                          transform: 'scale(1.1) rotateY(15deg)',
-                          boxShadow: `0 12px 30px ${item.color}50`,
-                        },
-                      },
-                      '&::before': {
-                        content: '""',
-                        position: 'absolute',
-                        top: 0,
-                        left: 0,
-                        right: 0,
-                        height: '4px',
-                        background: item.gradient,
-                      },
-                    }}
+                  <motion.div
+                    initial={{ opacity: 0, scale: 0.9 }}
+                    whileInView={{ opacity: 1, scale: 1 }}
+                    transition={{ duration: 0.5, delay: index * 0.1 }}
+                    viewport={{ once: true }}
                   >
-                    {/* Icon */}
                     <Box
-                      className="icon-box"
                       sx={{
-                        width: 64,
-                        height: 64,
-                        borderRadius: 2,
-                        background: item.gradient,
-                        display: 'flex',
-                        alignItems: 'center',
-                        justifyContent: 'center',
-                        mb: 3,
-                        boxShadow: `0 6px 20px ${item.color}40`,
-                        transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
+                        width: 60,
+                        height: 60,
+                        borderRadius: "50%",
+                        background: "rgba(255, 255, 255, 0.9)",
+                        backdropFilter: "blur(8px)",
+                        display: "flex",
+                        alignItems: "center",
+                        justifyContent: "center",
+                        margin: "0 auto 12px",
+                        boxShadow: "0 4px 12px rgba(0,0,0,0.1)",
+                        border: `2px solid ${item.color}`,
                       }}
                     >
-                      <item.icon size={28} color="#ffffff" strokeWidth={2} />
+                      <item.icon size={24} color={item.color} strokeWidth={2} />
                     </Box>
-
-                    {/* Title */}
-                    <Typography
-                      variant="h6"
+                    <Paper
+                      elevation={0}
                       sx={{
-                        fontWeight: 700,
-                        fontSize: '1.25rem',
-                        mb: 1.5,
-                        color: '#1a1a1a',
+                        p: 1.5,
+                        borderRadius: 3,
+                        background: "rgba(255, 255, 255, 0.8)",
+                        backdropFilter: "blur(10px)",
+                        border: "1px solid rgba(255, 255, 255, 0.5)",
                       }}
                     >
-                      {item.title}
-                    </Typography>
-
-                    {/* Description */}
-                    <Typography
-                      variant="body2"
-                      sx={{
-                        color: 'text.secondary',
-                        lineHeight: 1.7,
-                        fontSize: '0.95rem',
-                      }}
-                    >
-                      {item.description}
-                    </Typography>
-                  </Paper>
-                </motion.div>
-              </Grid>
-            ))}
-          </Grid>
-
-          {/* Stats Section */}
-          <motion.div
-            initial={{ opacity: 0, y: 40 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.3 }}
-            viewport={{ once: true }}
-          >
-            <Box
-              sx={{
-                mt: { xs: 6, md: 10 },
-                p: { xs: 4, md: 6 },
-                borderRadius: 4,
-                background: 'linear-gradient(135deg, #1a1a1a 0%, #2d3748 100%)',
-                position: 'relative',
-                overflow: 'hidden',
-              }}
-            >
-              {/* Glow effect */}
-              <Box
-                sx={{
-                  position: 'absolute',
-                  top: -100,
-                  right: -100,
-                  width: 300,
-                  height: 300,
-                  borderRadius: '50%',
-                  background: 'radial-gradient(circle, rgba(66, 165, 245, 0.3) 0%, transparent 70%)',
-                }}
-              />
-              
-              <Grid container spacing={4} alignItems="center">
-                <Grid item xs={12} md={7}>
-                  <Typography
-                    variant="h4"
-                    sx={{
-                      fontWeight: 700,
-                      color: '#ffffff',
-                      mb: 2,
-                      fontSize: { xs: '1.75rem', md: '2.25rem' },
-                    }}
-                  >
-                    Ready to transform your business?
-                  </Typography>
-                  <Typography
-                    variant="body1"
-                    sx={{
-                      color: 'rgba(255, 255, 255, 0.7)',
-                      fontSize: { xs: '1rem', md: '1.1rem' },
-                      lineHeight: 1.7,
-                    }}
-                  >
-                    Let's discuss how we can help you achieve your technology goals with our expert team.
-                  </Typography>
-                </Grid>
-                <Grid item xs={12} md={5} sx={{ textAlign: { xs: 'center', md: 'right' } }}>
-                  <Button
-                    variant="contained"
-                    size="large"
-                    endIcon={<Box component="span" sx={{ ml: 1 }}>→</Box>}
-                    sx={{
-                      background: '#ffffff',
-                      color: '#1a1a1a',
-                      fontWeight: 700,
-                      borderRadius: 2,
-                      px: 4,
-                      py: 1.5,
-                      fontSize: '1rem',
-                      textTransform: 'none',
-                      boxShadow: '0 4px 20px rgba(255, 255, 255, 0.2)',
-                      transition: 'all 0.3s ease',
-                      '&:hover': {
-                        background: '#f1f5f9',
-                        transform: 'translateY(-2px)',
-                        boxShadow: '0 8px 30px rgba(255, 255, 255, 0.3)',
-                      },
-                    }}
-                  >
-                    Get Started
-                  </Button>
-                </Grid>
-              </Grid>
-            </Box>
-          </motion.div>
+                      <Typography variant="subtitle2" sx={{ fontWeight: 800, mb: 0.5 }}>
+                        {item.title}
+                      </Typography>
+                      <Typography variant="caption" sx={{ color: "text.secondary", display: "block", lineHeight: 1.2 }}>
+                        {item.description}
+                      </Typography>
+                    </Paper>
+                  </motion.div>
+                </Box>
+              );
+            })}
+          </Box>
         </Container>
       </Box>
 
@@ -1290,7 +1105,7 @@ const ProductCards = forwardRef((props, ref) => {
             justifyContent: "center",
             flexWrap: "wrap",
             gap: 1.5,
-            mt: 4,
+            mt: 2,
             mb: 5,
           }}
         >
@@ -1347,7 +1162,7 @@ const ProductCards = forwardRef((props, ref) => {
                       sx={{
                         background: "#fff",
                         borderRadius: "16px",
-                        p: 3,
+                        p: 2,
                         textAlign: "center",
                         minHeight: 70,
                         boxShadow: "0 2px 12px rgba(0,0,0,0.06)",
