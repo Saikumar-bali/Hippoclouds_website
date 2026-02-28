@@ -16,7 +16,7 @@ import {
 } from '@mui/material';
 import { motion } from 'framer-motion';
 import { styled } from '@mui/material/styles';
-import { Code, Smartphone, PenTool, Boxes, UserCheck, Cloud, Zap, TestTube, LayoutDashboard, Shield } from "lucide-react";
+import { Code, Smartphone, PenTool, Boxes, UserCheck, Cloud, Zap, TestTube, LayoutDashboard, Shield, Handshake, TrendingUp, Scale } from "lucide-react";
 import { LayoutGrid, Target, Search, Database } from "lucide-react";
 
 // --- STYLED COMPONENTS ---
@@ -1058,44 +1058,23 @@ const ProductCards = forwardRef((props, ref) => {
           <Grid container spacing={4}>
             {[
               {
-                icon: UserCheck,
-                title: 'Dedicated Teams',
-                description: 'Access pre-vetted, full-stack developers who integrate seamlessly with your in-house team.',
+                icon: Handshake,
+                title: 'Agile Integration',
+                description: "We don't just work for you; we work with you.",
                 color: '#42a5f5',
                 gradient: 'linear-gradient(135deg, #42a5f5 0%, #1976d2 100%)',
               },
               {
-                icon: Zap,
-                title: 'Fast Execution',
-                description: 'Agile methodologies ensure rapid delivery without compromising on quality or security.',
-                color: '#ffa726',
-                gradient: 'linear-gradient(135deg, #ffa726 0%, #f57c00 100%)',
-              },
-              {
-                icon: Code,
-                title: 'Clean Code',
-                description: 'Maintainable, scalable architecture built on industry best practices and modern standards.',
+                icon: TrendingUp,
+                title: 'Industry Alignment',
+                description: 'Our training and development are always synced with 2026\'s latest tech trends.',
                 color: '#66bb6a',
                 gradient: 'linear-gradient(135deg, #66bb6a 0%, #43a047 100%)',
               },
               {
-                icon: Cloud,
-                title: 'Cloud Experts',
-                description: 'AWS, Azure, and GCP certified professionals optimizing your infrastructure for scale.',
-                color: '#5c6bc0',
-                gradient: 'linear-gradient(135deg, #5c6bc0 0%, #3949ab 100%)',
-              },
-              {
-                icon: Shield,
-                title: 'Enterprise Security',
-                description: 'Bank-grade security protocols protecting your data with compliance certifications.',
-                color: '#ef5350',
-                gradient: 'linear-gradient(135deg, #ef5350 0%, #c62828 100%)',
-              },
-              {
-                icon: Target,
-                title: 'Result-Driven',
-                description: 'Every line of code aligned with your business KPIs and measurable outcomes.',
+                icon: Scale,
+                title: 'Scalability',
+                description: 'Start with one developer or a full offshore center.',
                 color: '#ab47bc',
                 gradient: 'linear-gradient(135deg, #ab47bc 0%, #7b1fa2 100%)',
               },
