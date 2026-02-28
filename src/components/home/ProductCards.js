@@ -959,16 +959,18 @@ const ProductCards = forwardRef((props, ref) => {
             </Box>
           </motion.div>
 
-          {/* Mobile: 2x2 Grid, Desktop: Arc Layout */}
+          {/* Desktop: Arc Layout, Mobile: 2x2 Grid */}
           <Box
             sx={{
               position: { xs: 'relative', md: 'relative' },
               height: { xs: 'auto', md: '280px' },
-              display: 'flex',
-              flexDirection: { xs: 'column', md: 'row' },
-              justifyContent: 'center',
-              alignItems: 'center',
-              gap: { xs: 2, md: 0 }
+              display: { xs: 'grid', md: 'block' },
+              gridTemplateColumns: { xs: 'repeat(2, 1fr)', md: 'auto' },
+              gap: { xs: 3, md: 0 },
+              width: '100%',
+              maxWidth: { xs: '100%', md: '800px' },
+              mx: 'auto',
+              px: { xs: 0.5, md: 0 },
             }}
           >
             {[
@@ -998,10 +1000,10 @@ const ProductCards = forwardRef((props, ref) => {
               },
             ].map((item, index) => {
               const positions = [
-                { top: "25%", left: "10%" },
-                { top: "0%", left: "35%" },
-                { top: "0%", left: "65%" },
-                { top: "25%", left: "90%" },
+                { top: "25%", left: "5%" },
+                { top: "0%", left: "30%" },
+                { top: "0%", left: "70%" },
+                { top: "25%", left: "95%" },
               ];
               return (
                 <Box
