@@ -761,13 +761,10 @@ const ProductCards = forwardRef((props, ref) => {
             {/* Header Section */}
             <Box sx={{ mb: { xs: 6, md: 10 }, textAlign: 'center' }}>
               <SectionTitle sx={{ color: '#ffffff', WebkitTextFillColor: '#ffffff' }}>
-                Our Services
+                Scalable Solutions. Human-Centric Innovation.
               </SectionTitle>
-              <SectionSubtitle sx={{ color: 'rgba(255, 255, 255, 0.9)', mb: 1 }}>
-                We offer comprehensive services to develop digital solutions & manage complete product lifecycle.
-              </SectionSubtitle>
-              <SectionSubtitle sx={{ color: 'rgba(255, 255, 255, 0.9)', mt: 0 }}>
-                We've robust work history with diverse business services.
+              <SectionSubtitle sx={{ color: 'rgba(255, 255, 255, 0.9)', mb: 1, maxWidth: 800, mx: 'auto' }}>
+                From building robust offshore centers to mastering digital growth, HippoCloud provides the technical backbone your business needs to lead the market.
               </SectionSubtitle>
             </Box>
 
@@ -843,13 +840,13 @@ const ProductCards = forwardRef((props, ref) => {
                       variant="body2"
                       className="octagon-description"
                       sx={{
-                        fontSize: { xs: '0.65rem', md: '0.75rem' },
+                        fontSize: { xs: '0.7rem', md: '0.75rem' },
                         lineHeight: 1.3,
                         color: 'rgba(255, 255, 255, 0.85)',
                         px: 1.5,
                         mt: 1,
                         zIndex: 3,
-                        display: { xs: 'none', md: 'block' }
+                        display: 'block'
                       }}
                     >
                       {service.description}
@@ -912,13 +909,13 @@ const ProductCards = forwardRef((props, ref) => {
                       variant="body2"
                       className="octagon-description"
                       sx={{
-                        fontSize: { xs: '0.65rem', md: '0.75rem' },
+                        fontSize: { xs: '0.7rem', md: '0.75rem' },
                         lineHeight: 1.3,
                         color: 'rgba(255, 255, 255, 0.85)',
                         px: 1.5,
                         mt: 1,
                         zIndex: 3,
-                        display: { xs: 'none', md: 'block' }
+                        display: 'block'
                       }}
                     >
                       {service.description}
