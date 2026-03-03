@@ -3,9 +3,12 @@ import React, { useState } from 'react';
 import { Box, Typography, Container, Paper, Grid, Card, CardContent, Button, Chip, Avatar } from '@mui/material';
 import { motion } from 'framer-motion';
 import { styled } from '@mui/material/styles';
+import HeroVideoBackground from '../ui/HeroVideoBackground';
 import { Briefcase, Users, Award, Zap, TrendingUp, BookOpen, Code, Lightbulb, Star, ArrowRight } from 'lucide-react';
 
 const HeroSection = styled(Box)(({ theme }) => ({
+  overflow: 'hidden',
+  isolation: 'isolate',
   position: 'relative',
   display: 'flex',
   alignItems: 'center',
@@ -259,6 +262,7 @@ export default function InternshipsPage() {
     <Box>
       {/* Hero Section */}
       <HeroSection>
+        <HeroVideoBackground />
         <Container maxWidth="md" sx={{ position: 'relative', zIndex: 1 }}>
           <motion.div
             initial={{ opacity: 0, y: 30 }}

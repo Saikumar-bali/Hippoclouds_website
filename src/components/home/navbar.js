@@ -382,7 +382,7 @@ const Navbar = () => {
       ]
     },
     { 
-      label: 'Skill Hub', 
+      label: 'Acadamy', 
       submenu: [
         { label: 'Trainings & Projects', path: '/trainingsprojects', icon: <TrainingsProjectsIcon /> },
         { label: 'Internships', path: '/internships', icon: <InternshipsIcon /> },
@@ -491,7 +491,7 @@ const Navbar = () => {
                             ))}
                           </>
                         ) : (
-                          // Regular menu item for Services and Skill Hub
+                          // Regular menu item for Services and Acadamy
                           <ListItem sx={{ px: 0.5, py: 0.25 }}>
                             <NavLink
                               component={Link}
@@ -643,7 +643,7 @@ const Navbar = () => {
                           }
                         }}
                       >
-                        Skill Hub
+                        Acadamy
                       </NavTrigger>
                     }
                     content={resourcesMenu}

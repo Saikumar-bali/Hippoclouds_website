@@ -27,8 +27,11 @@ import {
 } from '@mui/icons-material';
 import { motion } from 'framer-motion';
 import { styled } from '@mui/material/styles';
+import HeroVideoBackground from '../ui/HeroVideoBackground';
 
 const HeroSection = styled(Box)(({ theme }) => ({
+  overflow: 'hidden',
+  isolation: 'isolate',
   position: 'relative',
   display: 'flex',
   alignItems: 'center',
@@ -181,6 +184,7 @@ const ErpNextPage = () => {
   return (
     <Box>
       <HeroSection>
+        <HeroVideoBackground />
         <Container maxWidth="md" sx={{ position: 'relative', height: '100%', display: 'flex', alignItems: 'center' }}>
           <Box
             sx={{

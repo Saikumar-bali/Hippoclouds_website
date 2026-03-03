@@ -4,6 +4,7 @@ import {
   Slide, Fade, Grow, alpha, Zoom, Stepper, StepLabel, Dialog, DialogTitle, DialogContent, DialogActions, Step
 } from '@mui/material';
 import { styled } from '@mui/system';
+import HeroVideoBackground from '../ui/HeroVideoBackground';
 import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 // import PlayArrowIcon from '@mui/icons-material/PlayArrow';
@@ -12,6 +13,8 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { TrendingUpIcon, FollowTheSignsIcon, PeopleIcon, AssignmentIcon } from '../ui/icon';
 
 const HeroSection = styled(Box)(({ theme }) => ({
+  overflow: 'hidden',
+  isolation: 'isolate',
   position: 'relative',
   display: 'flex',
   alignItems: 'center',
@@ -349,6 +352,7 @@ function HippoCRMPage() {
   return (
     <Box>
       <HeroSection>
+        <HeroVideoBackground />
         <Container maxWidth="md" sx={{ position: 'relative', height: '100%', display: 'flex', alignItems: 'center' }}>
           <Box sx={{
             position: 'absolute',

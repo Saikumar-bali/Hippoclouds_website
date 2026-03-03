@@ -3,6 +3,7 @@ import React from 'react';
 import { Box, Typography, Container, Grid, Card, CardContent, Avatar, Paper, Button } from '@mui/material';
 import { motion } from 'framer-motion';
 import { styled } from '@mui/material/styles';
+import HeroVideoBackground from '../ui/HeroVideoBackground';
 import { Award, Users, Target, Zap, Globe, TrendingUp, Heart, Lightbulb, Shield } from 'lucide-react';
 import {
   LightbulbOutlined,
@@ -15,6 +16,8 @@ import {
 
 
 const HeroSection = styled(Box)(({ theme }) => ({
+  overflow: 'hidden',
+  isolation: 'isolate',
   position: 'relative',
   display: 'flex',
   alignItems: 'center',
@@ -216,6 +219,7 @@ export default function AboutUsPage() {
   return (
     <Box>
       <HeroSection>
+        <HeroVideoBackground />
         <Container maxWidth="md" sx={{ position: 'relative', height: '100%', display: 'flex', alignItems: 'center' }}>
           <Box sx={{ position: 'absolute', left: 0, top: '25%', bottom: '25%', width: '6px', backgroundColor: '#fff', borderRadius: '3px' }} />
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }} sx={{ ml: 4, textAlign: 'left' }}>

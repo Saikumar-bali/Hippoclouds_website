@@ -12,11 +12,11 @@ import {
   Button,
   useTheme,
   Avatar,
-  useMediaQuery, Paper
+  Paper
 } from '@mui/material';
 import { motion } from 'framer-motion';
-import { styled } from '@mui/material/styles';
-import { Code, Smartphone, PenTool, Boxes, UserCheck, Cloud, Zap, TestTube, LayoutDashboard, Shield, Handshake, TrendingUp, Scale } from "lucide-react";
+import { styled, alpha } from '@mui/material/styles';
+import { Code, Smartphone, Cloud, Zap, TestTube, LayoutDashboard, Handshake, TrendingUp, Scale } from "lucide-react";
 import { LayoutGrid, Target, Search, Database } from "lucide-react";
 
 // --- STYLED COMPONENTS ---
@@ -45,163 +45,6 @@ const SectionSubtitle = styled(Typography)(({ theme }) => ({
   lineHeight: '1.6',
 }));
 
-const OctagonBox = styled(motion.div)(({ theme, bgcolor }) => ({
-  width: '140px',
-  minHeight: '150px',
-  height: 'auto',
-  display: 'flex',
-  flexDirection: 'column',
-  alignItems: 'center',
-  justifyContent: 'center',
-  textAlign: 'center',
-  padding: '12px',
-  background: 'transparent', // Fully transparent background
-  backdropFilter: 'blur(8px)',
-  WebkitBackdropFilter: 'blur(8px)',
-  position: 'relative',
-  color: '#ffffff',
-  clipPath: 'polygon(30% 0%, 70% 0%, 100% 30%, 100% 70%, 70% 100%, 30% 100%, 0% 70%, 0% 30%)',
-  transition: 'all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275)',
-  cursor: 'pointer',
-  margin: '6px',
-  '&:hover': {
-    transform: 'translateY(-12px) scale(1.05)',
-    '& .octagon-beam-path': {
-      strokeWidth: 4,
-      filter: 'drop-shadow(0 0 8px #ffffff)',
-    }
-  },
-  '& .octagon-border-svg': {
-    position: 'absolute',
-    top: 0,
-    left: 0,
-    width: '100%',
-    height: '100%',
-    pointerEvents: 'none',
-    zIndex: 2,
-  },
-  '& .octagon-border-path': {
-    fill: 'none',
-    stroke: 'rgba(255, 255, 255, 0.15)', // Very faint base border
-    strokeWidth: 1.5,
-  },
-  '& .octagon-beam-path': {
-    fill: 'none',
-    stroke: 'url(#beamGradient)',
-    strokeWidth: 2.5,
-    strokeDasharray: '100 300',
-    strokeLinecap: 'round',
-    animation: 'borderBeam 3s linear infinite',
-    transition: 'all 0.3s ease',
-  },
-  '@keyframes borderBeam': {
-    '0%': { strokeDashoffset: 400 },
-    '100%': { strokeDashoffset: 0 },
-  },
-  [theme.breakpoints.down('md')]: {
-    width: '120px',
-    minHeight: '130px',
-    padding: '10px',
-    margin: '4px',
-  },
-  [theme.breakpoints.down('sm')]: {
-    width: '100px',
-    minHeight: '110px',
-    padding: '6px',
-    margin: '3px',
-  }
-}));
-
-const OctagonBorderAnimated = () => (
-  <svg className="octagon-border-svg" viewBox="0 0 100 100" preserveAspectRatio="none">
-    <defs>
-      <linearGradient id="beamGradient" x1="0%" y1="0%" x2="100%" y2="0%">
-        <stop offset="0%" stopColor="transparent" />
-        <stop offset="50%" stopColor="#ffffff" />
-        <stop offset="100%" stopColor="transparent" />
-      </linearGradient>
-    </defs>
-    <polygon
-      className="octagon-border-path"
-      points="30,1 70,1 99,30 99,70 70,99 30,99 1,70 1,30"
-    />
-    <polygon
-      className="octagon-beam-path"
-      points="30,1 70,1 99,30 99,70 70,99 30,99 1,70 1,30"
-    />
-  </svg>
-);
-
-const DiamondBox = styled(motion.div)(({ theme }) => ({
-  width: '100px',
-  height: '100px',
-  display: 'flex',
-  alignItems: 'center',
-  justifyContent: 'center',
-  background: 'transparent',
-  backdropFilter: 'blur(8px)',
-  WebkitBackdropFilter: 'blur(8px)',
-  position: 'absolute',
-  zIndex: 1,
-  clipPath: 'polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%)',
-  cursor: 'pointer',
-  transition: 'all 0.4s ease',
-  '&:hover': {
-    transform: 'scale(1.05)',
-    '& .diamond-beam-path': {
-      strokeWidth: 4,
-      filter: 'drop-shadow(0 0 8px #ffffff)',
-    }
-  },
-  '& .diamond-border-svg': {
-    position: 'absolute',
-    top: 0,
-    left: 0,
-    width: '100%',
-    height: '100%',
-    pointerEvents: 'none',
-  },
-  '& .diamond-border-path': {
-    fill: 'none',
-    stroke: 'rgba(255, 255, 255, 0.15)',
-    strokeWidth: 1.5,
-  },
-  '& .diamond-beam-path': {
-    fill: 'none',
-    stroke: 'url(#diamondBeamGradient)',
-    strokeWidth: 2.5,
-    strokeDasharray: '60 140',
-    animation: 'diamondBeam 3s linear infinite',
-  },
-  '@keyframes diamondBeam': {
-    '0%': { strokeDashoffset: 200 },
-    '100%': { strokeDashoffset: 0 },
-  },
-  [theme.breakpoints.down('md')]: {
-    display: 'none'
-  }
-}));
-
-const DiamondBorderAnimated = () => (
-  <svg className="diamond-border-svg" viewBox="0 0 100 100" preserveAspectRatio="none">
-    <defs>
-      <linearGradient id="diamondBeamGradient" x1="0%" y1="0%" x2="100%" y2="0%">
-        <stop offset="0%" stopColor="transparent" />
-        <stop offset="50%" stopColor="#ffffff" />
-        <stop offset="100%" stopColor="transparent" />
-      </linearGradient>
-    </defs>
-    <polygon
-      className="diamond-border-path"
-      points="50,1 99,50 50,99 1,50"
-    />
-    <polygon
-      className="diamond-beam-path"
-      points="50,1 99,50 50,99 1,50"
-    />
-  </svg>
-);
-
 // Client logos
 const clients = [
   { name: "DEAKIN", logo: process.env.PUBLIC_URL + "/Acer_Motors_logo-final.png" },
@@ -210,46 +53,6 @@ const clients = [
   { name: "Rise", logo: process.env.PUBLIC_URL + "/Rise.jpg" },
   { name: "Sky-lite Technologies", logo: process.env.PUBLIC_URL + "/Sky-lite-Technologies.jpg" },
   { name: "BT-convergence-Technologies", logo: process.env.PUBLIC_URL + "/BT-convergence-Technologies.jpg" },
-];
-
-// Service data
-const servicesData = [
-  {
-    icon: Code,
-    title: "Software Development",
-    color: "#42a5f5",
-    description: "High-performance, scalable code built for the modern web and mobile landscape.",
-  },
-  {
-    icon: UserCheck,
-    title: "Dedicated ODC",
-    color: "#66bb6a",
-    description: "Secure, scalable, and cost-effective remote teams that operate as an extension of your office.",
-  },
-  {
-    icon: Boxes,
-    title: "Product Support",
-    color: "#ffa726",
-    description: "24/7 reliability ensuring your product evolves alongside your user base.",
-  },
-  {
-    icon: Search,
-    title: "Digital Marketing",
-    color: "#ef5350",
-    description: "Data-driven strategies to boost ROI, brand authority, and market penetration.",
-  },
-  {
-    icon: PenTool,
-    title: "IT Consultancy",
-    color: "#ab47bc",
-    description: "Expert guidance on digital transformation and navigating complex tech stacks.",
-  },
-  {
-    icon: Zap,
-    title: "Skill Development",
-    color: "#26a69a",
-    description: "Closing the gap between academia and industry with curriculum-aligned training.",
-  },
 ];
 
 // --- ABSTRACT GRAPHIC COMPONENTS ---
@@ -447,6 +250,63 @@ const TECHNOLOGY_DATA = [
   },
 ];
 
+const CORE_EXPERTISE_ITEMS = [
+  {
+    number: '01',
+    title: 'Software Development',
+    focusDesc: 'End-to-end custom application development using the latest tech stacks.',
+    valueDesc:
+      'We build scalable, high-performance software tailored to solve complex business challenges, ensuring your digital products are future-proof.',
+    color: '#63b3ff',
+    icon: Code,
+  },
+  {
+    number: '02',
+    title: 'Dedicated Offshore Development Centre (ODC)',
+    focusDesc: 'Your own specialized team, managed by us, operating as your remote office.',
+    valueDesc:
+      'Reduce operational overhead while maintaining full control. We provide top-tier infrastructure, security, and talent that aligns perfectly with your company culture.',
+    color: '#7dd3fc',
+    icon: Cloud,
+  },
+  {
+    number: '03',
+    title: 'Product Support & Maintenance',
+    focusDesc: '24/7 reliability, bug fixes, and feature enhancements.',
+    valueDesc:
+      'A product is never finished. We ensure your platform stays secure, fast, and up-to-date, allowing you to focus on growth while we handle stability.',
+    color: '#f5b942',
+    icon: Zap,
+  },
+  {
+    number: '04',
+    title: 'Digital Marketing',
+    focusDesc: 'SEO, SEM, content strategy, and brand positioning.',
+    valueDesc:
+      'Building the product is only half the battle. We drive measurable traffic and high-intent users to your platform through data-backed marketing funnels.',
+    color: '#ff7b72',
+    icon: TrendingUp,
+  },
+  {
+    number: '05',
+    title: 'IT Consultancy',
+    focusDesc: 'Digital transformation and technical roadmap strategy.',
+    valueDesc:
+      'Not sure which tech to choose? Our consultants provide the blueprint for your digital journey, optimizing ROI and minimizing technical debt.',
+    color: '#c08bff',
+    icon: Handshake,
+  },
+  {
+    number: '06',
+    title: 'Skill Development',
+    focusDesc: 'Industry-aligned training and talent grooming.',
+    valueDesc:
+      'We bridge the gap between academic knowledge and industry demands, ensuring teams are always proficient in relevant technologies.',
+    color: '#4dd4c6',
+    icon: LayoutDashboard,
+  },
+];
+
 
 // --- 2. STYLED COMPONENTS (MIMICKING ORIGINAL CSS) ---
 
@@ -537,7 +397,6 @@ const FilterButton = styled(Button)(({ theme, active }) => ({
 const ProductCards = forwardRef((props, ref) => {
   const [activeCategory, setActiveCategory] = useState('Testing');
   const theme = useTheme();
-  const isDesktop = useMediaQuery(theme.breakpoints.up('md'));
 
   useEffect(() => {
     const fontLink = document.createElement('link');
@@ -718,196 +577,208 @@ const ProductCards = forwardRef((props, ref) => {
         </Box>
       </Container>
 
-      {/* Services Section with ref */}
+      {/* Scalable Solution Section (updated to match provided reference design) */}
       <Box
         ref={ref}
         sx={{
-          fontFamily: 'Inter, sans-serif',
-          backgroundImage: `url(${process.env.PUBLIC_URL}/sky_bg.png)`,
-          backgroundSize: 'cover',
-          backgroundPosition: 'center',
-          backgroundRepeat: 'no-repeat',
-          py: { xs: 3, md: 5 },
+          width: '100vw',
+          ml: 'calc(50% - 50vw)',
+          mr: 'calc(50% - 50vw)',
+          py: { xs: 5, md: 0 },
+          minHeight: { xs: 'auto', md: '100vh' },
+          position: 'relative',
+          overflow: 'hidden',
+          backgroundImage: `
+            url("${process.env.PUBLIC_URL}/Web%20Page%2001.jpg.jpeg"),
+            url("${process.env.PUBLIC_URL}/sky_bg.png")
+          `,
+          backgroundSize: 'cover, cover',
+          backgroundPosition: 'center center, center center',
+          backgroundRepeat: 'no-repeat, no-repeat',
         }}
       >
-        <Container maxWidth="lg">
-          {/* Header Section */}
-          <Box sx={{ mb: { xs: 2, md: 3 }, textAlign: 'center' }}>
-            <SectionTitle sx={{ color: '#ffffff', WebkitTextFillColor: '#ffffff', fontSize: { xs: '1.2rem', md: '1.5rem' } }}>
-              Scalable Solutions. Human-Centric Innovation.
-            </SectionTitle>
-            <SectionSubtitle sx={{ color: 'rgba(255, 255, 255, 0.9)', mb: 1, maxWidth: 800, mx: 'auto', fontSize: '0.85rem' }}>
-              From building robust offshore centers to mastering digital growth, HippoCloud provides the technical backbone your business needs to lead the market.
-            </SectionSubtitle>
+        <Container
+          maxWidth={false}
+          sx={{
+            position: 'relative',
+            zIndex: 1,
+            maxWidth: '1200px',
+            mx: 'auto',
+            px: { xs: 2, md: 0 },
+            pt: { xs: 2, md: '88px' },
+          }}
+        >
+          <Box sx={{ ml: { xs: 0, md: '182px' }, mb: { xs: 3.4, md: '32px' } }}>
+            <Typography
+              sx={{
+                color: '#ffffff',
+                fontFamily: '"Poppins", "Inter", sans-serif',
+                fontSize: { xs: '2.1rem', sm: '2.55rem', md: '58px' },
+                lineHeight: { xs: 1.15, md: 1.02 },
+                fontWeight: 800,
+                letterSpacing: '-0.4px',
+                maxWidth: { xs: '100%', md: '900px' },
+                background: 'linear-gradient(180deg, #36f6ff 0%, #0e8eff 100%)',
+                backgroundClip: 'text',
+                WebkitBackgroundClip: 'text',
+                WebkitTextFillColor: 'transparent',
+              }}
+            >
+              Scalable Solution.
+              <br />
+              Human-Centric Innovation
+            </Typography>
+
+            <Typography
+              sx={{
+                mt: { xs: 1.2, md: '6px' },
+                fontFamily: '"Poppins", "Inter", sans-serif',
+                color: 'rgba(255, 255, 255, 0.96)',
+                fontSize: { xs: '0.92rem', md: '15px' },
+                lineHeight: { xs: 1.52, md: 1.4 },
+                fontWeight: 500,
+                maxWidth: { xs: '100%', md: '915px' },
+              }}
+            >
+              From building robust offshore centers to mastering digital growth, Hippocloud provides
+              the technical backbone your business needs to lead the market with confidence
+            </Typography>
           </Box>
 
-          {/* Services Octagon Layout */}
           <Box
             sx={{
-              display: 'flex',
-              flexDirection: 'column',
-              alignItems: 'center',
-              mt: 4,
-              position: 'relative'
+              maxWidth: { xs: '100%', md: '1040px' },
+              mx: 'auto',
+              display: 'grid',
+              gridTemplateColumns: {
+                xs: '1fr',
+                sm: 'repeat(2, minmax(0, 1fr))',
+                md: 'repeat(3, minmax(0, 1fr))',
+                lg: 'repeat(6, 162px)',
+              },
+              gap: { xs: 1.8, md: '14px' },
+              alignItems: 'start',
+              justifyContent: { lg: 'center' },
             }}
           >
-            {/* Single Large Diamond between Card 1, 2, 4, 5 (Desktop Only) */}
-            {isDesktop && (
-              <DiamondBox
-                style={{
-                  left: '440px',
-                  top: '135px',
-                  transform: 'translate(-50%, -50%)',
-                  zIndex: 10
-                }}
-                initial={{ opacity: 0, scale: 0 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.6, delay: 0.8 }}
+            {[
+              {
+                iconSrc: '/scalable-icon-software.png',
+                title: ['Software', 'Development'],
+                description: 'Creating secure & scalable applications that fuel innovation & business growth',
+                height: '100%',
+              },
+              {
+                iconSrc: '/scalable-icon-odc.png',
+                title: ['Dedicated', 'ODC'],
+                description: 'A dedicated offshore team that works exclusively as an extension of your business',
+              },
+              {
+                iconSrc: '/scalable-icon-support.png',
+                title: ['Product', 'Support'],
+                description: 'Ongoing support to keep your product stable, secure, & performing at its best',
+              },
+              {
+                iconSrc: '/scalable-icon-consult.png',
+                title: ['IT', 'Consultancy'],
+                description: 'Strategic technology guidance to help businesses grow smarter & faster',
+              },
+              {
+                iconSrc: '/scalable-icon-marketing.png',
+                title: ['Digital', 'Marketing'],
+                description: 'Promoting your brand online to attract, engage, & convert customers effectively',
+              },
+              {
+                iconSrc: '/scalable-icon-skill.png',
+                title: ['Skill', 'Development'],
+                description: 'Empowering individuals with practical knowledge & industry-ready expertise for career growth',
+              },
+            ].map((item, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 26 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.42, delay: index * 0.06 }}
+                viewport={{ once: true }}
+                style={{ height: 'auto' }}
               >
-                <DiamondBorderAnimated />
-              </DiamondBox>
-            )}
-
-            {/* Row 1: 3 Octagons */}
-            <Box
-              sx={{
-                display: 'flex',
-                flexWrap: 'wrap',
-                justifyContent: 'center',
-                width: '100%',
-                gap: 0,
-                position: 'relative',
-                zIndex: 2,
-              }}
-            >
-              {servicesData.slice(0, 3).map((service, index) => (
-                <OctagonBox
-                  key={index}
-                  bgcolor={service.color}
-                  initial={{ opacity: 0, scale: 0.8 }}
-                  whileInView={{ opacity: 1, scale: 1 }}
-                  transition={{ duration: 0.5, delay: index * 0.1 }}
-                  viewport={{ once: true }}
-                  className="octagon-item"
+                <Card
+                  elevation={0}
+                  sx={{
+                    height: 'auto',
+                    minHeight: { xs: 214, md: index % 2 === 0 ? '238px' : '272px' },
+                    mt: { xs: 0, md: index % 2 === 0 ? '22px' : 0 },
+                    borderRadius: '14px',
+                    background: 'linear-gradient(180deg, #f4f5f7 0%, #e9edf3 100%)',
+                    border: '1px solid rgba(255,255,255,0.92)',
+                    boxShadow: '0 0 0 1px rgba(67, 170, 255, 0.34), 0 0 18px rgba(0, 120, 255, 0.33)',
+                    alignContent: 'center'
+                  }}
                 >
-                  <OctagonBorderAnimated />
-                  <service.icon size={24} strokeWidth={1.5} style={{ marginBottom: '6px', color: '#ffffff', zIndex: 3 }} />
-                  <Typography
-                    variant="h6"
-                    className="octagon-title"
+                  <CardContent
                     sx={{
-                      fontWeight: 700,
-                      fontSize: { xs: '0.65rem', md: '0.75rem' },
-                      lineHeight: 1.2,
-                      color: '#ffffff',
-                      px: 1,
-                      transition: 'color 0.3s ease',
-                      zIndex: 3
+                      p: { xs: 1.8, md: '12px 14px 10px' },
+                      textAlign: 'center',
+                      height: '100%',
+                      display: 'flex',
+                      flexDirection: 'column',
+                      alignItems: 'center',
                     }}
                   >
-                    {service.title}
-                  </Typography>
-                  <Typography
-                    variant="body2"
-                    className="octagon-description"
-                    sx={{
-                      fontSize: { xs: '0.5rem', md: '0.6rem' },
-                      lineHeight: 1.2,
-                      color: 'rgba(255, 255, 255, 0.85)',
-                      px: 0.5,
-                      mt: 0.5,
-                      zIndex: 3,
-                      display: 'block'
-                    }}
-                  >
-                    {service.description}
-                  </Typography>
-                </OctagonBox>
-              ))}
-            </Box>
+                    <Box
+                      component="img"
+                      src={`${process.env.PUBLIC_URL}${item.iconSrc}`}
+                      alt={item.title.join(' ')}
+                      sx={{
+                        mt: 0.15,
+                        mb: { xs: 0.62, md: '5px' },
+                        width: { xs: 34, md: 48 },
+                        height: { xs: 34, md: 48 },
+                        objectFit: 'contain',
+                      }}
+                    />
 
-            <DiamondBox
-              style={{
-                left: '615px',
-                top: '135px',
-                transform: 'translate(-50%, -50%)',
-                zIndex: 10
-              }}
-              initial={{ opacity: 0, scale: 0 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.6, delay: 0.8 }}
-            >
-              <DiamondBorderAnimated />
-            </DiamondBox>
+                    <Typography
+                      sx={{
+                        color: '#0f2b58',
+                        fontSize: { xs: '1.35rem', md: '16px' },
+                        fontWeight: 500,
+                        lineHeight: 1.06,
+                        letterSpacing: '-0.15px',
+                        fontFamily: '"Poppins", "Inter", sans-serif',
+                      }}
+                    >
+                      {item.title[0]}
+                      <br />
+                      {item.title[1]}
+                    </Typography>
 
-            {/* Row 2: 4 Octagons */}
-            <Box
-              sx={{
-                display: 'flex',
-                flexWrap: 'wrap',
-                justifyContent: 'center',
-                width: '100%',
-                gap: 0,
-              }}
-            >
-              {servicesData.slice(3, 7).map((service, index) => (
-                <OctagonBox
-                  key={index + 3}
-                  bgcolor={service.color}
-                  initial={{ opacity: 0, scale: 0.8 }}
-                  whileInView={{ opacity: 1, scale: 1 }}
-                  transition={{ duration: 0.5, delay: (index + 3) * 0.1 }}
-                  viewport={{ once: true }}
-                  className="octagon-item"
-                >
-                  <OctagonBorderAnimated />
-                  <service.icon size={24} strokeWidth={1.5} style={{ marginBottom: '6px', color: '#ffffff', zIndex: 3 }} />
-                  <Typography
-                    variant="h6"
-                    className="octagon-title"
-                    sx={{
-                      fontWeight: 700,
-                      fontSize: { xs: '0.65rem', md: '0.75rem' },
-                      lineHeight: 1.2,
-                      color: '#ffffff',
-                      px: 1,
-                      transition: 'color 0.3s ease',
-                      zIndex: 3
-                    }}
-                  >
-                    {service.title}
-                  </Typography>
-                  <Typography
-                    variant="body2"
-                    className="octagon-description"
-                    sx={{
-                      fontSize: { xs: '0.5rem', md: '0.6rem' },
-                      lineHeight: 1.2,
-                      color: 'rgba(255, 255, 255, 0.85)',
-                      px: 0.5,
-                      mt: 0.5,
-                      zIndex: 3,
-                      display: 'block'
-                    }}
-                  >
-                    {service.description}
-                  </Typography>
-                </OctagonBox>
-              ))}
-            </Box>
-            {/* <DiamondBox
-              style={{
-                left: '480px',
-                top: '135px',
-                transform: 'translate(-50%, -50%)',
-                zIndex: 10
-              }}
-              initial={{ opacity: 0, scale: 0 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.6, delay: 0.8 }}
-            >
-              <DiamondBorderAnimated />
-            </DiamondBox> */}
+                    <Box
+                      sx={{
+                        width: '86%',
+                        height: '2px',
+                        mt: { xs: 0.52, md: '8px' },
+                        mb: { xs: 0.68, md: '8px' },
+                        borderRadius: '2px',
+                        background: 'linear-gradient(90deg, rgba(29,151,229,0.22) 0%, #1f9be2 12%, #1f9be2 88%, rgba(29,151,229,0.22) 100%)',
+                      }}
+                    />
+
+                    <Typography
+                      sx={{
+                        color: '#1b2f52',
+                        fontSize: { xs: '0.92rem', md: '12px' },
+                        lineHeight: { xs: 1.34, md: 1.3 },
+                        fontWeight: 500,
+                        fontFamily: '"Poppins", "Inter", sans-serif',
+                      }}
+                    >
+                      {item.description}
+                    </Typography>
+                  </CardContent>
+                </Card>
+              </motion.div>
+            ))}
           </Box>
         </Container>
       </Box>
@@ -1072,13 +943,12 @@ const ProductCards = forwardRef((props, ref) => {
       {/* OUR CORE EXPERTISE SECTION */}
       <Box
         sx={{
-          py: { xs: 6, md: 10 },
-          background: 'linear-gradient(180deg, #f8fafc 0%, #ffffff 50%, #f1f5f9 100%)',
+          py: { xs: 7, md: 11 },
+          background: 'linear-gradient(135deg, #07172d 0%, #0d284a 52%, #133964 100%)',
           position: 'relative',
           overflow: 'hidden',
         }}
       >
-        {/* Background decoration */}
         <Box
           sx={{
             position: 'absolute',
@@ -1086,10 +956,10 @@ const ProductCards = forwardRef((props, ref) => {
             left: 0,
             right: 0,
             bottom: 0,
-            opacity: 0.5,
             background: `
-              radial-gradient(circle at 20% 20%, rgba(66, 165, 245, 0.08) 0%, transparent 50%),
-              radial-gradient(circle at 80% 80%, rgba(102, 187, 106, 0.08) 0%, transparent 50%)
+              radial-gradient(circle at 14% 18%, rgba(94, 162, 255, 0.24) 0%, transparent 45%),
+              radial-gradient(circle at 86% 14%, rgba(78, 231, 255, 0.16) 0%, transparent 42%),
+              radial-gradient(circle at 65% 88%, rgba(146, 176, 255, 0.16) 0%, transparent 45%)
             `,
             zIndex: 0,
           }}
@@ -1106,15 +976,15 @@ const ProductCards = forwardRef((props, ref) => {
               <Typography
                 variant="overline"
                 sx={{
-                  color: 'primary.main',
+                  color: '#9ecbff',
                   fontWeight: 600,
-                  letterSpacing: 3,
-                  fontSize: '0.875rem',
+                  letterSpacing: 2.5,
+                  fontSize: '0.8rem',
                   display: 'block',
                   mb: 1,
                 }}
               >
-                WHAT WE OFFER
+                STRATEGIC CAPABILITIES
               </Typography>
               <Typography
                 variant="h3"
@@ -1123,7 +993,7 @@ const ProductCards = forwardRef((props, ref) => {
                   fontSize: { xs: '2rem', md: '2.75rem' },
                   lineHeight: 1.15,
                   mb: 2,
-                  background: 'linear-gradient(135deg, #1a1a1a 0%, #4a5568 100%)',
+                  background: 'linear-gradient(120deg, #f7fbff 0%, #d6e8ff 52%, #accfff 100%)',
                   backgroundClip: 'text',
                   WebkitBackgroundClip: 'text',
                   WebkitTextFillColor: 'transparent',
@@ -1134,11 +1004,11 @@ const ProductCards = forwardRef((props, ref) => {
               <Typography
                 variant="body1"
                 sx={{
-                  color: 'text.secondary',
+                  color: alpha('#eaf3ff', 0.82),
                   maxWidth: 650,
                   mx: 'auto',
                   fontSize: { xs: '0.95rem', md: '1.1rem' },
-                  lineHeight: 1.7,
+                  lineHeight: 1.75,
                 }}
               >
                 Empowering businesses through cutting-edge technology and strategic offshore partnership.
@@ -1148,188 +1018,173 @@ const ProductCards = forwardRef((props, ref) => {
 
           <Box
             sx={{
-              display: 'grid',
-              gridTemplateColumns: { xs: '1fr', sm: 'repeat(2, 1fr)', md: 'repeat(3, 1fr)' },
-              gap: { xs: 3, md: 5 },
+              position: 'relative',
+              maxWidth: 1160,
+              mx: 'auto',
+              '&::before': {
+                content: '""',
+                position: 'absolute',
+                left: { xs: '22px', md: '48px' },
+                top: 0,
+                bottom: 0,
+                width: '1px',
+                background: `linear-gradient(180deg, transparent 0%, ${alpha('#bddbff', 0.7)} 12%, ${alpha('#bddbff', 0.7)} 88%, transparent 100%)`,
+                opacity: 0.65,
+              },
             }}
           >
-            {[
-              {
-                number: '01',
-                title: 'Software Development',
-                focus: 'The Focus:',
-                focusDesc: 'End-to-end custom application development using the latest tech stacks.',
-                value: 'The Value:',
-                valueDesc: 'We build scalable, high-performance software tailored to solve complex business challenges, ensuring your digital products are future-proof.',
-                color: '#42a5f5',
-              },
-              {
-                number: '02',
-                title: 'Dedicated Offshore Development Centre (ODC)',
-                focus: 'The Focus:',
-                focusDesc: 'Your own specialized team, managed by us, operating as your remote office.',
-                value: 'The Value:',
-                valueDesc: 'Reduce operational overhead while maintaining full control. We provide top-tier infrastructure, security, and talent that aligns perfectly with your company culture.',
-                color: '#66bb6a',
-              },
-              {
-                number: '03',
-                title: 'Product Support & Maintenance',
-                focus: 'The Focus:',
-                focusDesc: '24/7 reliability, bug fixes, and feature enhancements.',
-                value: 'The Value:',
-                valueDesc: 'A product is never "finished." We ensure your platform stays secure, fast, and up-to-date, allowing you to focus on growth while we handle the stability.',
-                color: '#ffa726',
-              },
-              {
-                number: '04',
-                title: 'Digital Marketing',
-                focus: 'The Focus:',
-                focusDesc: 'SEO, SEM, content strategy, and brand positioning.',
-                value: 'The Value:',
-                valueDesc: 'Building the product is only half the battle. We drive measurable traffic and high-intent users to your platform through data-backed marketing funnels.',
-                color: '#ef5350',
-              },
-              {
-                number: '05',
-                title: 'IT Consultancy',
-                focus: 'The Focus:',
-                focusDesc: 'Digital transformation and technical roadmap strategy.',
-                value: 'The Value:',
-                valueDesc: "Not sure which tech to choose? Our consultants provide the blueprint for your digital journey, optimizing your ROI and minimizing technical debt.",
-                color: '#ab47bc',
-              },
-              {
-                number: '06',
-                title: 'Skill Development',
-                focus: 'The Focus:',
-                focusDesc: 'Industry-aligned training and talent grooming.',
-                value: 'The Value:',
-                valueDesc: 'We bridge the gap between academic knowledge and industry demands, ensuring our teams (and yours) are always proficient in the most relevant technologies.',
-                color: '#26a69a',
-              },
-            ].map((item, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                viewport={{ once: true }}
-                whileHover={{ y: -5 }}
-              >
-                <Paper
-                  elevation={0}
-                  sx={{
-                    p: { xs: 1.5, md: 2 },
-                    minHeight: '280px',
-                    height: '100%',
-                    borderRadius: 4,
-                    background: 'linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(255, 255, 255, 0.7) 100%)',
-                    backdropFilter: 'blur(20px)',
-                    WebkitBackdropFilter: 'blur(20px)',
-                    border: '1px solid rgba(255, 255, 255, 0.8)',
-                    boxShadow: '0 8px 32px rgba(0, 0, 0, 0.08)',
-                    transition: 'all 0.4s cubic-bezier(0.4, 0, 0.2, 1)',
-                    cursor: 'pointer',
-                    position: 'relative',
-                    overflow: 'hidden',
-                    '&:hover': {
-                      boxShadow: `0 20px 60px ${item.color}30, 0 8px 24px rgba(0, 0, 0, 0.12)`,
-                      borderColor: `${item.color}50`,
-                      transform: 'translateY(-8px)',
-                      '& .expertise-glow': {
-                        opacity: 1,
-                      },
-                    },
-                    '&::before': {
-                      content: '""',
-                      position: 'absolute',
-                      top: 0,
-                      left: 0,
-                      width: '4px',
-                      height: '100%',
-                      background: item.color,
-                    },
-                    '&::after': {
-                      content: '""',
-                      position: 'absolute',
-                      top: '-50%',
-                      left: '-50%',
-                      width: '200%',
-                      height: '200%',
-                      background: `radial-gradient(circle, ${item.color}10 0%, transparent 70%)`,
-                      opacity: 0,
-                      transition: 'opacity 0.4s ease',
-                      pointerEvents: 'none',
-                    },
-                  }}
+            {CORE_EXPERTISE_ITEMS.map((item, index) => {
+              const Icon = item.icon;
+
+              return (
+                <motion.div
+                  key={item.number}
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.48, delay: index * 0.08 }}
+                  viewport={{ once: true }}
+                  whileHover={{ x: 2 }}
                 >
-                  {/* Glow effect on hover */}
                   <Box
-                    className="expertise-glow"
                     sx={{
-                      position: 'absolute',
-                      top: 0,
-                      left: 0,
-                      right: 0,
-                      bottom: 0,
-                      background: `linear-gradient(135deg, ${item.color}08 0%, transparent 100%)`,
-                      opacity: 0,
-                      transition: 'opacity 0.4s ease',
-                      pointerEvents: 'none',
+                      position: 'relative',
+                      display: 'grid',
+                      gridTemplateColumns: { xs: '44px 1fr', md: '96px minmax(240px, 0.95fr) 1.45fr' },
+                      columnGap: { xs: 2, md: 4 },
+                      rowGap: { xs: 1.2, md: 0 },
+                      py: { xs: 3, md: 4 },
+                      pl: { xs: 0, md: 0.5 },
+                      borderTop: index === 0 ? `1px solid ${alpha('#deebff', 0.2)}` : 'none',
+                      borderBottom: `1px solid ${alpha('#deebff', 0.2)}`,
+                      transition: 'transform 240ms ease',
+                      cursor: 'pointer',
+                      overflow: 'hidden',
+                      '& .expertise-accent': {
+                        opacity: 0,
+                        transform: 'scaleX(0.95)',
+                      },
+                      '& .expertise-icon-shell': {
+                        backgroundColor: alpha(item.color, 0.1),
+                        borderColor: alpha(item.color, 0.32),
+                      },
+                      '& .expertise-number': {
+                        color: alpha('#dbe9ff', 0.46),
+                      },
+                      '&:hover': {
+                        '& .expertise-accent': {
+                          opacity: 1,
+                          transform: 'scaleX(1)',
+                        },
+                        '& .expertise-icon-shell': {
+                          backgroundColor: alpha(item.color, 0.2),
+                          borderColor: alpha(item.color, 0.7),
+                        },
+                        '& .expertise-number': {
+                          color: alpha('#f5f9ff', 0.9),
+                          textShadow: `0 0 18px ${alpha(item.color, 0.4)}`,
+                        },
+                      },
                     }}
-                  />
-                  <Box sx={{ display: 'flex', alignItems: 'flex-start', gap: 2 }}>
-                    <Typography
+                  >
+                    <Box
+                      className="expertise-accent"
                       sx={{
+                        content: '""',
+                        position: 'absolute',
+                        top: 0,
+                        left: 0,
+                        right: 0,
+                        height: '100%',
+                        background: `linear-gradient(90deg, ${alpha(item.color, 0.2)} 0%, ${alpha(item.color, 0.06)} 42%, transparent 100%)`,
+                        pointerEvents: 'none',
+                        transition: 'opacity 260ms ease, transform 260ms ease',
+                        transformOrigin: 'left',
+                      }}
+                    />
+
+                    <Typography
+                      className="expertise-number"
+                      sx={{
+                        position: 'relative',
+                        zIndex: 1,
                         fontWeight: 800,
-                        fontSize: { xs: '1.5rem', md: '2rem' },
-                        color: item.color,
+                        fontSize: { xs: '1.45rem', md: '2.15rem' },
                         lineHeight: 1,
                         fontFamily: 'Inter, sans-serif',
+                        letterSpacing: '0.04em',
+                        pl: { xs: 1.4, md: 0.6 },
+                        pt: { xs: 0.2, md: 0.5 },
+                        transition: 'color 260ms ease, text-shadow 260ms ease',
                       }}
                     >
                       {item.number}
                     </Typography>
-                    <Box sx={{ flex: 1 }}>
+
+                    <Box sx={{ minWidth: 0, position: 'relative', zIndex: 1 }}>
+                      <Box sx={{ display: 'flex', alignItems: 'center', gap: 1.25, mb: 1.15 }}>
+                        <Box
+                          className="expertise-icon-shell"
+                          sx={{
+                            width: 33,
+                            height: 33,
+                            borderRadius: '999px',
+                            border: '1px solid',
+                            display: 'inline-flex',
+                            alignItems: 'center',
+                            justifyContent: 'center',
+                            transition: 'background-color 260ms ease, border-color 260ms ease',
+                          }}
+                        >
+                          <Icon size={17} color={item.color} strokeWidth={2.1} />
+                        </Box>
+                        <Typography
+                          variant="h6"
+                          sx={{
+                            color: '#f6fbff',
+                            fontWeight: 700,
+                            fontSize: { xs: '1rem', md: '1.2rem' },
+                            lineHeight: 1.35,
+                          }}
+                        >
+                          {item.title}
+                        </Typography>
+                      </Box>
+
                       <Typography
-                        variant="h6"
                         sx={{
-                          fontWeight: 700,
-                          fontSize: { xs: '1.1rem', md: '1.25rem' },
-                          mb: 1.5,
-                          color: '#1a1a1a',
-                          fontFamily: 'Inter, sans-serif',
+                          color: alpha('#dceaff', 0.8),
+                          fontSize: { xs: '0.84rem', md: '0.93rem' },
+                          lineHeight: 1.7,
                         }}
                       >
-                        {item.title}
-                      </Typography>
-                      <Typography
-                        variant="body2"
-                        sx={{
-                          color: 'text.secondary',
-                          fontSize: { xs: '0.85rem', md: '0.9rem' },
-                          lineHeight: 1.6,
-                          mb: 1,
-                        }}
-                      >
-                        <Box component="span" sx={{ fontWeight: 600, color: item.color }}>{item.focus}</Box> {item.focusDesc}
-                      </Typography>
-                      <Typography
-                        variant="body2"
-                        sx={{
-                          color: 'text.secondary',
-                          fontSize: { xs: '0.85rem', md: '0.9rem' },
-                          lineHeight: 1.6,
-                        }}
-                      >
-                        <Box component="span" sx={{ fontWeight: 600, color: item.color }}>{item.value}</Box> {item.valueDesc}
+                        <Box component="span" sx={{ fontWeight: 700, color: item.color }}>
+                          The Focus:
+                        </Box>{' '}
+                        {item.focusDesc}
                       </Typography>
                     </Box>
+
+                    <Typography
+                      sx={{
+                        gridColumn: { xs: '2 / 3', md: '3 / 4' },
+                        color: alpha('#eef5ff', 0.88),
+                        fontSize: { xs: '0.88rem', md: '0.99rem' },
+                        lineHeight: 1.82,
+                        pt: { xs: 0, md: 1.25 },
+                        pr: { xs: 0, md: 1.5 },
+                        position: 'relative',
+                        zIndex: 1,
+                      }}
+                    >
+                      <Box component="span" sx={{ fontWeight: 700, color: item.color }}>
+                        The Value:
+                      </Box>{' '}
+                      {item.valueDesc}
+                    </Typography>
                   </Box>
-                </Paper>
-              </motion.div>
-            ))}
+                </motion.div>
+              );
+            })}
           </Box>
         </Container>
       </Box>
@@ -1563,83 +1418,83 @@ const ProductCards = forwardRef((props, ref) => {
                 gradient: 'linear-gradient(135deg, #ff7043 0%, #e64a19 100%)',
               },
             ].map((item, index) => (
-                <motion.div
-                  initial={{ opacity: 0, y: 40 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5, delay: index * 0.1 }}
-                  viewport={{ once: true }}
-                  whileHover={{ y: -5 }}
-                  sx={{ width: '100%', minWidth: 0 }}
+              <motion.div
+                initial={{ opacity: 0, y: 40 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+                viewport={{ once: true }}
+                whileHover={{ y: -5 }}
+                sx={{ width: '100%', minWidth: 0 }}
+              >
+                <Paper
+                  elevation={0}
+                  sx={{
+                    p: { xs: 0.75, sm: 2 },
+                    height: '100%',
+                    borderRadius: 1,
+                    background: 'rgba(255, 255, 255, 0.9)',
+                    backdropFilter: 'blur(20px)',
+                    WebkitBackdropFilter: 'blur(20px)',
+                    border: '1px solid rgba(255, 255, 255, 0.6)',
+                    boxShadow: '0 2px 12px rgba(0, 0, 0, 0.04)',
+                    transition: 'all 0.4s cubic-bezier(0.4, 0, 0.2, 1)',
+                    cursor: 'pointer',
+                    position: 'relative',
+                    overflow: 'hidden',
+                    minWidth: 0,
+                    boxSizing: 'border-box',
+                    '&:hover': {
+                      boxShadow: `0 12px 30px ${item.color}20`,
+                      borderColor: `${item.color}30`,
+                    },
+                    '&::before': {
+                      content: '""',
+                      position: 'absolute',
+                      top: 0,
+                      left: 0,
+                      right: 0,
+                      height: '2px',
+                      background: item.gradient,
+                    },
+                  }}
                 >
-                  <Paper
-                    elevation={0}
+                  <Box
                     sx={{
-                      p: { xs: 0.75, sm: 2 },
-                      height: '100%',
-                      borderRadius: 1,
-                      background: 'rgba(255, 255, 255, 0.9)',
-                      backdropFilter: 'blur(20px)',
-                      WebkitBackdropFilter: 'blur(20px)',
-                      border: '1px solid rgba(255, 255, 255, 0.6)',
-                      boxShadow: '0 2px 12px rgba(0, 0, 0, 0.04)',
-                      transition: 'all 0.4s cubic-bezier(0.4, 0, 0.2, 1)',
-                      cursor: 'pointer',
-                      position: 'relative',
-                      overflow: 'hidden',
-                      minWidth: 0,
-                      boxSizing: 'border-box',
-                      '&:hover': {
-                        boxShadow: `0 12px 30px ${item.color}20`,
-                        borderColor: `${item.color}30`,
-                      },
-                      '&::before': {
-                        content: '""',
-                        position: 'absolute',
-                        top: 0,
-                        left: 0,
-                        right: 0,
-                        height: '2px',
-                        background: item.gradient,
-                      },
+                      width: { xs: 20, sm: 36 },
+                      height: { xs: 20, sm: 36 },
+                      borderRadius: 0.5,
+                      background: item.gradient,
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      mb: { xs: 0.25, sm: 1 },
+                      boxShadow: `0 2px 6px ${item.color}40`,
                     }}
                   >
-                    <Box
-                      sx={{
-                        width: { xs: 20, sm: 36 },
-                        height: { xs: 20, sm: 36 },
-                        borderRadius: 0.5,
-                        background: item.gradient,
-                        display: 'flex',
-                        alignItems: 'center',
-                        justifyContent: 'center',
-                        mb: { xs: 0.25, sm: 1 },
-                        boxShadow: `0 2px 6px ${item.color}40`,
-                      }}
-                    >
-                      <item.icon size={10} color="#ffffff" strokeWidth={2.5} />
-                    </Box>
-                    <Typography
-                      sx={{
-                        fontWeight: 700,
-                        fontSize: { xs: '0.55rem', sm: '0.9rem' },
-                        mb: 0.15,
-                        color: '#1a1a1a',
-                        lineHeight: 1.1,
-                      }}
-                    >
-                      {item.title}
-                    </Typography>
-                    <Typography
-                      sx={{
-                        color: 'text.secondary',
-                        lineHeight: 1.2,
-                        fontSize: { xs: '0.45rem', sm: '0.75rem' },
-                      }}
-                    >
-                      {item.description}
-                    </Typography>
-                  </Paper>
-                </motion.div>
+                    <item.icon size={10} color="#ffffff" strokeWidth={2.5} />
+                  </Box>
+                  <Typography
+                    sx={{
+                      fontWeight: 700,
+                      fontSize: { xs: '0.55rem', sm: '0.9rem' },
+                      mb: 0.15,
+                      color: '#1a1a1a',
+                      lineHeight: 1.1,
+                    }}
+                  >
+                    {item.title}
+                  </Typography>
+                  <Typography
+                    sx={{
+                      color: 'text.secondary',
+                      lineHeight: 1.2,
+                      fontSize: { xs: '0.45rem', sm: '0.75rem' },
+                    }}
+                  >
+                    {item.description}
+                  </Typography>
+                </Paper>
+              </motion.div>
             ))}
           </Box>
         </Container>
