@@ -291,8 +291,8 @@ const DigitalMarketingPage = () => {
       </Container>
 
 
-      {/* Footer / CTA Section - Exact match */}
-      <Container maxWidth="md" component="footer" sx={{ textAlign: 'center', py: 12, mt: 16 }}>
+      {/* CTA Section */}
+      <Container maxWidth="md" component="section" sx={{ textAlign: 'center', py: 12, mt: 16 }}>
         <NeumorphicSection>
           <Typography
             variant="h2"

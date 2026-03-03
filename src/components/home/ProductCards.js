@@ -456,8 +456,8 @@ const ProductCards = forwardRef((props, ref) => {
       <Avatar
         variant="circular"
         sx={{
-          width: 48,
-          height: 48,
+          width: 40,
+          // height: 48,
           bgcolor: "rgba(25,118,210,0.1)",
           border: "1px solid rgba(25,118,210,0.25)",
           color: "primary.main",

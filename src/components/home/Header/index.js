@@ -301,7 +301,7 @@ const Header = () => {
           <CenteredRow>
             <MainToolbar disableGutters>
               <LogoLink href={withBase('/')}>
-                <LogoImage src={currentLogoUrl} alt="Hippocloud Technologies" />
+                <LogoImage src={currentLogoUrl} alt="Hippocloud Technologies" sx={{width: 180}} />
               </LogoLink>
 
               <NavRail onMouseLeave={handleMenuMouseLeave}>
