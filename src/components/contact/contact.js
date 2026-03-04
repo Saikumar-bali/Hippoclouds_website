@@ -1,74 +1,126 @@
-import React, { useState, useRef } from 'react';
+import React, { useRef, useState } from 'react';
 import {
   Box,
-  Container,
-  Typography,
-  TextField,
   Button,
-  Select,
-  MenuItem,
-  FormControl,
-  InputAdornment,
-  Paper,
-  Grid,
-  Alert,
+  CircularProgress,
+  Container,
   Dialog,
-  DialogTitle,
+  DialogActions,
   DialogContent,
   DialogContentText,
-  DialogActions,
-  useTheme,
-  useMediaQuery,
+  DialogTitle,
+  FormControl,
+  InputBase,
+  MenuItem,
+  Paper,
+  Select,
+  TextField,
+  Typography,
   styled,
-  CircularProgress // Import CircularProgress for loading
+  useMediaQuery,
+  useTheme,
 } from '@mui/material';
-import { CloudUpload, AttachFile, Send, Schedule } from '@mui/icons-material';
+import { CloudUploadOutlined, KeyboardArrowDownRounded, SendRounded } from '@mui/icons-material';
 
-// Styled components for custom styling
-const FileUploadArea = styled(Paper)(({ theme, isDragOver }) => ({
-  border: `2px dashed ${isDragOver ? theme.palette.primary.main : theme.palette.grey[300]}`,
-  backgroundColor: isDragOver ? theme.palette.primary.light : theme.palette.grey[50],
-  padding: theme.spacing(3),
-  textAlign: 'center',
-  cursor: 'pointer',
-  transition: 'all 0.3s ease',
-  '&:hover': {
-    borderColor: theme.palette.primary.main,
-    backgroundColor: theme.palette.common.white,
+const PANEL_BG = 'radial-gradient(130% 130% at 50% 8%, #f8f9fc 0%, #eff1f8 56%, #ebedf6 100%)';
+const INPUT_BG = 'linear-gradient(180deg, #f4f5f8 0%, #edf0f4 100%)';
+
+const FormSurface = styled(Paper)(({ theme }) => ({
+  background: PANEL_BG,
+  border: '1px solid #e2e5ef',
+  borderRadius: 12,
+  boxShadow: '0 20px 55px rgba(55, 61, 89, 0.14)',
+  padding: theme.spacing(4),
+  [theme.breakpoints.down('md')]: {
+    padding: theme.spacing(3),
   },
 }));
+
+const FieldLabel = styled(Typography)({
+  color: '#6c6f73',
+  fontSize: '18px',
+  fontWeight: 600,
+  lineHeight: 1.25,
+  marginBottom: 8,
+});
+
+const sharedInputSx = {
+  '& .MuiInputBase-root': {
+    height: '64px',
+    borderRadius: '12px',
+    background: INPUT_BG,
+    boxShadow: '0 9px 20px rgba(39, 45, 69, 0.14)',
+    color: '#5c6066',
+    '& fieldset': {
+      borderColor: '#d4d9e3',
+    },
+    '&:hover fieldset': {
+      borderColor: '#c6ccd8',
+    },
+    '&.Mui-focused fieldset': {
+      borderColor: '#a9b1c0',
+      borderWidth: '1px',
+    },
+  },
+  '& .MuiInputBase-input': {
+    fontSize: '16px',
+    fontWeight: 500,
+    px: 2.2,
+    py: 1.8,
+    color: '#5a5f66',
+    '&::placeholder': {
+      color: '#5a5f66',
+      opacity: 1,
+    },
+  },
+};
 
 const PhoneNumberContainer = styled(Box)(({ theme }) => ({
   display: 'flex',
-  borderRadius: theme.shape.borderRadius,
-  border: `1px solid ${theme.palette.grey[300]}`,
+  alignItems: 'stretch',
+  minHeight: 64,
+  borderRadius: 12,
+  background: INPUT_BG,
+  border: '1px solid #d4d9e3',
+  boxShadow: '0 9px 20px rgba(39, 45, 69, 0.14)',
   overflow: 'hidden',
+  transition: 'border-color 0.2s ease, box-shadow 0.2s ease',
   '&:focus-within': {
-    borderColor: theme.palette.primary.main,
-    boxShadow: `0 0 0 2px ${theme.palette.primary.light}`,
+    borderColor: '#a9b1c0',
+    boxShadow: '0 0 0 2px rgba(117, 125, 150, 0.2), 0 9px 20px rgba(39, 45, 69, 0.14)',
+  },
+  [theme.breakpoints.down('md')]: {
+    minHeight: 56,
   },
 }));
 
-const CountryCodeSelect = styled(Select)(({ theme }) => ({
-  border: 'none',
-  borderRight: `1px solid ${theme.palette.grey[300]}`,
-  borderRadius: 0,
-  '& .MuiOutlinedInput-notchedOutline': {
-    border: 'none',
-  },
-  '&:hover .MuiOutlinedInput-notchedOutline': {
-    border: 'none',
-  },
-  '&.Mui-focused .MuiOutlinedInput-notchedOutline': {
-    border: 'none',
+const UploadZone = styled(Paper, {
+  shouldForwardProp: (prop) => prop !== 'isDragOver',
+})(({ isDragOver }) => ({
+  marginTop: 8,
+  borderRadius: 14,
+  border: `1px dashed ${isDragOver ? '#59617a' : '#737985'}`,
+  background: 'linear-gradient(180deg, #f5f6f9 0%, #edf0f4 100%)',
+  minHeight: 235,
+  display: 'flex',
+  flexDirection: 'column',
+  justifyContent: 'center',
+  alignItems: 'center',
+  textAlign: 'center',
+  padding: '22px 20px',
+  cursor: 'pointer',
+  transition: 'all 0.2s ease',
+  boxShadow: 'inset 0 0 0 1px rgba(255,255,255,0.45)',
+  '& .upload-icon': {
+    fontSize: 32,
+    color: '#6d4cbf',
   },
 }));
 
 const ContactForm = () => {
   const theme = useTheme();
-  const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
-  
-  // Form state
+  const isMobile = useMediaQuery(theme.breakpoints.down('md'));
+
   const [formData, setFormData] = useState({
     firstName: '',
     lastName: '',
@@ -77,33 +129,30 @@ const ContactForm = () => {
     phoneNumber: '',
     message: '',
   });
-
   const [file, setFile] = useState(null);
   const [isDragOver, setIsDragOver] = useState(false);
   const [openDialog, setOpenDialog] = useState(false);
   const [dialogContent, setDialogContent] = useState({ title: '', message: '' });
-  const [isSubmitting, setIsSubmitting] = useState(false); // Add loading state
-  
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
   const fileInputRef = useRef(null);
 
-  // Handle form input changes
   const handleInputChange = (field) => (event) => {
-    setFormData(prev => ({
+    setFormData((prev) => ({
       ...prev,
-      [field]: event.target.value
+      [field]: event.target.value,
     }));
   };
 
-  // File handling functions
   const handleFileSelect = (files) => {
     if (files.length > 0) {
       const selectedFile = files[0];
-      const maxSizeBytes = 5 * 1024 * 1024; // 5 MB
+      const maxSizeBytes = 5 * 1024 * 1024;
 
       if (selectedFile.size > maxSizeBytes) {
         setDialogContent({
           title: 'File Error',
-          message: `The file "${selectedFile.name}" is too large. Max size is 5 MB.`
+          message: `The file "${selectedFile.name}" is too large. Max size is 5 MB.`,
         });
         setOpenDialog(true);
         return;
@@ -121,7 +170,6 @@ const ContactForm = () => {
     fileInputRef.current?.click();
   };
 
-  // Drag and drop handlers
   const handleDragOver = (event) => {
     event.preventDefault();
     setIsDragOver(true);
@@ -138,25 +186,21 @@ const ContactForm = () => {
     handleFileSelect(event.dataTransfer.files);
   };
 
-  // Form submission
   const handleSubmit = async (event) => {
     event.preventDefault();
-    
-    // Simple validation
+
     if (!formData.firstName || !formData.email || !formData.message) {
       setDialogContent({
         title: 'Validation Error',
-        message: 'Please fill out all required fields (First name, Email, Message).'
+        message: 'Please fill out all required fields (First name, Email, Message).',
       });
       setOpenDialog(true);
       return;
     }
 
-    setIsSubmitting(true); // Start loading
+    setIsSubmitting(true);
 
     try {
-      // *** THIS IS THE FIX ***
-      // Use the absolute URL just like in your successful PowerShell test
       const response = await fetch(`${process.env.REACT_APP_CHATBOT_API_URL}/submit-contact`, {
         method: 'POST',
         headers: {
@@ -164,23 +208,19 @@ const ContactForm = () => {
         },
         body: JSON.stringify(formData),
       });
-      
-      // We expect JSON now, so we can parse it directly
+
       const responseData = await response.json();
 
       if (!response.ok) {
-        // Handle server-side errors (e.g., 500, 400)
         throw new Error(responseData.details || responseData.error || 'Something went wrong on the server.');
       }
 
-      // --- Success ---
       setDialogContent({
         title: 'Success!',
-        message: 'Thank you for your message. We have received your request and will be in touch shortly.'
+        message: 'Thank you for your message. We have received your request and will be in touch shortly.',
       });
       setOpenDialog(true);
 
-      // Reset form
       setFormData({
         firstName: '',
         lastName: '',
@@ -190,18 +230,15 @@ const ContactForm = () => {
         message: '',
       });
       setFile(null);
-
     } catch (error) {
-      // --- Error ---
       console.error('Submission Error:', error);
-      // This will catch network errors (Failed to fetch) or JSON parsing errors
       setDialogContent({
         title: 'Submission Error',
-        message: `We couldn't send your message. Please try again later. (${error.message})`
+        message: `We couldn't send your message. Please try again later. (${error.message})`,
       });
       setOpenDialog(true);
     } finally {
-      setIsSubmitting(false); // Stop loading
+      setIsSubmitting(false);
     }
   };
 
@@ -210,257 +247,245 @@ const ContactForm = () => {
   };
 
   return (
-    <Container maxWidth="md" sx={{ py: { xs: 4, md: 6 } }}>
-      <Paper 
-        elevation={3} 
-        sx={{ 
-          p: { xs: 3, md: 5 }, 
-          borderRadius: 2,
-          border: `1px solid ${theme.palette.grey[200]}`
-        }}
-      >
-        {/* Header */}
-        <Box sx={{ mb: 4 }}>
-          <Typography 
-            variant="h4" 
-            component="h1" 
-            gutterBottom 
-            sx={{ 
-              fontWeight: 'bold',
-              color: 'text.primary'
-            }}
-          >
-            Contact us
-          </Typography>
-          <Typography 
-            variant="h6" 
-            sx={{ 
-              color: 'text.secondary',
-              fontWeight: 'normal'
-            }}
-          >
-            Our friendly support team is here to help you.
-          </Typography>
-        </Box>
-
-        <form onSubmit={handleSubmit}>
-          {/* Full Name Fields */}
-          <Grid container spacing={2} sx={{ mb: 3 }}>
-            <Grid item xs={12} sm={6}>
-              <TextField
-                fullWidth
-                label="First name"
-                placeholder="First name"
-                value={formData.firstName}
-                onChange={handleInputChange('firstName')}
-                required
-                disabled={isSubmitting} // Disable when submitting
-                sx={{
-                  '& .MuiOutlinedInput-root': {
-                    borderRadius: 2,
-                  }
-                }}
-              />
-            </Grid>
-            <Grid item xs={12} sm={6}>
-              <TextField
-                fullWidth
-                label="Last name"
-                placeholder="Last name"
-                value={formData.lastName}
-                onChange={handleInputChange('lastName')}
-                required
-                disabled={isSubmitting} // Disable when submitting
-                sx={{
-                  '& .MuiOutlinedInput-root': {
-                    borderRadius: 2,
-                  }
-                }}
-              />
-            </Grid>
-          </Grid>
-
-          {/* Email Field */}
-          <TextField
-            fullWidth
-            label="Email"
-            type="email"
-            placeholder="name@example.com"
-            value={formData.email}
-            onChange={handleInputChange('email')}
-            required
-            disabled={isSubmitting} // Disable when submitting
-            sx={{ mb: 3,
-              '& .MuiOutlinedInput-root': {
-                borderRadius: 2,
-              }
-            }}
-          />
-
-          {/* Phone Number Field */}
-          <Box sx={{ mb: 3 }}>
-            <Box sx={{ display: 'flex', justifyContent: 'space-between', mb: 1 }}>
-              <Typography variant="body2" color="text.primary" fontWeight="medium">
-                Phone number
-              </Typography>
-            </Box>
-            <PhoneNumberContainer>
-              <FormControl sx={{ minWidth: 120 }}>
-                <CountryCodeSelect
-                  value={formData.countryCode}
-                  onChange={handleInputChange('countryCode')}
-                  variant="outlined"
-                  disabled={isSubmitting} // Disable when submitting
-                >
-                  <MenuItem value="+91">IN +91</MenuItem>
-                </CountryCodeSelect>
-              </FormControl>
-              <TextField
-                fullWidth
-                placeholder="0203 0407291"
-                value={formData.phoneNumber}
-                onChange={handleInputChange('phoneNumber')}
-                variant="outlined"
-                disabled={isSubmitting} // Disable when submitting
-                sx={{
-                  '& .MuiOutlinedInput-root': {
-                    border: 'none',
-                    borderRadius: 0,
-                  },
-                  '& .MuiOutlinedInput-notchedOutline': {
-                    border: 'none',
-                  }
-                }}
-              />
-            </PhoneNumberContainer>
-          </Box>
-
-          {/* Message Field */}
-          <TextField
-            fullWidth
-            label="Message"
-            multiline
-            rows={4}
-            placeholder="Hello WorkScale team,"
-            value={formData.message}
-            onChange={handleInputChange('message')}
-            required
-            disabled={isSubmitting} // Disable when submitting
-            sx={{ mb: 3,
-              '& .MuiOutlinedInput-root': {
-                borderRadius: 2,
-              }
-            }}
-          />
-
-          {/* File Upload Section */}
-          <Box sx={{ mb: 4 }}>
-            {/* ... (File upload UI remains the same, still disabled during submit) ... */}
-            <Box sx={{ display: 'flex', justifyContent: 'space-between', mb: 1 }}>
-              <Typography variant="body2" color="text.primary" fontWeight="medium">
-                Attach file
-              </Typography>
-              <Typography variant="body2" color="text.secondary">
-                (Optional)
-              </Typography>
-            </Box>
-            <input
-              type="file"
-              ref={fileInputRef}
-              onChange={handleFileInputChange}
-              style={{ display: 'none' }}
-              accept=".png,.jpg,.jpeg,.pdf,.gif,.svg"
-              disabled={isSubmitting}
-            />
-            <FileUploadArea
-              isDragOver={isDragOver}
-              onClick={!isSubmitting ? handleClickUpload : undefined} // Disable click
-              onDragOver={!isSubmitting ? handleDragOver : undefined}
-              onDragLeave={!isSubmitting ? handleDragLeave : undefined}
-              onDrop={!isSubmitting ? handleDrop : undefined}
-              sx={{ opacity: isSubmitting ? 0.7 : 1, cursor: isSubmitting ? 'not-allowed' : 'pointer' }}
+    <Box sx={{ py: { xs: 4, md: 6 }, px: { xs: 1, sm: 2 } }}>
+      <Container maxWidth="md" sx={{ px: { xs: 0, mt: 2 }, marginTop: { xs: 2, md: 6 } }}>
+        <FormSurface elevation={0} sx={{ maxWidth: 1040, mx: 'auto' }}>
+          <form onSubmit={handleSubmit}>
+            <Box
+              sx={{
+                display: 'grid',
+                gridTemplateColumns: { xs: '1fr', md: 'repeat(3, minmax(0, 1fr))' },
+                gap: { xs: 2, md: 3 },
+                mb: { xs: 2.5, md: 3 },
+              }}
             >
-              <CloudUpload sx={{ fontSize: 32, color: 'grey.400', mb: 1 }} />
-              <Typography variant="body1" fontWeight="medium" gutterBottom>
-                Click or drag and drop to upload your file
-              </Typography>
-              <Typography variant="body2" color="text.secondary">
-                {file 
-                  ? `File attached: ${file.name} (${(file.size / 1024 / 1024).toFixed(2)} MB)`
-                  : 'PNG, JPG, PDF, GIF, SVG (Max 5 MB)'
-                }
-              </Typography>
-            </FileUploadArea>
-          </Box>
+              <Box>
+                <FieldLabel>First Name *</FieldLabel>
+                <TextField
+                  fullWidth
+                  placeholder="First name *"
+                  value={formData.firstName}
+                  onChange={handleInputChange('firstName')}
+                  required
+                  disabled={isSubmitting}
+                  sx={sharedInputSx}
+                />
+              </Box>
 
-          {/* Action Buttons */}
-          <Grid container spacing={2}>
-            <Grid item xs={12} sm={6}>
-              <Button
-                type="submit"
-                fullWidth
-                variant="contained"
-                size="large"
-                startIcon={isSubmitting ? <CircularProgress size={20} color="inherit" /> : <Send />}
-                disabled={isSubmitting}
-                sx={{
-                  py: 1.5,
-                  borderRadius: 2,
-                  backgroundColor: 'grey.900',
-                  '&:hover': {
-                    backgroundColor: 'grey.800',
-                  },
-                  '&:disabled': {
-                    backgroundColor: 'grey.400',
-                  }
-                }}
-              >
-                {isSubmitting ? 'Sending...' : 'Send message'}
-              </Button>
-            </Grid>
-            <Grid item xs={12} sm={6}>
-              <Button
-                fullWidth
-                variant="outlined"
-                size="large"
-                startIcon={<Schedule />}
-                disabled={isSubmitting}
-                sx={{
-                  py: 1.5,
-                  borderRadius: 2,
-                  borderColor: 'grey.300',
-                  color: 'text.primary',
-                  '&:hover': {
-                    borderColor: 'grey.400',
-                    backgroundColor: 'grey.50',
-                  },
-                  '&:disabled': {
-                    borderColor: 'grey.200',
-                    color: 'grey.500',
-                  }
-                }}
-              >
-                Schedule a call
-              </Button>
-            </Grid>
-          </Grid>
-        </form>
-      </Paper>
+              <Box>
+                <FieldLabel>Last Name *</FieldLabel>
+                <TextField
+                  fullWidth
+                  placeholder="Last name *"
+                  value={formData.lastName}
+                  onChange={handleInputChange('lastName')}
+                  required
+                  disabled={isSubmitting}
+                  sx={sharedInputSx}
+                />
+              </Box>
 
-      {/* Success/Error Dialog */}
+              <Box>
+                <FieldLabel>Email *</FieldLabel>
+                <TextField
+                  fullWidth
+                  type="email"
+                  placeholder="Email *"
+                  value={formData.email}
+                  onChange={handleInputChange('email')}
+                  required
+                  disabled={isSubmitting}
+                  sx={sharedInputSx}
+                />
+              </Box>
+            </Box>
+
+            <Box
+              sx={{
+                display: 'grid',
+                gridTemplateColumns: { xs: '1fr', md: '1.08fr 0.92fr' },
+                gap: { xs: 2.5, md: 3.2 },
+              }}
+            >
+              <Box>
+                <FieldLabel>Phone Number *</FieldLabel>
+                <PhoneNumberContainer sx={{ opacity: isSubmitting ? 0.8 : 1 }}>
+                  <FormControl
+                    variant="standard"
+                    sx={{
+                      minWidth: 175,
+                      justifyContent: 'center',
+                      px: 2.1,
+                      '& .MuiInputBase-root': { height: '100%' },
+                    }}
+                  >
+                    <Select
+                      value={formData.countryCode}
+                      onChange={handleInputChange('countryCode')}
+                      disableUnderline
+                      disabled={isSubmitting}
+                      IconComponent={KeyboardArrowDownRounded}
+                      sx={{
+                        '& .MuiSelect-select': {
+                          pl: 0,
+                          pr: 3,
+                          py: 0,
+                          fontSize: '16px',
+                          fontWeight: 600,
+                          color: '#202126',
+                        },
+                        '& .MuiSelect-icon': {
+                          color: '#848992',
+                        },
+                      }}
+                    >
+                      <MenuItem value="+91">IN +91</MenuItem>
+                    </Select>
+                  </FormControl>
+
+                  <Box sx={{ width: '1px', backgroundColor: '#d6dbe6' }} />
+
+                  <InputBase
+                    fullWidth
+                    placeholder="0203 0407291"
+                    value={formData.phoneNumber}
+                    onChange={handleInputChange('phoneNumber')}
+                    disabled={isSubmitting}
+                    sx={{
+                      px: 2.2,
+                      py: 1.7,
+                      color: '#575d66',
+                      fontSize: '16px',
+                      fontWeight: 500,
+                      '& input::placeholder': {
+                        color: '#575d66',
+                        opacity: 1,
+                      },
+                    }}
+                  />
+                </PhoneNumberContainer>
+
+                <Box sx={{ mt: { xs: 2.5, md: 2 } }}>
+                  <FieldLabel>Attach File *</FieldLabel>
+                  <input
+                    ref={fileInputRef}
+                    type="file"
+                    onChange={handleFileInputChange}
+                    style={{ display: 'none' }}
+                    accept=".png,.jpg,.jpeg,.pdf,.gif,.svg"
+                    disabled={isSubmitting}
+                  />
+                  <UploadZone
+                    elevation={0}
+                    isDragOver={isDragOver}
+                    onClick={!isSubmitting ? handleClickUpload : undefined}
+                    onDragOver={!isSubmitting ? handleDragOver : undefined}
+                    onDragLeave={!isSubmitting ? handleDragLeave : undefined}
+                    onDrop={!isSubmitting ? handleDrop : undefined}
+                    sx={{ p: 0.01,cursor: isSubmitting ? 'not-allowed' : 'pointer', opacity: isSubmitting ? 0.8 : 1 }}
+                  >
+                    <CloudUploadOutlined className="upload-icon" sx={{ mb: 1.1 }} />
+                    <Typography
+                      sx={{
+                        color: '#181a20',
+                        fontSize: '16px',
+                        fontWeight: 600,
+                        lineHeight: 1.3,
+                        mb: 0.4,
+                      }}
+                    >
+                      Click or drag and drop to upload your file
+                    </Typography>
+                    <Typography sx={{ color: '#666b75', fontSize: '14px', lineHeight: 1.35 }}>
+                      {file
+                        ? `File attached: ${file.name} (${(file.size / 1024 / 1024).toFixed(2)} MB)`
+                        : 'PNG, JPG, PDF, GIF, SVG (Max 5 MB)'}
+                    </Typography>
+                  </UploadZone>
+                </Box>
+              </Box>
+
+              <Box>
+                <FieldLabel>Your Message *</FieldLabel>
+                <TextField
+                  fullWidth
+                  multiline
+                  minRows={isMobile ? 6 : 8}
+                  placeholder="Message"
+                  value={formData.message}
+                  onChange={handleInputChange('message')}
+                  required
+                  disabled={isSubmitting}
+                  sx={{
+                    '& .MuiInputBase-root': {
+                      borderRadius: '14px',
+                      background: INPUT_BG,
+                      border: '2px solid #9da6b4',
+                      boxShadow: '0 10px 24px rgba(40, 46, 69, 0.16)',
+                      '& fieldset': { border: 'none' },
+                    },
+                    '& .MuiInputBase-input': {
+                      color: '#585d64',
+                      px: 2.2,
+                      py: 1.8,
+                      fontSize: '16px',
+                      fontWeight: 500,
+                      '&::placeholder': {
+                        color: '#585d64',
+                        opacity: 1,
+                      },
+                    },
+                  }}
+                />
+
+                <Button
+                  type="submit"
+                  fullWidth
+                  disabled={isSubmitting}
+                  startIcon={
+                    isSubmitting ? (
+                      <CircularProgress size={20} color="inherit" />
+                    ) : (
+                      <SendRounded sx={{ transform: 'rotate(-20deg)', fontSize: 28 }} />
+                    )
+                  }
+                  sx={{
+                    mt: 3,
+                    minHeight: 64,
+                    borderRadius: 3,
+                    color: '#fff',
+                    fontSize: '17px',
+                    fontWeight: 600,
+                    letterSpacing: '0.2px',
+                    background: 'linear-gradient(90deg, #928ff0 0%, #6d4cbf 100%)',
+                    boxShadow: '0 11px 26px rgba(109, 76, 191, 0.42)',
+                    '&:hover': {
+                      background: 'linear-gradient(90deg, #8482ea 0%, #6141b2 100%)',
+                      boxShadow: '0 12px 30px rgba(98, 67, 184, 0.48)',
+                    },
+                    '&.Mui-disabled': {
+                      color: '#ececf3',
+                      background: '#a8abc0',
+                    },
+                  }}
+                >
+                  {isSubmitting ? 'Sending...' : 'Send Message'}
+                </Button>
+              </Box>
+            </Box>
+          </form>
+        </FormSurface>
+      </Container>
+
       <Dialog
         open={openDialog}
         onClose={handleCloseDialog}
-        aria-labelledby="alert-dialog-title"
-        aria-describedby="alert-dialog-description"
+        aria-labelledby="contact-dialog-title"
+        aria-describedby="contact-dialog-description"
       >
-        <DialogTitle id="alert-dialog-title">
-          {dialogContent.title}
-        </DialogTitle>
+        <DialogTitle id="contact-dialog-title">{dialogContent.title}</DialogTitle>
         <DialogContent>
-          <DialogContentText id="alert-dialog-description">
-            {dialogContent.message}
-          </DialogContentText>
+          <DialogContentText id="contact-dialog-description">{dialogContent.message}</DialogContentText>
         </DialogContent>
         <DialogActions>
           <Button onClick={handleCloseDialog} autoFocus>
@@ -468,7 +493,7 @@ const ContactForm = () => {
           </Button>
         </DialogActions>
       </Dialog>
-    </Container>
+    </Box>
   );
 };
 

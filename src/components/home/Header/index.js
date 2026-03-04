@@ -1,4 +1,5 @@
 import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react';
+import { useLocation } from 'react-router-dom';
 import { Box, Divider, Drawer, IconButton, List, ListItemButton, ListItemText, Typography } from '@mui/material';
 import KeyboardArrowDownRoundedIcon from '@mui/icons-material/KeyboardArrowDownRounded';
 import ChevronRightRoundedIcon from '@mui/icons-material/ChevronRightRounded';
@@ -182,6 +183,7 @@ const DROPDOWN_LEFT = {
 };
 
 const Header = () => {
+  const location = useLocation();
   const [isSticky, setIsSticky] = useState(false);
   const [openMenu, setOpenMenu] = useState(null);
   const [activeProductsTab, setActiveProductsTab] = useState(0);
@@ -269,14 +271,16 @@ const Header = () => {
     ],
     [],
   );
-  const currentLogoUrl = isSticky ? SOLID_LOGO_URL : WHITE_LOGO_URL;
+  const forceSticky = location.pathname === '/contact';
+  const stickyMode = forceSticky || isSticky;
+  const currentLogoUrl = stickyMode ? SOLID_LOGO_URL : WHITE_LOGO_URL;
 
   return (
-    <HeaderAppBar elevation={0} className={isSticky ? 'sticky' : ''}>
+    <HeaderAppBar elevation={0} className={stickyMode ? 'sticky' : ''}>
       <HeaderViewport>
         <DesktopShell>
           <CenteredRow>
-            {!isSticky && (
+            {!stickyMode && (
               <TopToolbar disableGutters>
                 <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
                   <TopMenuList>
