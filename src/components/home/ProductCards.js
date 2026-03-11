@@ -510,7 +510,7 @@ const ProductCards = forwardRef((props, ref) => {
       {/* CLIENTS AND SERVICES SECTION */}
       <Container maxWidth="lg" sx={{ py: 10 }}>
         {/* Clients Section */}
-        <Box sx={{ mb: 8 }}>
+        {/* <Box sx={{ mb: 8 }}>
           <SectionTitle>Our Trusted Partners</SectionTitle>
           <SectionSubtitle>
             We collaborate with industry leaders to deliver exceptional results
@@ -574,7 +574,7 @@ const ProductCards = forwardRef((props, ref) => {
               </Slider>
             </Box>
           </motion.div>
-        </Box>
+        </Box> */}
       </Container>
 
       {/* Scalable Solution Section (updated to match provided reference design) */}
