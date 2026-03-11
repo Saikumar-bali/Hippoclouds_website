@@ -1,7 +1,4 @@
 import React, { useEffect, useState, forwardRef } from 'react';
-import Slider from 'react-slick';
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
 import {
   Box,
   Container,
@@ -16,8 +13,26 @@ import {
 } from '@mui/material';
 import { motion } from 'framer-motion';
 import { styled, alpha } from '@mui/material/styles';
-import { Code, Smartphone, Cloud, Zap, TestTube, LayoutDashboard, Handshake, TrendingUp, Scale } from "lucide-react";
-import { LayoutGrid, Target, Search, Database } from "lucide-react";
+import {
+  Code,
+  Smartphone,
+  Cloud,
+  Zap,
+  TestTube,
+  LayoutDashboard,
+  Handshake,
+  TrendingUp,
+  Scale,
+  LayoutGrid,
+  Target,
+  Search,
+  Database,
+  Brain,
+  Globe2,
+  Headset,
+  GraduationCap,
+  Lightbulb
+} from "lucide-react";
 
 // --- STYLED COMPONENTS ---
 const SectionTitle = styled(Typography)(({ theme }) => ({
@@ -45,14 +60,80 @@ const SectionSubtitle = styled(Typography)(({ theme }) => ({
   lineHeight: '1.6',
 }));
 
-// Client logos
-const clients = [
-  { name: "DEAKIN", logo: process.env.PUBLIC_URL + "/Acer_Motors_logo-final.png" },
-  { name: "Global Health Care", logo: process.env.PUBLIC_URL + "/Global-Health-Care.jpg" },
-  { name: "Nlite", logo: process.env.PUBLIC_URL + "/Nlite.jpg" },
-  { name: "Rise", logo: process.env.PUBLIC_URL + "/Rise.jpg" },
-  { name: "Sky-lite Technologies", logo: process.env.PUBLIC_URL + "/Sky-lite-Technologies.jpg" },
-  { name: "BT-convergence-Technologies", logo: process.env.PUBLIC_URL + "/BT-convergence-Technologies.jpg" },
+const CAPABILITIES = [
+  {
+    title: 'Artificial Intelligence & Data Solutions',
+    subtitle: 'Build intelligent systems that automate processes.',
+    bullets: [
+      'AI Application Development',
+      'Generative AI & AI Agents',
+      'Data Engineering & Modeling',
+      'Machine Learning Solutions',
+      'AI-powered Automation',
+    ],
+    icon: Brain,
+    colors: { from: '#ff7bd8', to: '#5ac8ff', shadow: 'rgba(255, 123, 216, 0.45)' },
+  },
+  {
+    title: 'Offshore Development Center (ODC)',
+    subtitle: 'Extend your engineering team offshore.',
+    bullets: [
+      'Dedicated Product Teams',
+      'Cost-efficient Global Delivery',
+      'Agile Development & DevOps',
+      'Full Stack • Cloud • AI/ML',
+    ],
+    icon: Globe2,
+    colors: { from: '#64c7ff', to: '#5c7bff', shadow: 'rgba(91, 156, 255, 0.45)' },
+  },
+  {
+    title: 'Application Support & Managed Services',
+    subtitle: 'Ensure seamless platform operations.',
+    bullets: [
+      '24/7 Application Support',
+      'Cloud Infrastructure Management',
+      'Product Maintenance',
+      'Performance Optimization',
+    ],
+    icon: Headset,
+    colors: { from: '#6dd1ff', to: '#8c7bff', shadow: 'rgba(109, 209, 255, 0.4)' },
+  },
+  {
+    title: 'Technology Academy',
+    subtitle: 'Building industry-ready talent.',
+    bullets: [
+      'AI & Data Engineering',
+      'Full Stack Development',
+      'Cloud & DevOps',
+      'Real Project Exposure',
+    ],
+    icon: GraduationCap,
+    colors: { from: '#7ea0ff', to: '#6ae0ff', shadow: 'rgba(110, 160, 255, 0.4)' },
+  },
+  {
+    title: 'Mobile App Development',
+    subtitle: 'Designing modern mobile solutions.',
+    bullets: [
+      'iOS & Android Development',
+      'Cross-Platform (Flutter & React Native)',
+      'Enterprise Mobile Apps',
+      'Scalable Cloud Backend',
+    ],
+    icon: Smartphone,
+    colors: { from: '#ff9a62', to: '#ff5f7d', shadow: 'rgba(255, 136, 112, 0.45)' },
+  },
+  {
+    title: 'Innovation & Product Solutions',
+    subtitle: 'Industry-specific software solutions.',
+    bullets: [
+      'ERP & HR Platforms',
+      'Construction Management',
+      'Retail & Accounting Systems',
+      'Business Intelligence',
+    ],
+    icon: Lightbulb,
+    colors: { from: '#ffc76a', to: '#ff9f3f', shadow: 'rgba(255, 171, 82, 0.45)' },
+  },
 ];
 
 // --- ABSTRACT GRAPHIC COMPONENTS ---
@@ -502,80 +583,292 @@ const ProductCards = forwardRef((props, ref) => {
     </Box>
   );
 
+  const CapabilityCard = ({ item }) => (
+    <Box
+      sx={{
+        position: 'relative',
+        height: '100%',
+        borderRadius: '22px',
+        p: { xs: 1.4, md: 1.8 },
+        background: 'linear-gradient(180deg, rgba(22,32,70,0.94) 0%, rgba(12,18,42,0.96) 100%)',
+        border: '1px solid rgba(255,255,255,0.08)',
+        boxShadow: '0 26px 68px rgba(2, 6, 24, 0.55)',
+        backdropFilter: 'blur(8px)',
+        overflow: 'hidden',
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+        minHeight: { xs: 230, md: 250 },
+        gap: 0.5,
+        transition: 'transform 0.3s ease, box-shadow 0.35s ease, border-color 0.3s ease',
+        willChange: 'transform',
+        '&::after': {
+          content: '""',
+          position: 'absolute',
+          inset: 0,
+          background: `linear-gradient(145deg, ${item.colors.from}10 0%, ${item.colors.to}05 60%, transparent 100%)`,
+          pointerEvents: 'none',
+        },
+        '&::before': {
+          content: '""',
+          position: 'absolute',
+          inset: 0,
+          background: 'linear-gradient(115deg, rgba(255,255,255,0.22) 0%, rgba(255,255,255,0) 45%)',
+          transform: 'translateX(-120%)',
+          transition: 'transform 0.6s ease',
+          pointerEvents: 'none',
+          mixBlendMode: 'screen',
+        },
+        '&:hover': {
+          transform: 'translateY(-6px) scale(1.01)',
+          borderColor: `${item.colors.from}55`,
+          boxShadow: `0 30px 70px ${item.colors.shadow}`,
+          '&::before': {
+            transform: 'translateX(120%)',
+          },
+          '.cap-icon': {
+            transform: 'translateY(-4px) scale(1.05)',
+            boxShadow: `0 16px 38px ${item.colors.shadow}`,
+          },
+        },
+      }}
+    >
+      <Box
+        className="cap-icon"
+        sx={{
+          width: 78,
+          height: 78,
+          borderRadius: '50%',
+          background: `radial-gradient(circle at 28% 28%, ${item.colors.from}, ${item.colors.to})`,
+          boxShadow: `0 18px 40px ${item.colors.shadow}`,
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          mb: 2.5,
+          mx: 'auto',
+          position: 'relative',
+          zIndex: 1,
+          transition: 'transform 0.3s ease, box-shadow 0.3s ease',
+        }}
+      >
+        <item.icon size={36} color="#ffffff" strokeWidth={2.25} />
+      </Box>
+
+      <Typography
+        variant="h6"
+        sx={{
+          color: '#f5f7ff',
+          fontWeight: 800,
+          fontSize: { xs: '0.92rem', md: '1.0rem' },
+          lineHeight: 1.3,
+          mb: 1,
+          position: 'relative',
+          zIndex: 1,
+          textAlign: 'center',
+        }}
+      >
+        {item.title}
+      </Typography>
+
+      <Typography
+        sx={{
+          color: 'rgba(231,236,255,0.85)',
+          fontSize: { xs: '0.84rem', md: '0.9rem' },
+          lineHeight: 1.35,
+          mb: 1.25,
+          position: 'relative',
+          zIndex: 1,
+          textAlign: 'left',
+          width: '100%',
+        }}
+      >
+        {item.subtitle}
+      </Typography>
+
+      <Box
+        component="ul"
+        sx={{
+          listStyle: 'none',
+          pl: 0,
+          m: 0,
+          display: 'grid',
+          rowGap: 1.2,
+          justifyItems: 'start',
+          width: '100%',
+          position: 'relative',
+          zIndex: 1,
+        }}
+      >
+        {item.bullets.map((bullet, idx) => (
+          <Box
+            key={idx}
+            component="li"
+            sx={{
+              display: 'flex',
+              alignItems: 'flex-start',
+              gap: 1,
+              color: 'rgba(231,236,255,0.92)',
+              fontSize: { xs: '0.82rem', md: '0.88rem' },
+              textAlign: 'left',
+            }}
+          >
+            <Box
+              component="span"
+              sx={{
+                width: 8,
+                height: 8,
+                borderRadius: '50%',
+                mt: '6px',
+                background: `linear-gradient(135deg, ${item.colors.from}, ${item.colors.to})`,
+                boxShadow: `0 0 10px ${item.colors.shadow}`,
+                flexShrink: 0,
+              }}
+            />
+            <Typography
+              component="span"
+              sx={{
+                color: 'rgba(231,236,255,0.9)',
+                lineHeight: 1.55,
+                letterSpacing: 0.1,
+              }}
+            >
+              {bullet}
+            </Typography>
+          </Box>
+        ))}
+      </Box>
+    </Box>
+  );
+
 
 
 
   return (
     <Box sx={{ fontFamily: 'Inter, sans-serif' }}>
-      {/* CLIENTS AND SERVICES SECTION */}
-      <Container maxWidth="lg" sx={{ py: 10 }}>
-        {/* Clients Section */}
-        {/* <Box sx={{ mb: 8 }}>
-          <SectionTitle>Our Trusted Partners</SectionTitle>
-          <SectionSubtitle>
-            We collaborate with industry leaders to deliver exceptional results
-          </SectionSubtitle>
-          <motion.div
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            transition={{ duration: 0.6 }}
-            viewport={{ once: true }}
-          >
-            <Box
+      {/* OUR CORE CAPABILITIES (code-driven recreation of provided artwork) */}
+      <Box
+        component="section"
+        id="core-capabilities"
+        sx={{
+          width: '100vw',
+          ml: 'calc(50% - 50vw)',
+          mr: 'calc(50% - 50vw)',
+          py: { xs: 8, md: 12 },
+          position: 'relative',
+          overflow: 'hidden',
+          background: `radial-gradient(circle at 20% 20%, rgba(108, 189, 255, 0.18) 0%, transparent 32%),
+            radial-gradient(circle at 82% 18%, rgba(255, 157, 195, 0.22) 0%, transparent 28%),
+            radial-gradient(circle at 50% 75%, rgba(255, 215, 140, 0.16) 0%, transparent 36%),
+            radial-gradient(circle at 10% 90%, rgba(122, 255, 214, 0.12) 0%, transparent 32%),
+            #ffffff`,
+          '&::before': {
+            content: '""',
+            position: 'absolute',
+            inset: 0,
+            backgroundImage: 'radial-gradient(#ffffff1a 1px, transparent 1px)',
+            backgroundSize: '110px 110px',
+            opacity: 0.3,
+          },
+        }}
+      >
+        <Box
+          sx={{
+            position: 'absolute',
+            width: 380,
+            height: 380,
+            borderRadius: '50%',
+            background: 'radial-gradient(circle, rgba(92, 163, 255, 0.24) 0%, transparent 65%)',
+            top: '-120px',
+            left: '-40px',
+            filter: 'blur(10px)',
+          }}
+        />
+        <Box
+          sx={{
+            position: 'absolute',
+            width: 420,
+            height: 420,
+            borderRadius: '50%',
+            background: 'radial-gradient(circle, rgba(255, 128, 170, 0.22) 0%, transparent 70%)',
+            bottom: '-180px',
+            right: '-60px',
+            filter: 'blur(14px)',
+          }}
+        />
+
+        <Container
+          maxWidth={false}
+          sx={{
+            position: 'relative',
+            zIndex: 1,
+            maxWidth: {
+              xs: '100%',
+              md: '1024px',   // 13\" laptop width target
+              lg: '1280px',
+              xl: '1440px',   // 15\"+ laptop width target
+            },
+          }}
+        >
+          <Box sx={{ textAlign: 'center', mb: { xs: 4, md: 6 } }}>
+            <Typography
+              variant="h4"
               sx={{
-                background: 'linear-gradient(135deg, rgba(255,255,255,0.5) 0%, rgba(255,255,255,0) 100%)',
-                backdropFilter: 'blur(10px)',
-                borderRadius: '20px',
-                border: '1px solid rgba(255,255,255,0.2)',
-                p: 4,
-                boxShadow: '0 8px 32px rgba(0,0,0,0.08)',
+                fontWeight: 800,
+                fontSize: { xs: '2.1rem', md: '2.8rem' },
+                background: 'linear-gradient(135deg, #7dd3ff 0%, #c084fc 48%, #f472b6 100%)',
+                WebkitBackgroundClip: 'text',
+                WebkitTextFillColor: 'transparent',
+                textShadow: '0 10px 26px rgba(0,0,0,0.42)',
+                mb: 1.5,
               }}
             >
-              <Slider
-                dots={false}
-                arrows={false}
-                infinite
-                speed={5000}
-                autoplay
-                pauseOnHover={true}
-                autoplaySpeed={0}
-                cssEase="linear"
-                slidesToShow={5}
-                slidesToScroll={1}
-                responsive={[
-                  { breakpoint: 1024, settings: { slidesToShow: 4 } },
-                  { breakpoint: 768, settings: { slidesToShow: 3 } },
-                  { breakpoint: 480, settings: { slidesToShow: 2 } },
-                ]}
-              >
-                {clients.map((client, index) => (
-                  <Box key={index} sx={{ px: 2 }}>
-                    <Box
-                      component="img"
-                      src={client.logo}
-                      alt={client.name}
-                      sx={{
-                        height: { xs: '40px', md: '60px' },
-                        width: 'auto',
-                        maxWidth: '150px',
-                        objectFit: 'contain',
-                        filter: 'grayscale(100%)',
-                        opacity: 0.6,
-                        transition: 'all 0.3s ease',
-                        '&:hover': {
-                          filter: 'grayscale(0%)',
-                          opacity: 1,
-                          transform: 'scale(1.1)',
-                        }
-                      }}
-                    />
-                  </Box>
-                ))}
-              </Slider>
-            </Box>
-          </motion.div>
-        </Box> */}
-      </Container>
+              Our Core Capabilities
+            </Typography>
+            <Typography
+              sx={{
+                fontSize: { xs: '1.05rem', md: '1.2rem' },
+                background: 'linear-gradient(135deg, rgba(125,211,255,0.95) 0%, rgba(192,132,252,0.92) 40%, rgba(244,114,182,0.92) 100%)',
+                WebkitBackgroundClip: 'text',
+                WebkitTextFillColor: 'transparent',
+                textShadow: '0 8px 22px rgba(0,0,0,0.38)',
+                maxWidth: '760px',
+                mx: 'auto',
+                lineHeight: 1.7,
+              }}
+            >
+              Delivering innovation through engineering excellence and scalable global teams.
+            </Typography>
+          </Box>
+
+          <Box
+            sx={{
+              display: 'grid',
+              gridTemplateColumns: {
+                xs: '1fr',
+                sm: 'repeat(2, minmax(0, 1fr))',
+                md: 'repeat(3, minmax(0, 1fr))',
+              },
+              columnGap: { xs: 2, sm: 2.5, md: 3 },
+              rowGap: { xs: 3.5, sm: 4, md: 4.5 },
+              maxWidth: {
+                xs: '100%',
+                md: '1024px',
+                lg: '1280px',
+                xl: '1440px',
+              },
+              mx: 'auto',
+              pt: { xs: 2, md: 3 },
+              pb: { xs: 2, md: 3 },
+            }}
+          >
+            {CAPABILITIES.map((item) => (
+              <Box key={item.title}>
+                <CapabilityCard item={item} />
+              </Box>
+            ))}
+          </Box>
+        </Container>
+      </Box>
 
       {/* Scalable Solution Section (updated to match provided reference design) */}
       <Box
@@ -711,8 +1004,33 @@ const ProductCards = forwardRef((props, ref) => {
                     borderRadius: '14px',
                     background: 'linear-gradient(180deg, #f4f5f7 0%, #e9edf3 100%)',
                     border: '1px solid rgba(255,255,255,0.92)',
-                    boxShadow: '0 0 0 1px rgba(67, 170, 255, 0.34), 0 0 18px rgba(0, 120, 255, 0.33)',
-                    alignContent: 'center'
+                    boxShadow: '0 0 0 1px rgba(67, 170, 255, 0.34), 0 10px 28px rgba(0, 120, 255, 0.22)',
+                    alignContent: 'center',
+                    position: 'relative',
+                    overflow: 'hidden',
+                    transition: 'transform 0.3s ease, box-shadow 0.35s ease, border-color 0.3s ease',
+                    '&::after': {
+                      content: '""',
+                      position: 'absolute',
+                      inset: '-20% -60%',
+                      background: 'linear-gradient(120deg, rgba(255,255,255,0.32) 0%, rgba(255,255,255,0) 55%)',
+                      transform: 'translateX(-120%) rotate(12deg)',
+                      transition: 'transform 0.7s ease',
+                      pointerEvents: 'none',
+                      mixBlendMode: 'screen',
+                    },
+                    '&:hover': {
+                      transform: 'translateY(-8px)',
+                      borderColor: 'rgba(31,155,226,0.6)',
+                      boxShadow: '0 16px 42px rgba(0, 120, 255, 0.32)',
+                      '&::after': {
+                        transform: 'translateX(160%) rotate(12deg)',
+                      },
+                      '.scalable-icon': {
+                        transform: 'translateY(-4px) scale(1.06)',
+                        filter: 'drop-shadow(0 8px 14px rgba(0,120,255,0.28))',
+                      },
+                    },
                   }}
                 >
                   <CardContent
@@ -727,6 +1045,7 @@ const ProductCards = forwardRef((props, ref) => {
                   >
                     <Box
                       component="img"
+                      className="scalable-icon"
                       src={`${process.env.PUBLIC_URL}${item.iconSrc}`}
                       alt={item.title.join(' ')}
                       sx={{
@@ -735,6 +1054,7 @@ const ProductCards = forwardRef((props, ref) => {
                         width: { xs: 34, md: 48 },
                         height: { xs: 34, md: 48 },
                         objectFit: 'contain',
+                        transition: 'transform 0.35s ease, filter 0.35s ease',
                       }}
                     />
 
