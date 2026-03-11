@@ -318,25 +318,24 @@ const HeroSection = () => {
         <ContentInner>
           <LineOneMask>
             <PoweringText component="h1" $animate={animate}>
-              Powering
+              Engineering
             </PoweringText>
           </LineOneMask>
 
           <LineTwoMask>
             <AccentHeading component="h2" $animate={animate}>
-              The Last Mile of
+              the Future with AI,
             </AccentHeading>
           </LineTwoMask>
 
           <LineThreeMask>
             <AccentHeading component="h2" $animate={animate}>
-              Grid Modernization with AI
+              Innovation & Scalable Technology Solutions
             </AccentHeading>
           </LineThreeMask>
 
           <DescriptionText component="p">
-            hippocloud technologies helps utilities modernize grid operations, by unlocking value from AMI data,
-            and delivering exceptional customer experiences with enterprise-grade COTS products.
+            We help businesses transform ideas into powerful digital products through Artificial Intelligence, Offshore Development Centers, Mobile Applications, and Enterprise Solutions.
           </DescriptionText>
 
           <ButtonsRow>
@@ -352,7 +351,7 @@ const HeroSection = () => {
               endIcon={<ChevronRightRoundedIcon fontSize="small" />}
               aria-label="Talk to an Expert"
             >
-              Talk to an Expert
+              Start Your Project
             </HeroButton>
           </ButtonsRow>
         </ContentInner>
