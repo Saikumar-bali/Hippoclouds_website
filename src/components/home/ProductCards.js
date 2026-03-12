@@ -13,6 +13,7 @@ import {
 } from '@mui/material';
 import { motion } from 'framer-motion';
 import { styled, alpha } from '@mui/material/styles';
+import { Link } from 'react-router-dom';
 import {
   Code,
   Smartphone,
@@ -73,6 +74,7 @@ const CAPABILITIES = [
     ],
     icon: Brain,
     colors: { from: '#ff7bd8', to: '#5ac8ff', shadow: 'rgba(255, 123, 216, 0.45)' },
+    route: '/services',
   },
   {
     title: 'Offshore Development Center (ODC)',
@@ -85,6 +87,7 @@ const CAPABILITIES = [
     ],
     icon: Globe2,
     colors: { from: '#64c7ff', to: '#5c7bff', shadow: 'rgba(91, 156, 255, 0.45)' },
+    route: '/staffaugmentation',
   },
   {
     title: 'Application Support & Managed Services',
@@ -97,6 +100,7 @@ const CAPABILITIES = [
     ],
     icon: Headset,
     colors: { from: '#6dd1ff', to: '#8c7bff', shadow: 'rgba(109, 209, 255, 0.4)' },
+    route: '/appdevsupport',
   },
   {
     title: 'Technology Academy',
@@ -109,6 +113,7 @@ const CAPABILITIES = [
     ],
     icon: GraduationCap,
     colors: { from: '#7ea0ff', to: '#6ae0ff', shadow: 'rgba(110, 160, 255, 0.4)' },
+    route: '/trainingsprojects',
   },
   {
     title: 'Mobile App Development',
@@ -121,6 +126,7 @@ const CAPABILITIES = [
     ],
     icon: Smartphone,
     colors: { from: '#ff9a62', to: '#ff5f7d', shadow: 'rgba(255, 136, 112, 0.45)' },
+    route: '/services',
   },
   {
     title: 'Innovation & Product Solutions',
@@ -133,6 +139,7 @@ const CAPABILITIES = [
     ],
     icon: Lightbulb,
     colors: { from: '#ffc76a', to: '#ff9f3f', shadow: 'rgba(255, 171, 82, 0.45)' },
+    route: '/services',
   },
 ];
 
@@ -841,83 +848,84 @@ const ProductCards = forwardRef((props, ref) => {
             }}
           >
             {CAPABILITIES.map((item) => (
-              <Paper
-                key={item.title}
-                elevation={0}
-                sx={{
-                  p: { xs: 2.5, md: 3 },
-                  borderRadius: 3,
-                  border: '1px solid rgba(15, 23, 42, 0.08)',
-                  background: '#ffffff',
-                  transition: 'transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease',
-                  '&:hover': {
-                    transform: 'translateY(-4px)',
-                    boxShadow: `0 16px 30px ${item.colors.shadow}`,
-                    borderColor: `${item.colors.from}55`,
-                  },
-                }}
-              >
-                <Box sx={{ display: 'flex', alignItems: 'center', gap: 2, mb: 2 }}>
-                  <Box
-                    sx={{
-                      width: 44,
-                      height: 44,
-                      borderRadius: 2,
-                      display: 'flex',
-                      alignItems: 'center',
-                      justifyContent: 'center',
-                      background: `linear-gradient(135deg, ${item.colors.from}, ${item.colors.to})`,
-                      color: '#ffffff',
-                      boxShadow: `0 10px 22px ${item.colors.shadow}`,
-                      flexShrink: 0,
-                    }}
-                  >
-                    <item.icon size={20} strokeWidth={2} />
-                  </Box>
-                  <Box>
-                    <Typography
-                      sx={{
-                        fontWeight: 700,
-                        fontSize: '1.05rem',
-                        color: '#0f172a',
-                      }}
-                    >
-                      {item.title}
-                    </Typography>
-                    <Typography variant="body2" sx={{ color: '#5f6b7a' }}>
-                      {item.subtitle}
-                    </Typography>
-                  </Box>
-                </Box>
-
-                <Box sx={{ display: 'grid', gap: 1 }}>
-                  {item.bullets.map((bullet) => (
+              <Link to={item.route} key={item.title} style={{ textDecoration: 'none' }}>
+                <Paper
+                  elevation={0}
+                  sx={{
+                    p: { xs: 2.5, md: 3 },
+                    borderRadius: 3,
+                    border: '1px solid rgba(15, 23, 42, 0.08)',
+                    background: '#ffffff',
+                    transition: 'transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease',
+                    '&:hover': {
+                      transform: 'translateY(-4px)',
+                      boxShadow: `0 16px 30px ${item.colors.shadow}`,
+                      borderColor: `${item.colors.from}55`,
+                    },
+                  }}
+                >
+                  <Box sx={{ display: 'flex', alignItems: 'center', gap: 2, mb: 2 }}>
                     <Box
-                      key={bullet}
                       sx={{
+                        width: 44,
+                        height: 44,
+                        borderRadius: 2,
                         display: 'flex',
-                        alignItems: 'flex-start',
-                        gap: 1.2,
-                        color: '#334155',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        background: `linear-gradient(135deg, ${item.colors.from}, ${item.colors.to})`,
+                        color: '#ffffff',
+                        boxShadow: `0 10px 22px ${item.colors.shadow}`,
+                        flexShrink: 0,
                       }}
                     >
-                      <Box
+                      <item.icon size={20} strokeWidth={2} />
+                    </Box>
+                    <Box>
+                      <Typography
                         sx={{
-                          width: 6,
-                          height: 6,
-                          borderRadius: '50%',
-                          background: item.colors.from,
-                          mt: '7px',
-                          flexShrink: 0,
+                          fontWeight: 700,
+                          fontSize: '1.05rem',
+                          color: '#0f172a',
                         }}
-                      />
-                      <Typography variant="body2" sx={{ lineHeight: 1.5 }}>
-                        {bullet}
+                      >
+                        {item.title}
+                      </Typography>
+                      <Typography variant="body2" sx={{ color: '#5f6b7a' }}>
+                        {item.subtitle}
                       </Typography>
                     </Box>
-                  ))}
-                </Box>
-              </Paper>
+                  </Box>
+
+                  <Box sx={{ display: 'grid', gap: 1 }}>
+                    {item.bullets.map((bullet) => (
+                      <Box
+                        key={bullet}
+                        sx={{
+                          display: 'flex',
+                          alignItems: 'flex-start',
+                          gap: 1.2,
+                          color: '#334155',
+                        }}
+                      >
+                        <Box
+                          sx={{
+                            width: 6,
+                            height: 6,
+                            borderRadius: '50%',
+                            background: item.colors.from,
+                            mt: '7px',
+                            flexShrink: 0,
+                          }}
+                        />
+                        <Typography variant="body2" sx={{ lineHeight: 1.5 }}>
+                          {bullet}
+                        </Typography>
+                      </Box>
+                    ))}
+                  </Box>
+                </Paper>
+              </Link>
             ))}
           </Box>
         </Container>
@@ -1013,31 +1021,37 @@ const ProductCards = forwardRef((props, ref) => {
                 title: ['Software', 'Development'],
                 description: 'Creating secure & scalable applications that fuel innovation & business growth',
                 height: '100%',
+                route: '/services',
               },
               {
                 iconSrc: '/scalable-icon-odc.png',
                 title: ['Dedicated', 'ODC'],
                 description: 'A dedicated offshore team that works exclusively as an extension of your business',
+                route: '/staffaugmentation',
               },
               {
                 iconSrc: '/scalable-icon-support.png',
                 title: ['Product', 'Support'],
                 description: 'Ongoing support to keep your product stable, secure, & performing at its best',
+                route: '/appdevsupport',
               },
               {
                 iconSrc: '/scalable-icon-consult.png',
                 title: ['IT', 'Consultancy'],
                 description: 'Strategic technology guidance to help businesses grow smarter & faster',
+                route: '/consultancy',
               },
               {
                 iconSrc: '/scalable-icon-marketing.png',
                 title: ['Digital', 'Marketing'],
                 description: 'Promoting your brand online to attract, engage, & convert customers effectively',
+                route: '/digitalmarketing',
               },
               {
                 iconSrc: '/scalable-icon-skill.png',
                 title: ['Skill', 'Development'],
                 description: 'Empowering individuals with practical knowledge & industry-ready expertise for career growth',
+                route: '/trainingsprojects',
               },
             ].map((item, index) => (
               <motion.div
@@ -1048,7 +1062,8 @@ const ProductCards = forwardRef((props, ref) => {
                 viewport={{ once: true }}
                 style={{ height: 'auto' }}
               >
-                <Card
+                <Link to={item.route} style={{ textDecoration: 'none' }}>
+                  <Card
                   elevation={0}
                   sx={{
                     height: 'auto',
@@ -1062,6 +1077,7 @@ const ProductCards = forwardRef((props, ref) => {
                     position: 'relative',
                     overflow: 'hidden',
                     transition: 'transform 0.3s ease, box-shadow 0.35s ease, border-color 0.3s ease',
+                    transformOrigin: 'center',
                     '&::after': {
                       content: '""',
                       position: 'absolute',
@@ -1073,14 +1089,14 @@ const ProductCards = forwardRef((props, ref) => {
                       mixBlendMode: 'screen',
                     },
                     '&:hover': {
-                      transform: 'translateY(-8px)',
+                      transform: 'translateY(-8px) scale(1.04)',
                       borderColor: 'rgba(31,155,226,0.6)',
                       boxShadow: '0 16px 42px rgba(0, 120, 255, 0.32)',
                       '&::after': {
                         transform: 'translateX(160%) rotate(12deg)',
                       },
                       '.scalable-icon': {
-                        transform: 'translateY(-4px) scale(1.06)',
+                        transform: 'translateY(-4px) scale(1.12)',
                         filter: 'drop-shadow(0 8px 14px rgba(0,120,255,0.28))',
                       },
                     },
@@ -1150,6 +1166,7 @@ const ProductCards = forwardRef((props, ref) => {
                     </Typography>
                   </CardContent>
                 </Card>
+                </Link>
               </motion.div>
             ))}
           </Box>

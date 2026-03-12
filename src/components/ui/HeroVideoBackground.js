@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Box } from '@mui/material';
 import { styled } from '@mui/material/styles';
 
-const DEFAULT_VIDEO_URL = 'https://fluentgrid.com/wp-content/uploads/2025/08/Grid-Modernization-Home.mp4';
+const DEFAULT_VIDEO_URL = `${process.env.PUBLIC_URL}/WEB HERO (1).mp4`;
 const DEFAULT_FALLBACK_IMAGE_URL = 'https://fluentgrid.com/wp-content/uploads/revslider/video-media/Grid-Modernization-Home_74.jpeg';
 
 const BackgroundVideo = styled('video')({

@@ -65,11 +65,11 @@ const TOP_BAR_LINKS = [
 ];
 
 const SOCIAL_LINKS = [
-  { label: 'LinkedIn', icon: <LinkedInIcon sx={{ fontSize: 17 }} /> },
-  { label: 'Twitter', icon: <TwitterIcon sx={{ fontSize: 17 }} /> },
-  { label: 'YouTube', icon: <YouTubeIcon sx={{ fontSize: 17 }} /> },
-  { label: 'Facebook', icon: <FacebookIcon sx={{ fontSize: 17 }} /> },
-  { label: 'Instagram', icon: <InstagramIcon sx={{ fontSize: 17 }} /> },
+  { label: 'LinkedIn', icon: <LinkedInIcon sx={{ fontSize: 17 }} />, href: 'https://www.linkedin.com/company/hippoclouds/' },
+  { label: 'Twitter', icon: <TwitterIcon sx={{ fontSize: 17 }} />, href: 'https://x.com/hippoclouds' },
+  { label: 'YouTube', icon: <YouTubeIcon sx={{ fontSize: 17 }} />, href: 'https://www.youtube.com/@hippocloudsoftwaretraining8074/videos' },
+  { label: 'Facebook', icon: <FacebookIcon sx={{ fontSize: 17 }} />, href: 'https://www.facebook.com/hippocloud/' },
+  { label: 'Instagram', icon: <InstagramIcon sx={{ fontSize: 17 }} />, href: 'https://www.instagram.com/hippoclouds/' },
 ];
 
 const DROPDOWN_MENUS = {
@@ -292,7 +292,14 @@ const Header = () => {
                   </TopMenuList>
                   <SocialList>
                     {SOCIAL_LINKS.map((item) => (
-                      <SocialIconButton key={item.label} aria-label={item.label}>
+                      <SocialIconButton 
+                        key={item.label} 
+                        aria-label={item.label}
+                        component="a"
+                        href={item.href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
                         {item.icon}
                       </SocialIconButton>
                     ))}

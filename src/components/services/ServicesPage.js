@@ -1,11 +1,10 @@
 
 import React from 'react';
 import { Link as RouterLink } from 'react-router-dom';
-import { Box, Typography, Container, Grid, Card, CardContent, Button } from '@mui/material';
+import { Box, Typography, Container, Grid, Button } from '@mui/material';
 import { motion } from 'framer-motion';
 import { styled } from '@mui/material/styles';
 
-// Icons
 import HandshakeIcon from '@mui/icons-material/Handshake';
 import DeveloperBoardIcon from '@mui/icons-material/DeveloperBoard';
 import SupportAgentIcon from '@mui/icons-material/SupportAgent';
@@ -14,50 +13,55 @@ import GroupWorkIcon from '@mui/icons-material/GroupWork';
 import BusinessCenterIcon from '@mui/icons-material/BusinessCenter';
 import WorkspacesIcon from '@mui/icons-material/Workspaces';
 
-const MotionCard = motion(Card);
-
 const services = [
   {
     title: 'Consultancy',
     description: 'Strategy-led guidance to align technology decisions with business outcomes.',
     icon: <HandshakeIcon sx={{ fontSize: 26 }} />,
     path: '/consultancy',
+    image: '/services/Consultancy  01.png',
   },
   {
     title: 'App Dev & Support',
     description: 'Build and maintain apps with reliability, performance, and clear ownership.',
     icon: <DeveloperBoardIcon sx={{ fontSize: 26 }} />,
     path: '/appdevsupport',
+    image: '/services/APP DEV.png',
   },
   {
     title: 'Infra Support & Managed Services',
     description: 'Always-on infrastructure monitoring, optimization, and incident response.',
     icon: <SupportAgentIcon sx={{ fontSize: 26 }} />,
     path: '/infrasupport',
+    image: '/services/Infra Support & Managed Services (1).png',
   },
   {
     title: 'Digital Marketing',
     description: 'SEO, content, and performance campaigns built to grow qualified demand.',
     icon: <CampaignIcon sx={{ fontSize: 26 }} />,
     path: '/digitalmarketing',
+    image: '/services/Digital Marketing.png',
   },
   {
     title: 'Staff Augmentation',
     description: 'Access vetted specialists who integrate seamlessly with your teams.',
     icon: <GroupWorkIcon sx={{ fontSize: 26 }} />,
     path: '/staffaugmentation',
+    image: '/services/Staff Augmentation.png',
   },
   {
     title: 'BPO',
     description: 'Operational support that improves efficiency and protects service quality.',
     icon: <BusinessCenterIcon sx={{ fontSize: 26 }} />,
     path: '/bpo',
+    image: '/services/Bpo.png',
   },
   {
     title: 'IT Ops & Support',
     description: 'Reliable systems and processes for stable, secure operations.',
     icon: <WorkspacesIcon sx={{ fontSize: 26 }} />,
     path: '/itopssupport',
+    image: '/services/IT Ops & Support (1).png',
   },
 ];
 
@@ -78,6 +82,101 @@ const HeroSection = styled(Box)(({ theme }) => ({
     height: '60vh',
   },
 }));
+
+const CardWrapper = styled(motion.div)(({ theme }) => ({
+  position: 'relative',
+  borderRadius: '12px',
+  overflow: 'hidden',
+  backgroundColor: 'transparent',
+  boxShadow: 'none',
+  height: '100%',
+  minHeight: '380px',
+  cursor: 'pointer',
+  '&:hover .card-content': {
+    transform: 'translateY(-1px)',
+  },
+  '&:hover .card-details': {
+    maxHeight: '200px',
+    opacity: 1,
+  },
+  '&.is-hovered .card-content': {
+    transform: 'translateY(-24px)',
+  },
+  '&.is-hovered .card-details': {
+    maxHeight: '200px',
+    opacity: 1,
+  },
+  '&:hover': {
+    boxShadow: '0 12px 24px rgba(0, 0, 0, 0.12)',
+  },
+}));
+
+const CardImage = styled(Box)({
+  width: '100%',
+  height: '100%',
+  overflow: 'hidden',
+  position: 'relative',
+  '& img': {
+    width: '100%',
+    height: '100%',
+    objectFit: 'cover',
+    transition: 'transform 0.3s ease',
+  },
+  '.card-wrapper:hover & img': {
+    transform: 'scale(1.05)',
+  },
+});
+
+const CardContent = styled(Box)(({ theme }) => ({
+  position: 'absolute',
+  left: '16px',
+  right: '16px',
+  bottom: '16px',
+  padding: '0',
+  background: 'transparent',
+  zIndex: 2,
+  transition: 'transform 0.55s ease',
+  display: 'flex',
+  flexDirection: 'column',
+  alignItems: 'flex-start',
+  gap: '10px',
+  transform: 'translateY(0)',
+}));
+
+const IconBox = styled(Box)({
+  width: '48px',
+  height: '48px',
+  borderRadius: '12px',
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'center',
+  backgroundColor: '#f0f4ff',
+  color: '#2563eb',
+});
+
+const ServiceTitle = styled(Typography)({
+  fontWeight: 700,
+  fontSize: '1.1rem',
+  color: '#1e293b',
+  lineHeight: 1.3,
+});
+
+const ServiceDescription = styled(Typography)({
+  fontSize: '0.9rem',
+  color: '#64748b',
+  lineHeight: 1.5,
+});
+
+const ExploreButton = styled(Button)({
+  textTransform: 'none',
+  fontWeight: 600,
+  color: '#2563eb',
+  padding: '8px 0',
+  '&:hover': {
+    backgroundColor: 'transparent',
+    textDecoration: 'underline',
+  },
+});
 
 export default function ServicesPage() {
   return (
@@ -138,84 +237,123 @@ export default function ServicesPage() {
           </Typography>
         </Box>
 
-        <Grid container spacing={3} alignItems="stretch" justifyContent="center">
-          {services.map((service, index) => (
-            <Grid item xs={12} sm={6} md={6} lg={4} key={service.title}>
-              <MotionCard
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: index * 0.1 }}
-                sx={{
-                  height: '100%',
-                  display: 'flex',
-                  flexDirection: 'column',
-                  borderRadius: 3,
-                  border: '1px solid rgba(15, 23, 42, 0.08)',
-                  boxShadow: '0 16px 30px rgba(15, 23, 42, 0.06)',
-                  overflow: 'hidden',
-                  background: '#ffffff',
-                  transition: 'transform 0.2s ease, box-shadow 0.2s ease',
-                  '&:hover': {
-                    transform: 'translateY(-4px)',
-                    boxShadow: '0 20px 40px rgba(15, 23, 42, 0.1)',
-                  },
-                }}
-              >
-                <CardContent sx={{ p: 3.5, flexGrow: 1, display: 'flex', flexDirection: 'column', minHeight: 220 }}>
-                  <Box sx={{ display: 'flex', alignItems: 'center', gap: 1.5, mb: 2 }}>
-                    <Box
-                      sx={{
-                        width: 42,
-                        height: 42,
-                        borderRadius: 2,
-                        display: 'flex',
-                        alignItems: 'center',
-                        justifyContent: 'center',
-                        background: 'rgba(15, 23, 42, 0.06)',
-                        color: '#0f172a',
-                      }}
-                    >
-                      {service.icon}
-                    </Box>
-                    <Typography variant="h6" component="h2" sx={{ fontWeight: 700, color: '#0f172a' }}>
-                      {service.title}
-                    </Typography>
-                  </Box>
-                  <Typography
-                    variant="body2"
-                    sx={{
-                      color: '#5f6b7a',
-                      lineHeight: 1.6,
-                      display: '-webkit-box',
-                      WebkitLineClamp: 3,
-                      WebkitBoxOrient: 'vertical',
-                      overflow: 'hidden',
-                      minHeight: '3.6em',
-                    }}
-                  >
-                    {service.description}
-                  </Typography>
+        <Box
+          sx={{
+            position: 'relative',
+            borderRadius: { xs: 4, md: 6 },
+            background: 'linear-gradient(180deg, #f7f9fc 0%, #eef2f7 100%)',
+            border: '1px solid rgba(15, 23, 42, 0.08)',
+            p: { xs: 2.5, sm: 3.5, md: 5 },
+            boxShadow: '0 30px 60px rgba(15, 23, 42, 0.12)',
+          }}
+        >
+          <Box
+            sx={{
+              position: 'absolute',
+              inset: 0,
+              borderRadius: { xs: 4, md: 6 },
+              pointerEvents: 'none',
+              boxShadow:
+                'inset 0 0 0 1px rgba(255, 255, 255, 0.8), inset 0 -20px 40px rgba(15, 23, 42, 0.05)',
+            }}
+          />
 
-                  <Button
-                    component={RouterLink}
-                    to={service.path}
-                    variant="text"
+          <Box
+            sx={{
+              position: 'relative',
+              borderRadius: { xs: 3, md: 4 },
+              background: '#ffffff',
+              border: '1px solid rgba(15, 23, 42, 0.08)',
+              p: { xs: 2, sm: 3, md: 4 },
+              boxShadow: '0 18px 36px rgba(15, 23, 42, 0.08)',
+            }}
+          >
+            <Grid container spacing={3} justifyContent="center">
+              {services.map((service, index) => (
+                <Grid
+                  item
+                  xs={12}
+                  sm={6}
+                  md={4}
+                  key={service.title}
+                  sx={{
+                    display: 'flex',
+                    justifyContent: 'center',
+                    ...(index === 6 && { md: 4 }),
+                  }}
+                >
+                  <CardWrapper
+                    className={`card-wrapper ${service.forceHover ? 'is-hovered' : ''}`}
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.5, delay: index * 0.1 }}
                     sx={{
-                      mt: 'auto',
-                      pt: 2.5,
-                      px: 0,
-                      textTransform: 'none',
-                      fontWeight: 700,
-                      color: '#0f172a',
+                      width: '100%',
+                      maxWidth: { xs: 320, sm: 300, md: 280 },
                     }}
                   >
-                    Explore service
-                  </Button>
-                </CardContent>
-              </MotionCard>
+                    <CardImage>
+                      <img src={`${process.env.PUBLIC_URL}${service.image}`} alt={service.title} />
+                    </CardImage>
+                    <CardContent className="card-content">
+                      <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
+                        <IconBox sx={{ width: 34, height: 34, borderRadius: 2, backgroundColor: 'rgba(255,255,255,0.85)', color: '#0f172a' }}>
+                          {service.icon}
+                        </IconBox>
+                        <ServiceTitle sx={{ color: '#0f172a' }}>{service.title}</ServiceTitle>
+                      </Box>
+                      <Box
+                        className="card-details"
+                        sx={{
+                          display: 'grid',
+                          gap: 1,
+                          maxHeight: 0,
+                          opacity: 0,
+                          overflow: 'hidden',
+                          transition: 'max-height 0.55s ease, opacity 0.55s ease',
+                        }}
+                      >
+                        <ServiceDescription sx={{ color: '#0f172a' }}>{service.description}</ServiceDescription>
+                        <ExploreButton
+                          component={RouterLink}
+                          to={service.path}
+                          sx={{ color: '#0f172a' }}
+                        >
+                          Explore service
+                        </ExploreButton>
+                      </Box>
+                    </CardContent>
+
+                  </CardWrapper>
+                </Grid>
+              ))}
             </Grid>
-          ))}
-        </Grid>
+          </Box>
+
+          <Box
+            sx={{
+              position: 'relative',
+              width: { xs: '38%', sm: '28%', md: '22%' },
+              height: 10,
+              background: '#d7dce4',
+              borderRadius: 999,
+              mx: 'auto',
+              mt: { xs: 3, md: 4 },
+              boxShadow: 'inset 0 -2px 4px rgba(0,0,0,0.08)',
+            }}
+          />
+          <Box
+            sx={{
+              width: { xs: '56%', sm: '42%', md: '32%' },
+              height: 18,
+              background: '#c5cbd6',
+              borderRadius: 999,
+              mx: 'auto',
+              mt: 1,
+              boxShadow: '0 10px 20px rgba(15,23,42,0.12)',
+            }}
+          />
+        </Box>
       </Container>
     </Box>
   );

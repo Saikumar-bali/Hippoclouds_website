@@ -6,6 +6,7 @@ import FacebookIcon from '@mui/icons-material/Facebook';
 import TwitterIcon from '@mui/icons-material/Twitter';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import InstagramIcon from '@mui/icons-material/Instagram';
+import YouTubeIcon from '@mui/icons-material/YouTube';
 import LocationOnOutlinedIcon from '@mui/icons-material/LocationOnOutlined';
 import LocalPhoneOutlinedIcon from '@mui/icons-material/LocalPhoneOutlined';
 import MailOutlineRoundedIcon from '@mui/icons-material/MailOutlineRounded';
@@ -188,17 +189,20 @@ export default function Footer() {
               Enterprise-grade technology services and digital products designed to accelerate operations, reduce delivery risk, and scale growth.
             </BrandText>
             <SocialRow>
-              <SocialIcon aria-label="Facebook">
+              <SocialIcon aria-label="Facebook" component="a" href="https://www.facebook.com/hippocloud/" target="_blank" rel="noopener noreferrer">
                 <FacebookIcon fontSize="small" />
               </SocialIcon>
-              <SocialIcon aria-label="Twitter">
+              <SocialIcon aria-label="Twitter" component="a" href="https://x.com/hippoclouds" target="_blank" rel="noopener noreferrer">
                 <TwitterIcon fontSize="small" />
               </SocialIcon>
-              <SocialIcon aria-label="LinkedIn">
+              <SocialIcon aria-label="LinkedIn" component="a" href="https://www.linkedin.com/company/hippoclouds/" target="_blank" rel="noopener noreferrer">
                 <LinkedInIcon fontSize="small" />
               </SocialIcon>
-              <SocialIcon aria-label="Instagram">
+              <SocialIcon aria-label="Instagram" component="a" href="https://www.instagram.com/hippoclouds/" target="_blank" rel="noopener noreferrer">
                 <InstagramIcon fontSize="small" />
+              </SocialIcon>
+              <SocialIcon aria-label="YouTube" component="a" href="https://www.youtube.com/@hippocloudsoftwaretraining8074/videos" target="_blank" rel="noopener noreferrer">
+                <YouTubeIcon fontSize="small" />
               </SocialIcon>
             </SocialRow>
           </Grid>
