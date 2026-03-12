@@ -745,99 +745,88 @@ const ProductCards = forwardRef((props, ref) => {
 
   return (
     <Box sx={{ fontFamily: 'Inter, sans-serif' }}>
-      {/* OUR CORE CAPABILITIES (code-driven recreation of provided artwork) */}
+      {/* OUR CORE CAPABILITIES */}
       <Box
         component="section"
         id="core-capabilities"
         sx={{
-          width: '100vw',
-          ml: 'calc(50% - 50vw)',
-          mr: 'calc(50% - 50vw)',
           py: { xs: 8, md: 12 },
-          position: 'relative',
-          overflow: 'hidden',
-          background: `radial-gradient(circle at 20% 20%, rgba(108, 189, 255, 0.18) 0%, transparent 32%),
-            radial-gradient(circle at 82% 18%, rgba(255, 157, 195, 0.22) 0%, transparent 28%),
-            radial-gradient(circle at 50% 75%, rgba(255, 215, 140, 0.16) 0%, transparent 36%),
-            radial-gradient(circle at 10% 90%, rgba(122, 255, 214, 0.12) 0%, transparent 32%),
-            #ffffff`,
-          '&::before': {
-            content: '""',
-            position: 'absolute',
-            inset: 0,
-            backgroundImage: 'radial-gradient(#ffffff1a 1px, transparent 1px)',
-            backgroundSize: '110px 110px',
-            opacity: 0.3,
-          },
+          background: '#f8fafc',
         }}
       >
-        <Box
-          sx={{
-            position: 'absolute',
-            width: 380,
-            height: 380,
-            borderRadius: '50%',
-            background: 'radial-gradient(circle, rgba(92, 163, 255, 0.24) 0%, transparent 65%)',
-            top: '-120px',
-            left: '-40px',
-            filter: 'blur(10px)',
-          }}
-        />
-        <Box
-          sx={{
-            position: 'absolute',
-            width: 420,
-            height: 420,
-            borderRadius: '50%',
-            background: 'radial-gradient(circle, rgba(255, 128, 170, 0.22) 0%, transparent 70%)',
-            bottom: '-180px',
-            right: '-60px',
-            filter: 'blur(14px)',
-          }}
-        />
+        <Container maxWidth="lg">
+          <Box
+            sx={{
+              display: 'grid',
+              gridTemplateColumns: { xs: '1fr', md: '0.9fr 1.1fr' },
+              gap: { xs: 3, md: 6 },
+              alignItems: 'center',
+              mb: { xs: 4, md: 6 },
+            }}
+          >
+            <Box sx={{ textAlign: { xs: 'center', md: 'left' } }}>
+              <Typography
+                variant="overline"
+                sx={{
+                  letterSpacing: '0.18em',
+                  color: '#64748b',
+                  fontWeight: 700,
+                }}
+              >
+                Our Core Capabilities
+              </Typography>
+              <Typography
+                variant="h3"
+                sx={{
+                  fontWeight: 800,
+                  fontSize: { xs: '2rem', sm: '2.6rem', md: '3.1rem' },
+                  lineHeight: 1.1,
+                  mt: 1,
+                  mb: 1.5,
+                  color: '#0f172a',
+                }}
+              >
+                Engineering depth with a product-first mindset
+              </Typography>
+              <Typography
+                variant="body1"
+                sx={{
+                  color: '#5f6b7a',
+                  fontSize: { xs: '1rem', sm: '1.05rem' },
+                }}
+              >
+                We combine strategy, design, and delivery to build platforms that scale.
+              </Typography>
+            </Box>
 
-        <Container
-          maxWidth={false}
-          sx={{
-            position: 'relative',
-            zIndex: 1,
-            maxWidth: {
-              xs: '100%',
-              md: '1024px',   // 13\" laptop width target
-              lg: '1280px',
-              xl: '1440px',   // 15\"+ laptop width target
-            },
-          }}
-        >
-          <Box sx={{ textAlign: 'center', mb: { xs: 4, md: 6 } }}>
-            <Typography
-              variant="h4"
+            <Box
               sx={{
-                fontWeight: 800,
-                fontSize: { xs: '2.1rem', md: '2.8rem' },
-                background: 'linear-gradient(135deg, #7dd3ff 0%, #c084fc 48%, #f472b6 100%)',
-                WebkitBackgroundClip: 'text',
-                WebkitTextFillColor: 'transparent',
-                textShadow: '0 10px 26px rgba(0,0,0,0.42)',
-                mb: 1.5,
+                borderRadius: 3,
+                border: '1px solid rgba(15, 23, 42, 0.08)',
+                background: '#ffffff',
+                p: { xs: 2.5, md: 3 },
+                boxShadow: '0 20px 40px rgba(15, 23, 42, 0.06)',
               }}
             >
-              Our Core Capabilities
-            </Typography>
-            <Typography
-              sx={{
-                fontSize: { xs: '1.05rem', md: '1.2rem' },
-                background: 'linear-gradient(135deg, rgba(125,211,255,0.95) 0%, rgba(192,132,252,0.92) 40%, rgba(244,114,182,0.92) 100%)',
-                WebkitBackgroundClip: 'text',
-                WebkitTextFillColor: 'transparent',
-                textShadow: '0 8px 22px rgba(0,0,0,0.38)',
-                maxWidth: '760px',
-                mx: 'auto',
-                lineHeight: 1.7,
-              }}
-            >
-              Delivering innovation through engineering excellence and scalable global teams.
-            </Typography>
+              <Typography
+                sx={{
+                  fontWeight: 700,
+                  color: '#0f172a',
+                  mb: 1,
+                }}
+              >
+                What you get
+              </Typography>
+              <Typography
+                variant="body2"
+                sx={{
+                  color: '#5f6b7a',
+                  lineHeight: 1.6,
+                }}
+              >
+                Full-cycle teams, clear ownership, and measurable outcomes from discovery to launch.
+              </Typography>
+            </Box>
           </Box>
 
           <Box
@@ -848,23 +837,87 @@ const ProductCards = forwardRef((props, ref) => {
                 sm: 'repeat(2, minmax(0, 1fr))',
                 md: 'repeat(3, minmax(0, 1fr))',
               },
-              columnGap: { xs: 2, sm: 2.5, md: 3 },
-              rowGap: { xs: 3.5, sm: 4, md: 4.5 },
-              maxWidth: {
-                xs: '100%',
-                md: '1024px',
-                lg: '1280px',
-                xl: '1440px',
-              },
-              mx: 'auto',
-              pt: { xs: 2, md: 3 },
-              pb: { xs: 2, md: 3 },
+              gap: { xs: 2.5, md: 3 },
             }}
           >
             {CAPABILITIES.map((item) => (
-              <Box key={item.title}>
-                <CapabilityCard item={item} />
-              </Box>
+              <Paper
+                key={item.title}
+                elevation={0}
+                sx={{
+                  p: { xs: 2.5, md: 3 },
+                  borderRadius: 3,
+                  border: '1px solid rgba(15, 23, 42, 0.08)',
+                  background: '#ffffff',
+                  transition: 'transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease',
+                  '&:hover': {
+                    transform: 'translateY(-4px)',
+                    boxShadow: `0 16px 30px ${item.colors.shadow}`,
+                    borderColor: `${item.colors.from}55`,
+                  },
+                }}
+              >
+                <Box sx={{ display: 'flex', alignItems: 'center', gap: 2, mb: 2 }}>
+                  <Box
+                    sx={{
+                      width: 44,
+                      height: 44,
+                      borderRadius: 2,
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      background: `linear-gradient(135deg, ${item.colors.from}, ${item.colors.to})`,
+                      color: '#ffffff',
+                      boxShadow: `0 10px 22px ${item.colors.shadow}`,
+                      flexShrink: 0,
+                    }}
+                  >
+                    <item.icon size={20} strokeWidth={2} />
+                  </Box>
+                  <Box>
+                    <Typography
+                      sx={{
+                        fontWeight: 700,
+                        fontSize: '1.05rem',
+                        color: '#0f172a',
+                      }}
+                    >
+                      {item.title}
+                    </Typography>
+                    <Typography variant="body2" sx={{ color: '#5f6b7a' }}>
+                      {item.subtitle}
+                    </Typography>
+                  </Box>
+                </Box>
+
+                <Box sx={{ display: 'grid', gap: 1 }}>
+                  {item.bullets.map((bullet) => (
+                    <Box
+                      key={bullet}
+                      sx={{
+                        display: 'flex',
+                        alignItems: 'flex-start',
+                        gap: 1.2,
+                        color: '#334155',
+                      }}
+                    >
+                      <Box
+                        sx={{
+                          width: 6,
+                          height: 6,
+                          borderRadius: '50%',
+                          background: item.colors.from,
+                          mt: '7px',
+                          flexShrink: 0,
+                        }}
+                      />
+                      <Typography variant="body2" sx={{ lineHeight: 1.5 }}>
+                        {bullet}
+                      </Typography>
+                    </Box>
+                  ))}
+                </Box>
+              </Paper>
             ))}
           </Box>
         </Container>
@@ -1646,461 +1699,455 @@ const ProductCards = forwardRef((props, ref) => {
       </Container>
 
       {/* WHY CHOOSE HIPPOCLOUD SECTION */}
-      <Box
-        sx={{
-          py: { xs: 6, md: 10 },
-          position: 'relative',
-          overflow: 'hidden',
-          background: 'linear-gradient(180deg, #f8fafc 0%, #ffffff 50%, #f1f5f9 100%)',
-        }}
-      >
-        {/* Background decoration */}
-        <Box
-          sx={{
-            position: 'absolute',
-            top: 0,
-            left: 0,
-            right: 0,
-            bottom: 0,
-            opacity: 0.5,
-            background: `
-              radial-gradient(circle at 20% 20%, rgba(66, 165, 245, 0.1) 0%, transparent 50%),
-              radial-gradient(circle at 80% 80%, rgba(102, 187, 106, 0.1) 0%, transparent 50%),
-              radial-gradient(circle at 50% 50%, rgba(171, 71, 188, 0.05) 0%, transparent 70%)
-            `,
-            zIndex: 0,
-          }}
-        />
-
-        <Container maxWidth="lg" sx={{ position: 'relative', zIndex: 1 }}>
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            viewport={{ once: true }}
-          >
-            <Box sx={{ textAlign: 'center', mb: { xs: 5, md: 8 } }}>
-              <Typography
-                variant="h4"
-                sx={{
-                  fontWeight: 800,
-                  fontSize: { xs: '1.75rem', md: '2.5rem' },
-                  mb: 2,
-                  background: 'linear-gradient(135deg, #1a1a1a 0%, #4a5568 100%)',
-                  backgroundClip: 'text',
-                  WebkitBackgroundClip: 'text',
-                  WebkitTextFillColor: 'transparent',
-                }}
-              >
-                Why Choose HippoCloud?
-              </Typography>
-            </Box>
-          </motion.div>
+      <Box sx={{ py: { xs: 6, md: 10 }, background: '#ffffff' }}>
+        <Container maxWidth="lg">
+          <Box sx={{ textAlign: 'center', mb: { xs: 4, md: 6 } }}>
+            <Typography
+              variant="h4"
+              sx={{
+                fontWeight: 800,
+                fontSize: { xs: '1.8rem', md: '2.4rem' },
+                mb: 1.5,
+                color: '#0f172a',
+              }}
+            >
+              Why Choose HippoCloud?
+            </Typography>
+            <Typography
+              variant="body1"
+              sx={{
+                color: '#5f6b7a',
+                maxWidth: 720,
+                mx: 'auto',
+                fontSize: { xs: '1rem', sm: '1.05rem' },
+              }}
+            >
+              A delivery model built for clarity, speed, and scale.
+            </Typography>
+          </Box>
 
           <Box
             sx={{
               display: 'grid',
-              gridTemplateColumns: { xs: 'repeat(2, 1fr)', md: 'repeat(2, 1fr)' },
-              gap: { xs: 1, md: 3 },
-              width: '100%',
-              maxWidth: '900px',
-              mx: 'auto',
-              px: 1,
+              gridTemplateColumns: { xs: '1fr', sm: 'repeat(2, 1fr)', md: 'repeat(4, 1fr)' },
+              gap: { xs: 2, md: 3 },
             }}
           >
             {[
               {
                 icon: TrendingUp,
                 title: 'Industry Alignment',
-                description: 'Our processes and training are strictly mapped to 2026\'s global tech standards.',
-                color: '#42a5f5',
-                gradient: 'linear-gradient(135deg, #42a5f5 0%, #1976d2 100%)',
+                description: 'Our processes map to global tech standards and current market needs.',
+                accent: '#0ea5e9',
               },
               {
                 icon: Handshake,
                 title: 'Agile Partnership',
-                description: 'We don\'t just deliver; we integrate seamlessly into your existing workflows.',
-                color: '#66bb6a',
-                gradient: 'linear-gradient(135deg, #66bb6a 0%, #43a047 100%)',
+                description: 'We integrate into your workflows with transparent, measurable delivery.',
+                accent: '#22c55e',
               },
               {
                 icon: Scale,
                 title: 'Scalable Models',
-                description: 'From a single consultant to a 50-person ODC, we scale as you grow.',
-                color: '#ab47bc',
-                gradient: 'linear-gradient(135deg, #ab47bc 0%, #7b1fa2 100%)',
+                description: 'Scale from a single consultant to a full ODC without friction.',
+                accent: '#8b5cf6',
               },
               {
                 icon: Zap,
                 title: 'Fast Delivery',
-                description: 'Accelerated development cycles with agile methodologies for quicker time-to-market.',
-                color: '#ff7043',
-                gradient: 'linear-gradient(135deg, #ff7043 0%, #e64a19 100%)',
+                description: 'Shorter release cycles with clear milestones and ownership.',
+                accent: '#f59e0b',
               },
-            ].map((item, index) => (
-              <motion.div
-                initial={{ opacity: 0, y: 40 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                viewport={{ once: true }}
-                whileHover={{ y: -5 }}
-                sx={{ width: '100%', minWidth: 0 }}
+            ].map((item) => (
+              <Paper
+                key={item.title}
+                elevation={0}
+                sx={{
+                  p: { xs: 2.5, md: 3 },
+                  borderRadius: 3,
+                  border: '1px solid rgba(15, 23, 42, 0.08)',
+                  background: '#ffffff',
+                  transition: 'transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease',
+                  '&:hover': {
+                    transform: 'translateY(-4px)',
+                    boxShadow: '0 14px 28px rgba(15, 23, 42, 0.08)',
+                    borderColor: 'rgba(15, 23, 42, 0.16)',
+                  },
+                }}
               >
-                <Paper
-                  elevation={0}
+                <Box
                   sx={{
-                    p: { xs: 0.75, sm: 2 },
-                    height: '100%',
-                    borderRadius: 1,
-                    background: 'rgba(255, 255, 255, 0.9)',
-                    backdropFilter: 'blur(20px)',
-                    WebkitBackdropFilter: 'blur(20px)',
-                    border: '1px solid rgba(255, 255, 255, 0.6)',
-                    boxShadow: '0 2px 12px rgba(0, 0, 0, 0.04)',
-                    transition: 'all 0.4s cubic-bezier(0.4, 0, 0.2, 1)',
-                    cursor: 'pointer',
-                    position: 'relative',
-                    overflow: 'hidden',
-                    minWidth: 0,
-                    boxSizing: 'border-box',
-                    '&:hover': {
-                      boxShadow: `0 12px 30px ${item.color}20`,
-                      borderColor: `${item.color}30`,
-                    },
-                    '&::before': {
-                      content: '""',
-                      position: 'absolute',
-                      top: 0,
-                      left: 0,
-                      right: 0,
-                      height: '2px',
-                      background: item.gradient,
-                    },
+                    width: 40,
+                    height: 40,
+                    borderRadius: 2,
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    background: `${item.accent}12`,
+                    color: item.accent,
+                    mb: 2,
                   }}
                 >
-                  <Box
-                    sx={{
-                      width: { xs: 20, sm: 36 },
-                      height: { xs: 20, sm: 36 },
-                      borderRadius: 0.5,
-                      background: item.gradient,
-                      display: 'flex',
-                      alignItems: 'center',
-                      justifyContent: 'center',
-                      mb: { xs: 0.25, sm: 1 },
-                      boxShadow: `0 2px 6px ${item.color}40`,
-                    }}
-                  >
-                    <item.icon size={10} color="#ffffff" strokeWidth={2.5} />
-                  </Box>
-                  <Typography
-                    sx={{
-                      fontWeight: 700,
-                      fontSize: { xs: '0.55rem', sm: '0.9rem' },
-                      mb: 0.15,
-                      color: '#1a1a1a',
-                      lineHeight: 1.1,
-                    }}
-                  >
-                    {item.title}
-                  </Typography>
-                  <Typography
-                    sx={{
-                      color: 'text.secondary',
-                      lineHeight: 1.2,
-                      fontSize: { xs: '0.45rem', sm: '0.75rem' },
-                    }}
-                  >
-                    {item.description}
-                  </Typography>
-                </Paper>
-              </motion.div>
+                  <item.icon size={20} strokeWidth={2} />
+                </Box>
+                <Typography
+                  sx={{
+                    fontWeight: 700,
+                    fontSize: '1.05rem',
+                    color: '#0f172a',
+                    mb: 1,
+                  }}
+                >
+                  {item.title}
+                </Typography>
+                <Typography
+                  variant="body2"
+                  sx={{
+                    color: '#5f6b7a',
+                    fontSize: '0.95rem',
+                    lineHeight: 1.5,
+                  }}
+                >
+                  {item.description}
+                </Typography>
+              </Paper>
             ))}
           </Box>
         </Container>
       </Box>
 
 
-      {/* Free up time section */}
-      <Container
-        maxWidth="lg"
-        sx={{
-          py: { xs: 8, md: 16 },
-          minHeight: { xs: 'auto', md: '80vh' },
-          display: 'flex',
-          justifyContent: 'center',
-          alignItems: 'center',
-        }}
-      >
-        <Box
-          sx={{
-            display: 'flex',
-            flexDirection: { xs: 'column', md: 'row' },
-            alignItems: 'center',
-            justifyContent: 'space-between',
-            width: '100%',
-          }}
-        >
-          {/* Left Content Area (Text) */}
-          <Box sx={{ flex: 1, maxWidth: { xs: '100%', md: '500px' }, pr: { xs: 0, md: 8 }, textAlign: { xs: 'center', md: 'left' } }}>
-
-            {/* Green Accent Line */}
-            <Box
-              sx={{
-                height: '4px',
-                width: '40px',
-                backgroundColor: '#4caf50',
-                mb: 3,
-                borderRadius: '9999px',
-                mx: { xs: 'auto', md: '0' }
-              }}
-            />
-
-            {/* Headline */}
-            <Typography
-              variant="h3"
-              component="h1"
-              sx={{
-                fontWeight: 800,
-                fontSize: { xs: '2.5rem', sm: '3rem', md: '4rem' },
-                lineHeight: 1.1,
-                mb: 2,
-                color: '#333333'
-              }}
-            >
-              Free up time, become more agile grow your business.
-            </Typography>
-
-            {/* Subtext */}
-            <Typography
-              variant="body1"
-              sx={{
-                fontSize: '1.125rem',
-                color: '#666666',
-                mb: 4,
-                maxWidth: '450px',
-                mx: { xs: 'auto', md: '0' }
-              }}
-            >
-              Our team will help you navigate through the digital world so you don't get tied down in technical complexities. You can then focus on what you love about your business and continue to grow it.
-            </Typography>
-
-            {/* Gradient Button */}
-            <Button
-              variant="contained"
-              disableElevation
-              sx={{
-                background: 'linear-gradient(90deg, #ff8a80 0%, #ff4081 100%)',
-                color: 'white',
-                borderRadius: '12px',
-                padding: '12px 32px',
-                fontSize: '1rem',
-                fontWeight: 600,
-                textTransform: 'uppercase',
-                boxShadow: '0 4px 10px rgba(255, 64, 129, 0.4)',
-                transition: 'all 0.3s',
-                '&:hover': {
-                  background: 'linear-gradient(90deg, #ff6e6e 0%, #ff2972 100%)',
-                  transform: 'scale(1.03)',
-                  boxShadow: '0 6px 12px rgba(255, 64, 129, 0.5)',
-                },
-                '&:active': {
-                  transform: 'scale(0.98)',
-                }
-              }}
-              onClick={() => console.log('Get Started Clicked')}
-            >
-              GET STARTED FREE
-            </Button>
-          </Box>
-
-          {/* Right Graphic Area */}
-          <Box sx={{ flex: 1, display: 'flex', justifyContent: 'center', width: '100%' }}>
-            <AbstractGraphic />
-          </Box>
-        </Box>
-      </Container>
-
-      {/* Serious business section */}
-      <Box
-        sx={{
-          minHeight: "100vh",
-          bgcolor: "grey.50",
-          fontFamily: "Roboto, sans-serif",
-          py: { xs: 4, sm: 10 },
-        }}
-      >
+      {/* Industries we serve section */}
+      <Box sx={{ py: { xs: 8, md: 12 }, background: '#ffffff' }}>
         <Container maxWidth="lg">
-          {/* Content Grid */}
-          <Box display="flex" flexDirection={{ xs: "column", md: "row" }} alignItems="flex-start">
-            {/* Left: Feature List */}
-            <Box flex={{ md: 1 }} pr={{ md: 4 }}>
-              {/* Header Section */}
-              <Box maxWidth="600px" mb={5} sx={{ textAlign: { xs: 'center', md: 'left' } }}>
-                <Typography
-                  variant="h8"
-                  sx={{
-                    fontWeight: 700,
-                    color: "grey.900",
-                    mb: 1,
-                    lineHeight: 1.2,
-                    fontSize: { xs: "1.7rem", sm: "2.1rem", md: "2.5rem" },
-                    letterSpacing: "-0.02em",
-                  }}
-                >
-                  Serious business requires a seriously good website
-                </Typography>
-                <Typography
-                  variant="body1"
-                  sx={{ color: "text.secondary", fontSize: "1rem", mt: 2 }}>
-                  Your website is the base camp for all of your digital marketing. It needs to be awesome.
-                </Typography>
-              </Box>
-
-              <Card
-                elevation={6}
+          <Box
+            sx={{
+              display: 'grid',
+              gridTemplateColumns: { xs: '1fr', md: '0.9fr 1.1fr' },
+              gap: { xs: 3, md: 6 },
+              alignItems: 'center',
+            }}
+          >
+            <Box sx={{ textAlign: { xs: 'center', md: 'left' } }}>
+              <Typography
+                variant="h3"
                 sx={{
-                  borderRadius: 4, p: { xs: 3, sm: 4 }, border: "1px solid #f0f0f0", maxWidth: { xs: "100%", sm: "500px", md: "600px", lg: "650px", xl: "700px" },
-                  height: { xs: "auto", sm: "auto", md: "430px", lg: "450px", xl: "500px" }
+                  fontWeight: 800,
+                  fontSize: { xs: '2rem', sm: '2.5rem', md: '3rem' },
+                  lineHeight: 1.1,
+                  mb: 1.5,
+                  color: '#0f172a',
                 }}
               >
-
-                <CardContent sx={{ p: 0, mt: { xs: 2, sm: 3, md: -4, lg: 0, xl: 6 } }}>
-                  {features.map((feature, index) => (
-                    <FeatureCard
-                      key={feature.title}
-                      icon={feature.icon}
-                      title={feature.title}
-                      description={feature.description}
-                      isLast={index === features.length - 1}
-                    />
-                  ))}
-                </CardContent>
-              </Card>
+                Industries We Serve
+              </Typography>
+              <Typography
+                variant="body1"
+                sx={{
+                  color: '#5f6b7a',
+                  fontSize: { xs: '1rem', sm: '1.05rem' },
+                }}
+              >
+                Focused expertise across high-impact sectors with tailored digital solutions.
+              </Typography>
             </Box>
 
-            {/* Right: Static Image */}
-            <Box flex={{ md: 1 }} pl={{ md: 4 }} mt={{ xs: 4, md: 30, lg: 25 }}
-              component="img"
-              src={process.env.PUBLIC_URL + "/website_illustration.png"}
-              alt="Professional illustration of website layouts"
+            <Paper
+              elevation={0}
               sx={{
-                width: "50%",
-                height: { xs: "auto", sm: "auto", md: "500px", lg: "520px", xl: "500px" },
-                objectFit: "contain",
                 borderRadius: 3,
-                mb: 2,
+                border: '1px solid rgba(15, 23, 42, 0.1)',
+                background: '#ffffff',
+                p: { xs: 2.5, sm: 3 },
+                boxShadow: '0 18px 40px rgba(15, 23, 42, 0.06)',
               }}
-            />
+            >
+              {[
+                { title: 'Construction', accent: '#0ea5e9' },
+                { title: 'Retail & Distribution', accent: '#22c55e' },
+                { title: 'Education & Skill Development', accent: '#f59e0b' },
+                { title: 'Media & News Platforms', accent: '#ec4899' },
+                { title: 'Enterprise Businesses', accent: '#8b5cf6' },
+              ].map((item, index) => (
+                <Box
+                  key={item.title}
+                  sx={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: 2,
+                    py: 1.6,
+                    borderBottom:
+                      index === 4 ? 'none' : '1px solid rgba(15, 23, 42, 0.08)',
+                  }}
+                >
+                  <Box
+                    sx={{
+                      width: 10,
+                      height: 10,
+                      borderRadius: '50%',
+                      background: item.accent,
+                      boxShadow: `0 0 0 6px ${item.accent}22`,
+                      flexShrink: 0,
+                    }}
+                  />
+                  <Typography
+                    sx={{
+                      fontWeight: 700,
+                      fontSize: { xs: '1.05rem', sm: '1.1rem' },
+                      color: '#0f172a',
+                    }}
+                  >
+                    {item.title}
+                  </Typography>
+                </Box>
+              ))}
+            </Paper>
           </Box>
         </Container>
       </Box>
 
-      {/* Obsessed with growth section */}
-      <Container
-        maxWidth="lg"
-        sx={{
-          py: { xs: 8, md: 16 },
-          minHeight: { xs: 'auto', md: '80vh' },
-          display: 'flex',
-          justifyContent: 'center',
-          alignItems: 'center',
-        }}
-      >
-        <Box
-          sx={{
-            display: 'flex',
-            flexDirection: { xs: 'column', md: 'row-reverse' },
-            alignItems: 'center',
-            justifyContent: 'space-between',
-            width: '100%',
-          }}
-        >
-          {/* Right Content Area (Text) */}
+      {/* Technology Academy section */}
+      <Box sx={{ py: { xs: 7, md: 12 }, background: '#ffffff' }}>
+        <Container maxWidth="lg">
           <Box
             sx={{
-              flex: 1,
-              maxWidth: { xs: '100%', md: '500px' },
-              pl: { xs: 0, md: 8 },
-              textAlign: { xs: 'center', md: 'left' },
+              display: 'grid',
+              gridTemplateColumns: { xs: '1fr', md: '1.05fr 0.95fr' },
+              gap: { xs: 3, md: 6 },
+              alignItems: 'center',
             }}
           >
-            {/* Green Accent Line */}
+            <Box sx={{ textAlign: { xs: 'center', md: 'left' } }}>
+              <Typography
+                variant="overline"
+                sx={{ letterSpacing: '0.2em', color: '#64748b', fontWeight: 700 }}
+              >
+                Technology Academy
+              </Typography>
+              <Typography
+                variant="h3"
+                sx={{
+                  fontWeight: 800,
+                  fontSize: { xs: '2rem', sm: '2.6rem', md: '3rem' },
+                  lineHeight: 1.1,
+                  mt: 1,
+                  mb: 1.5,
+                  color: '#0f172a',
+                }}
+              >
+                Building Future Technology Talent
+              </Typography>
+              <Typography
+                variant="body1"
+                sx={{ color: '#5f6b7a', fontSize: { xs: '1rem', sm: '1.05rem' } }}
+              >
+                Our Technology Academy trains students in industry-relevant technologies with real project exposure.
+              </Typography>
+
+              <Paper
+                elevation={0}
+                sx={{
+                  mt: 3,
+                  p: 2.5,
+                  borderRadius: 3,
+                  border: '1px solid rgba(15, 23, 42, 0.08)',
+                  background: 'linear-gradient(135deg, rgba(14,165,233,0.08), rgba(34,197,94,0.08))',
+                }}
+              >
+                <Typography sx={{ fontWeight: 700, color: '#0f172a' }}>
+                  Students gain industry exposure equivalent to 2 years of experience.
+                </Typography>
+              </Paper>
+            </Box>
+
+            <Paper
+              elevation={0}
+              sx={{
+                p: { xs: 2.5, sm: 3 },
+                borderRadius: 3,
+                border: '1px solid rgba(15, 23, 42, 0.1)',
+                background: '#ffffff',
+                boxShadow: '0 18px 40px rgba(15, 23, 42, 0.06)',
+              }}
+            >
+              <Typography
+                sx={{
+                  fontWeight: 700,
+                  color: '#0f172a',
+                  mb: 2,
+                  fontSize: '1.1rem',
+                }}
+              >
+                Programs
+              </Typography>
+              <Box sx={{ display: 'grid', gap: 1.4 }}>
+                {[
+                  'Artificial Intelligence',
+                  'Full Stack Development',
+                  'Cloud & DevOps',
+                  'Data Engineering',
+                  'Digital Marketing',
+                ].map((program) => (
+                  <Box
+                    key={program}
+                    sx={{
+                      display: 'flex',
+                      alignItems: 'center',
+                      gap: 1.5,
+                      p: 1.5,
+                      borderRadius: 2,
+                      border: '1px solid rgba(15, 23, 42, 0.08)',
+                      background: '#f8fafc',
+                    }}
+                  >
+                    <Box
+                      sx={{
+                        width: 8,
+                        height: 8,
+                        borderRadius: '50%',
+                        background: '#0ea5e9',
+                        boxShadow: '0 0 0 6px rgba(14,165,233,0.18)',
+                        flexShrink: 0,
+                      }}
+                    />
+                    <Typography sx={{ fontWeight: 600, color: '#0f172a' }}>
+                      {program}
+                    </Typography>
+                  </Box>
+                ))}
+              </Box>
+            </Paper>
+          </Box>
+        </Container>
+      </Box>
+
+      {/* Call to action section */}
+      <Box
+        sx={{
+          py: { xs: 8, md: 14 },
+          background: 'linear-gradient(180deg, #ffffff 0%, #f8fafc 100%)',
+        }}
+      >
+        <Container maxWidth="lg">
+          <Paper
+            elevation={0}
+            sx={{
+              p: { xs: 3, sm: 5, md: 6 },
+              borderRadius: 4,
+              position: 'relative',
+              overflow: 'hidden',
+              border: '1px solid rgba(15, 23, 42, 0.08)',
+              background: 'linear-gradient(135deg, rgba(15, 23, 42, 0.03), rgba(59, 130, 246, 0.05))',
+            }}
+          >
             <Box
               sx={{
-                height: '4px',
-                width: '40px',
-                backgroundColor: '#4caf50',
-                mb: 3,
-                borderRadius: '9999px',
-                mx: { xs: 'auto', md: '0' },
+                position: 'absolute',
+                top: -80,
+                right: -60,
+                width: 200,
+                height: 200,
+                borderRadius: '50%',
+                background: 'radial-gradient(circle, rgba(59,130,246,0.18), transparent 70%)',
+              }}
+            />
+            <Box
+              sx={{
+                position: 'absolute',
+                bottom: -90,
+                left: -60,
+                width: 220,
+                height: 220,
+                borderRadius: '50%',
+                background: 'radial-gradient(circle, rgba(34,197,94,0.18), transparent 70%)',
               }}
             />
 
-            {/* Headline */}
-            <Typography
-              variant="h3"
-              component="h1"
+            <Box
               sx={{
-                fontWeight: 800,
-                fontSize: { xs: '2.5rem', sm: '3rem', md: '4rem' },
-                lineHeight: 1.1,
-                mb: 2,
-                color: '#333333',
+                display: 'grid',
+                gridTemplateColumns: { xs: '1fr', md: '1.35fr 0.65fr' },
+                gap: { xs: 3, md: 4 },
+                alignItems: 'center',
+                position: 'relative',
+                zIndex: 1,
               }}
             >
-              we're obsessed with generating online growth for our clients
-            </Typography>
+              <Box>
+                <Typography
+                  variant="overline"
+                  sx={{
+                    fontWeight: 700,
+                    letterSpacing: '0.12em',
+                    color: '#64748b',
+                  }}
+                >
+                  Call to Action
+                </Typography>
+                <Typography
+                  variant="h3"
+                  sx={{
+                    fontWeight: 800,
+                    fontSize: { xs: '2rem', sm: '2.5rem', md: '3rem' },
+                    lineHeight: 1.15,
+                    mt: 1,
+                    mb: 2,
+                    color: '#0f172a',
+                  }}
+                >
+                  Lets Build the Future Together
+                </Typography>
+                <Typography
+                  variant="body1"
+                  sx={{
+                    color: '#475569',
+                    fontSize: { xs: '1rem', sm: '1.05rem' },
+                    maxWidth: 720,
+                  }}
+                >
+                  Whether you're launching a startup, scaling a product, or modernizing your enterprise systems our team is ready to help.
+                </Typography>
+                <Typography
+                  variant="body1"
+                  sx={{
+                    color: '#475569',
+                    fontSize: { xs: '1rem', sm: '1.05rem' },
+                    mt: 1.5,
+                  }}
+                >
+                  Start your digital transformation today.
+                </Typography>
+              </Box>
 
-            {/* Subtext */}
-            <Typography
-              variant="body1"
-              sx={{
-                fontSize: '1.125rem',
-                color: '#666666',
-                mb: 4,
-                maxWidth: '450px',
-                mx: { xs: 'auto', md: '0' },
-              }}
-            >
-              we love to partner with businesses that want to grow with Pixeld as your 'digital marketing wingman', we discover ways to generate new leads and delight existing ones.
-            </Typography>
-
-            {/* Gradient Button */}
-            <Button
-              variant="contained"
-              disableElevation
-              sx={{
-                background: 'linear-gradient(90deg, #ff8a80 0%, #ff4081 100%)',
-                color: 'white',
-                borderRadius: '12px',
-                padding: '12px 32px',
-                fontSize: '1rem',
-                fontWeight: 600,
-                textTransform: 'uppercase',
-                boxShadow: '0 4px 10px rgba(255, 64, 129, 0.4)',
-                transition: 'all 0.3s',
-                '&:hover': {
-                  background: 'linear-gradient(90deg, #ff6e6e 0%, #ff2972 100%)',
-                  transform: 'scale(1.03)',
-                  boxShadow: '0 6px 12px rgba(255, 64, 129, 0.5)',
-                },
-                '&:active': {
-                  transform: 'scale(0.98)',
-                },
-              }}
-              onClick={() => console.log('Get Started Clicked')}
-            >
-              GET STARTED FREE
-            </Button>
-          </Box>
-
-          {/* Left Graphic Area */}
-          <Box sx={{ flex: 1, display: 'flex', justifyContent: 'center', width: '100%' }}>
-            <AbstractGraphic />
-          </Box>
-        </Box>
-      </Container>
+              <Box sx={{ display: 'flex', justifyContent: { xs: 'flex-start', md: 'flex-end' } }}>
+                <Button
+                  variant="contained"
+                  disableElevation
+                  sx={{
+                    background: 'linear-gradient(90deg, #0ea5e9 0%, #2563eb 100%)',
+                    color: 'white',
+                    borderRadius: '9999px',
+                    padding: '14px 34px',
+                    fontSize: '1rem',
+                    fontWeight: 700,
+                    textTransform: 'none',
+                    boxShadow: '0 10px 24px rgba(37, 99, 235, 0.35)',
+                    transition: 'all 0.25s',
+                    '&:hover': {
+                      background: 'linear-gradient(90deg, #0284c7 0%, #1d4ed8 100%)',
+                      transform: 'translateY(-2px)',
+                      boxShadow: '0 14px 30px rgba(37, 99, 235, 0.4)',
+                    },
+                  }}
+                  onClick={() => console.log('Start Transformation Clicked')}
+                >
+                  Start Now
+                </Button>
+              </Box>
+            </Box>
+          </Paper>
+        </Container>
+      </Box>
     </Box>
   );
 });

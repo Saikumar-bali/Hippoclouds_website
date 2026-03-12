@@ -1,38 +1,63 @@
 
 import React from 'react';
-import { Box, Typography, Container, Grid, Card, CardContent, Paper, Link } from '@mui/material';
+import { Link as RouterLink } from 'react-router-dom';
+import { Box, Typography, Container, Grid, Card, CardContent, Button } from '@mui/material';
 import { motion } from 'framer-motion';
 import { styled } from '@mui/material/styles';
-import HeroVideoBackground from '../ui/HeroVideoBackground';
 
 // Icons
-import WebIcon from '@mui/icons-material/Web';
-import PhoneIphoneIcon from '@mui/icons-material/PhoneIphone';
-import DesignServicesIcon from '@mui/icons-material/DesignServices';
+import HandshakeIcon from '@mui/icons-material/Handshake';
+import DeveloperBoardIcon from '@mui/icons-material/DeveloperBoard';
+import SupportAgentIcon from '@mui/icons-material/SupportAgent';
 import CampaignIcon from '@mui/icons-material/Campaign';
+import GroupWorkIcon from '@mui/icons-material/GroupWork';
+import BusinessCenterIcon from '@mui/icons-material/BusinessCenter';
+import WorkspacesIcon from '@mui/icons-material/Workspaces';
 
 const MotionCard = motion(Card);
 
 const services = [
   {
-    title: 'App Development',
-    description: 'Hippo Cloud focuses on creating user-centric mobile applications with an emphasis on performance, reliability, and robust security. Their approach ensures that each app is tailored to meet the specific needs of the client, providing a seamless user experience.',
-    icon: <PhoneIphoneIcon sx={{ fontSize: 40 }} />
+    title: 'Consultancy',
+    description: 'Strategy-led guidance to align technology decisions with business outcomes.',
+    icon: <HandshakeIcon sx={{ fontSize: 26 }} />,
+    path: '/consultancy',
   },
   {
-    title: 'Web Development',
-    description: 'The company offers expert web development services that prioritize user experience (UX), responsive design, and security. They aim to build websites that are not only visually appealing but also functional and secure, catering to the diverse needs of their clients.',
-    icon: <WebIcon sx={{ fontSize: 40 }} />
+    title: 'App Dev & Support',
+    description: 'Build and maintain apps with reliability, performance, and clear ownership.',
+    icon: <DeveloperBoardIcon sx={{ fontSize: 26 }} />,
+    path: '/appdevsupport',
   },
   {
-    title: 'Graphic Designing',
-    description: 'Hippo Cloud\'s graphic design services are centered around transforming ideas into visually compelling designs. They focus on aesthetics, creativity, and effective visual communication to help businesses establish a strong brand identity.',
-    icon: <DesignServicesIcon sx={{ fontSize: 40 }} />
+    title: 'Infra Support & Managed Services',
+    description: 'Always-on infrastructure monitoring, optimization, and incident response.',
+    icon: <SupportAgentIcon sx={{ fontSize: 26 }} />,
+    path: '/infrasupport',
   },
   {
     title: 'Digital Marketing',
-    description: 'The company provides digital marketing expertise to help businesses enhance their online presence. Their services include: SEO, Social Media Marketing, and Content Marketing.',
-    icon: <CampaignIcon sx={{ fontSize: 40 }} />
+    description: 'SEO, content, and performance campaigns built to grow qualified demand.',
+    icon: <CampaignIcon sx={{ fontSize: 26 }} />,
+    path: '/digitalmarketing',
+  },
+  {
+    title: 'Staff Augmentation',
+    description: 'Access vetted specialists who integrate seamlessly with your teams.',
+    icon: <GroupWorkIcon sx={{ fontSize: 26 }} />,
+    path: '/staffaugmentation',
+  },
+  {
+    title: 'BPO',
+    description: 'Operational support that improves efficiency and protects service quality.',
+    icon: <BusinessCenterIcon sx={{ fontSize: 26 }} />,
+    path: '/bpo',
+  },
+  {
+    title: 'IT Ops & Support',
+    description: 'Reliable systems and processes for stable, secure operations.',
+    icon: <WorkspacesIcon sx={{ fontSize: 26 }} />,
+    path: '/itopssupport',
   },
 ];
 
@@ -42,15 +67,15 @@ const HeroSection = styled(Box)(({ theme }) => ({
   position: 'relative',
   display: 'flex',
   alignItems: 'center',
-  height: '60vh',
+  height: '80vh',
   color: '#fff',
   padding: theme.spacing(4),
-  backgroundImage: `url(${process.env.PUBLIC_URL}/banner-sample.jpg)`,
+  backgroundImage: `url(${process.env.PUBLIC_URL}/services/Services.png)`,
   backgroundSize: 'cover',
   backgroundPosition: 'center',
   backgroundRepeat: 'no-repeat',
   [theme.breakpoints.down('sm')]: {
-    height: '50vh',
+    height: '60vh',
   },
 }));
 
@@ -58,7 +83,6 @@ export default function ServicesPage() {
   return (
     <Box>
       <HeroSection>
-        <HeroVideoBackground />
         <Container maxWidth="md" sx={{ position: 'relative', height: '100%', display: 'flex', alignItems: 'center' }}>
           <Box sx={{ position: 'absolute', left: 0, top: '25%', bottom: '25%', width: '6px', backgroundColor: '#fff', borderRadius: '3px' }} />
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }} sx={{ ml: 4, textAlign: 'left' }}>
@@ -72,55 +96,126 @@ export default function ServicesPage() {
         </Container>
       </HeroSection>
 
-      <Container maxWidth="lg" sx={{ py: 6 }}>
-        <Grid container spacing={4}>
+      <Container maxWidth="lg" sx={{ py: { xs: 6, md: 8 } }}>
+        <Box
+          sx={{
+            display: 'grid',
+            gridTemplateColumns: { xs: '1fr', md: '1.1fr 0.9fr' },
+            gap: { xs: 2, md: 4 },
+            alignItems: 'end',
+            mb: { xs: 4, md: 6 },
+          }}
+        >
+          <Box sx={{ textAlign: { xs: 'center', md: 'left' } }}>
+          <Typography
+            variant="overline"
+            sx={{ letterSpacing: '0.18em', color: '#64748b', fontWeight: 700 }}
+          >
+            Service Overview
+          </Typography>
+          <Typography
+            variant="h3"
+            sx={{
+              fontWeight: 800,
+              fontSize: { xs: '2rem', sm: '2.6rem', md: '3rem' },
+              lineHeight: 1.1,
+              mt: 1,
+              color: '#0f172a',
+            }}
+          >
+            Services that feel like an extension of your team
+          </Typography>
+          </Box>
+          <Typography
+            variant="body1"
+            sx={{
+              color: '#5f6b7a',
+              fontSize: { xs: '1rem', sm: '1.05rem' },
+              textAlign: { xs: 'center', md: 'left' },
+            }}
+          >
+            Tell us where you need momentum. Pick a service line below and we will take you to the right team, the right process, and a clear next step.
+          </Typography>
+        </Box>
+
+        <Grid container spacing={3} alignItems="stretch" justifyContent="center">
           {services.map((service, index) => (
-            <Grid item xs={12} sm={6} md={6} key={index}>
+            <Grid item xs={12} sm={6} md={6} lg={4} key={service.title}>
               <MotionCard
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: index * 0.1 }}
-                sx={{ height: '100%', display: 'flex', flexDirection: 'column', borderRadius: 4, boxShadow: 3, overflow: 'hidden' }}
+                sx={{
+                  height: '100%',
+                  display: 'flex',
+                  flexDirection: 'column',
+                  borderRadius: 3,
+                  border: '1px solid rgba(15, 23, 42, 0.08)',
+                  boxShadow: '0 16px 30px rgba(15, 23, 42, 0.06)',
+                  overflow: 'hidden',
+                  background: '#ffffff',
+                  transition: 'transform 0.2s ease, box-shadow 0.2s ease',
+                  '&:hover': {
+                    transform: 'translateY(-4px)',
+                    boxShadow: '0 20px 40px rgba(15, 23, 42, 0.1)',
+                  },
+                }}
               >
-                <CardContent sx={{ p: 4, flexGrow: 1 }}>
-                  <Box sx={{ display: 'flex', alignItems: 'center', mb: 2 }}>
-                    {service.icon}
-                    <Typography variant="h5" component="h2" sx={{ ml: 2 }}>
+                <CardContent sx={{ p: 3.5, flexGrow: 1, display: 'flex', flexDirection: 'column', minHeight: 220 }}>
+                  <Box sx={{ display: 'flex', alignItems: 'center', gap: 1.5, mb: 2 }}>
+                    <Box
+                      sx={{
+                        width: 42,
+                        height: 42,
+                        borderRadius: 2,
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        background: 'rgba(15, 23, 42, 0.06)',
+                        color: '#0f172a',
+                      }}
+                    >
+                      {service.icon}
+                    </Box>
+                    <Typography variant="h6" component="h2" sx={{ fontWeight: 700, color: '#0f172a' }}>
                       {service.title}
                     </Typography>
                   </Box>
-                  <Typography variant="body1" color="text.secondary">
+                  <Typography
+                    variant="body2"
+                    sx={{
+                      color: '#5f6b7a',
+                      lineHeight: 1.6,
+                      display: '-webkit-box',
+                      WebkitLineClamp: 3,
+                      WebkitBoxOrient: 'vertical',
+                      overflow: 'hidden',
+                      minHeight: '3.6em',
+                    }}
+                  >
                     {service.description}
                   </Typography>
+
+                  <Button
+                    component={RouterLink}
+                    to={service.path}
+                    variant="text"
+                    sx={{
+                      mt: 'auto',
+                      pt: 2.5,
+                      px: 0,
+                      textTransform: 'none',
+                      fontWeight: 700,
+                      color: '#0f172a',
+                    }}
+                  >
+                    Explore service
+                  </Button>
                 </CardContent>
               </MotionCard>
             </Grid>
           ))}
         </Grid>
-
-        <Paper sx={{ p: 4, mt: 6, borderRadius: 4, textAlign: 'center', background: '#f5f5f5' }}>
-          <Typography variant="h5" component="h2" gutterBottom>
-            Why Choose Hippo Cloud?
-          </Typography>
-          <Typography variant="body1" paragraph color="text.secondary">
-            Hippo Cloud Technologies positions itself as a trusted partner for businesses seeking to elevate their online presence. Their blend of innovation and expertise across app development, web development, digital marketing, and graphic design makes them a comprehensive solution provider.
-          </Typography>
-        </Paper>
-
-        <Box sx={{ textAlign: 'center', mt: 6 }}>
-          <Typography variant="h5" component="h2" gutterBottom>
-            Contact Information
-          </Typography>
-          <Typography variant="body1" paragraph>
-            Phone: +91 93478 62547
-          </Typography>
-          <Typography variant="body1" paragraph>
-            Email: <Link href="mailto:info@hippoclouds.com">info@hippoclouds.com</Link>
-          </Typography>
-          <Typography variant="body1" paragraph>
-            Website: <Link href="https://hippoclouds.com" target="_blank" rel="noopener">hippoclouds.com</Link>
-          </Typography>
-        </Box>
       </Container>
     </Box>
   );
