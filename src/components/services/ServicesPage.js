@@ -5,61 +5,46 @@ import { Box, Typography, Container, Grid, Button } from '@mui/material';
 import { motion } from 'framer-motion';
 import { styled } from '@mui/material/styles';
 
-import HandshakeIcon from '@mui/icons-material/Handshake';
-import DeveloperBoardIcon from '@mui/icons-material/DeveloperBoard';
-import SupportAgentIcon from '@mui/icons-material/SupportAgent';
-import CampaignIcon from '@mui/icons-material/Campaign';
-import GroupWorkIcon from '@mui/icons-material/GroupWork';
-import BusinessCenterIcon from '@mui/icons-material/BusinessCenter';
-import WorkspacesIcon from '@mui/icons-material/Workspaces';
-
 const services = [
   {
     title: 'Consultancy',
     description: 'Strategy-led guidance to align technology decisions with business outcomes.',
-    icon: <HandshakeIcon sx={{ fontSize: 26 }} />,
     path: '/consultancy',
     image: '/services/Consultancy  01.png',
   },
   {
     title: 'App Dev & Support',
     description: 'Build and maintain apps with reliability, performance, and clear ownership.',
-    icon: <DeveloperBoardIcon sx={{ fontSize: 26 }} />,
     path: '/appdevsupport',
     image: '/services/APP DEV.png',
   },
   {
     title: 'Infra Support & Managed Services',
     description: 'Always-on infrastructure monitoring, optimization, and incident response.',
-    icon: <SupportAgentIcon sx={{ fontSize: 26 }} />,
     path: '/infrasupport',
     image: '/services/Infra Support & Managed Services (1).png',
   },
   {
     title: 'Digital Marketing',
     description: 'SEO, content, and performance campaigns built to grow qualified demand.',
-    icon: <CampaignIcon sx={{ fontSize: 26 }} />,
     path: '/digitalmarketing',
     image: '/services/Digital Marketing.png',
   },
   {
     title: 'Staff Augmentation',
     description: 'Access vetted specialists who integrate seamlessly with your teams.',
-    icon: <GroupWorkIcon sx={{ fontSize: 26 }} />,
     path: '/staffaugmentation',
     image: '/services/Staff Augmentation.png',
   },
   {
     title: 'BPO',
     description: 'Operational support that improves efficiency and protects service quality.',
-    icon: <BusinessCenterIcon sx={{ fontSize: 26 }} />,
     path: '/bpo',
     image: '/services/Bpo.png',
   },
   {
     title: 'IT Ops & Support',
     description: 'Reliable systems and processes for stable, secure operations.',
-    icon: <WorkspacesIcon sx={{ fontSize: 26 }} />,
     path: '/itopssupport',
     image: '/services/IT Ops & Support (1).png',
   },
@@ -138,21 +123,10 @@ const CardContent = styled(Box)(({ theme }) => ({
   transition: 'transform 0.55s ease',
   display: 'flex',
   flexDirection: 'column',
-  alignItems: 'flex-start',
+  alignItems: 'center',
   gap: '10px',
   transform: 'translateY(0)',
 }));
-
-const IconBox = styled(Box)({
-  width: '48px',
-  height: '48px',
-  borderRadius: '12px',
-  display: 'flex',
-  alignItems: 'center',
-  justifyContent: 'center',
-  backgroundColor: '#f0f4ff',
-  color: '#2563eb',
-});
 
 const ServiceTitle = styled(Typography)({
   fontWeight: 700,
@@ -297,9 +271,6 @@ export default function ServicesPage() {
                     </CardImage>
                     <CardContent className="card-content">
                       <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
-                        <IconBox sx={{ width: 34, height: 34, borderRadius: 2, backgroundColor: 'rgba(255,255,255,0.85)', color: '#0f172a' }}>
-                          {service.icon}
-                        </IconBox>
                         <ServiceTitle sx={{ color: '#0f172a' }}>{service.title}</ServiceTitle>
                       </Box>
                       <Box
