@@ -169,7 +169,8 @@ const RevealLine = styled(Typography, {
 }));
 
 const PoweringText = styled(RevealLine)(({ theme }) => ({
-  color: theme.palette.common.white,
+  color: ACCENT_COLOR,
+  // color: theme.palette.common.white,
   fontFamily: '"Poppins", sans-serif',
   fontWeight: 800,
   fontSize: 54,
