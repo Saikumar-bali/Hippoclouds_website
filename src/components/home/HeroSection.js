@@ -59,7 +59,13 @@ const ContentInner = styled(Box)(({ theme }) => ({
   [theme.breakpoints.down(778)]: {
     padding: '0 12px',
   },
+  [theme.breakpoints.down("sm")]: {
+    marginLeft: "-20px",
+    fontSize: "12px",
+  }
 }));
+
+
 
 const lineMaskBase = (theme) => ({
   position: 'absolute',
@@ -67,10 +73,12 @@ const lineMaskBase = (theme) => ({
   overflow: 'hidden',
   textAlign: 'left',
   zIndex: 3,
+  fontSize: "34px",
   [theme.breakpoints.down(778)]: {
     left: '50%',
     transform: 'translateX(-50%)',
     textAlign: 'center',
+    fontSize: "22px",
   },
 });
 
@@ -89,9 +97,10 @@ const LineOneMask = styled(Box)(({ theme }) => ({
     height: 70,
   },
   [theme.breakpoints.down(480)]: {
-    top: 76,
-    width: '92%',
+    top: 95,
+    width: '100%',
     height: 48,
+    marginLeft: -60,
   },
 }));
 
@@ -107,25 +116,31 @@ const LineTwoMask = styled(Box)(({ theme }) => ({
   },
   [theme.breakpoints.down(778)]: {
     top: 184,
-    width: '92%',
+    width: '100%',
     height: 60,
   },
   [theme.breakpoints.down(480)]: {
     top: 134,
     width: '92%',
     height: 45,
+    marginLeft: -60,
   },
 }));
 
 const LineThreeMask = styled(Box)(({ theme }) => ({
   ...lineMaskBase(theme),
   top: 305,
-  height: 80,
-  width: 960,
+  height: 140,
+  right: 60,
+  width: 'auto',
+  maxWidth: 'none',
+  overflow: 'visible',
   [theme.breakpoints.down(1024)]: {
     top: 294,
-    width: 903,
-    height: 70,
+    right: 36,
+    width: 'auto',
+    maxWidth: 'none',
+    height: 120,
   },
   [theme.breakpoints.down(778)]: {
     top: 248,
@@ -133,9 +148,10 @@ const LineThreeMask = styled(Box)(({ theme }) => ({
     height: 60,
   },
   [theme.breakpoints.down(480)]: {
-    top: 186,
+    top: 166,
     width: '94%',
     height: 45,
+    marginLeft: -60,
   },
 }));
 
@@ -163,12 +179,12 @@ const PoweringText = styled(RevealLine)(({ theme }) => ({
     lineHeight: '95px',
   },
   [theme.breakpoints.down(778)]: {
-    fontSize: 48,
-    lineHeight: '70px',
+    fontSize: 34,
+    lineHeight: '40px',
   },
   [theme.breakpoints.down(480)]: {
-    fontSize: 34,
-    lineHeight: '48px',
+    fontSize: 26,
+    lineHeight: '32px',
   },
 }));
 
@@ -183,19 +199,40 @@ const AccentHeading = styled(RevealLine)(({ theme }) => ({
     lineHeight: '70px',
   },
   [theme.breakpoints.down(778)]: {
-    fontSize: 54,
-    lineHeight: '60px',
+    fontSize: 36,
+    lineHeight: '40px',
   },
   [theme.breakpoints.down(480)]: {
+    fontSize: 28,
+    lineHeight: '32px',
+  },
+}));
+
+const AccentHeadingLong = styled(AccentHeading)(({ theme }) => ({
+  fontSize: 50,
+  lineHeight: '58px',
+  whiteSpace: 'normal',
+  maxWidth: '100%',
+  wordBreak: 'break-word',
+  [theme.breakpoints.down(1200)]: {
     fontSize: 42,
-    lineHeight: '45px',
+    lineHeight: '50px',
+    whiteSpace: 'normal',
+  },
+  [theme.breakpoints.down(778)]: {
+    fontSize: 36,
+    lineHeight: '40px',
+  },
+  [theme.breakpoints.down(480)]: {
+    fontSize: 28,
+    lineHeight: '32px',
   },
 }));
 
 const DescriptionText = styled(Typography)(({ theme }) => ({
   position: 'absolute',
   left: 126,
-  top: 404,
+  top: 430,
   maxWidth: 911,
   width: 'min(911px, calc(100% - 252px))',
   padding: '2px 6px',
@@ -205,38 +242,49 @@ const DescriptionText = styled(Typography)(({ theme }) => ({
   fontSize: 18,
   lineHeight: '30px',
   zIndex: 3,
+  [theme.breakpoints.down(1200)]: {
+    top: 520,
+  },
   [theme.breakpoints.down(1024)]: {
+    top: 560,
     maxWidth: 921,
     width: 'min(921px, calc(100% - 252px))',
   },
   [theme.breakpoints.down(778)]: {
     left: '50%',
-    top: 332,
+    top: 370,
     transform: 'translateX(-50%)',
     maxWidth: 721,
     width: 'min(721px, calc(100% - 48px))',
     textAlign: 'center',
     fontSize: 16,
     lineHeight: '24px',
+    marginTop: 12,
+    padding: 0,
   },
   [theme.breakpoints.down(480)]: {
-    top: 246,
+    top: 290,
     maxWidth: 446,
     width: 'min(446px, calc(100% - 32px))',
     lineHeight: '18px',
+    marginTop: 0,
+    padding: 0,
   },
 }));
 
 const ButtonsRow = styled(Box)(({ theme }) => ({
   position: 'absolute',
   left: 126,
-  top: 485,
+  top: 510,
   display: 'flex',
   gap: 66,
   zIndex: 3,
+  [theme.breakpoints.down(1200)]: {
+    top: 610,
+  },
   [theme.breakpoints.down(1024)]: {
     left: 27,
-    top: 530,
+    top: 660,
     gap: 48,
   },
   [theme.breakpoints.down(778)]: {
@@ -329,9 +377,9 @@ const HeroSection = () => {
           </LineTwoMask>
 
           <LineThreeMask>
-            <AccentHeading component="h2" $animate={animate}>
+            <AccentHeadingLong component="h2" $animate={animate}>
               Innovation & Scalable Technology Solutions
-            </AccentHeading>
+            </AccentHeadingLong>
           </LineThreeMask>
 
           <DescriptionText component="p">
