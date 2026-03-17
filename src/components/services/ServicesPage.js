@@ -59,7 +59,7 @@ const HeroSection = styled(Box)(({ theme }) => ({
   height: '80vh',
   color: '#fff',
   padding: theme.spacing(4),
-  backgroundImage: `url(${process.env.PUBLIC_URL}/services/Services.png)`,
+  background: `linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url(${process.env.PUBLIC_URL}/services/Services.png)`,
   backgroundSize: 'cover',
   backgroundPosition: 'center',
   backgroundRepeat: 'no-repeat',
