@@ -1579,9 +1579,9 @@ const ProductCards = forwardRef((props, ref) => {
         </Container>
       </Box>
 
-      <Container maxWidth="lg" sx={{ mt: 6, mb: 4 }}>
+      {/* <Container maxWidth="lg" sx={{ mt: 6, mb: 4 }}> */}
         {/* Header Section */}
-        <Grid container justifyContent="center">
+        {/* <Grid container justifyContent="center">
           <Grid item xs={12} md={10} sx={{ textAlign: "center" }}>
             <Typography
               variant="h4"
@@ -1605,10 +1605,10 @@ const ProductCards = forwardRef((props, ref) => {
               requirement for existing project or new application.
             </Typography>
           </Grid>
-        </Grid>
+        </Grid> */}
 
         {/* Tabs */}
-        <Box
+        {/* <Box
           sx={{
             display: "flex",
             justifyContent: "center",
@@ -1627,10 +1627,10 @@ const ProductCards = forwardRef((props, ref) => {
               {category}
             </FilterButton>
           ))}
-        </Box>
+        </Box> */}
 
         {/* CONTENT SECTION (EXACTLY LIKE YOUR IMAGE) */}
-        <Box
+        {/* <Box
           sx={{
             background: "#f8f8f8",
             borderRadius: "18px",
@@ -1640,7 +1640,7 @@ const ProductCards = forwardRef((props, ref) => {
         >
           <Grid container spacing={4}>
             {/* LEFT SIDE TEXT */}
-            <Grid item xs={12} md={4}>
+            {/* <Grid item xs={12} md={4}>
               <Box sx={{ pr: { md: 3 } }}>
                 <Box sx={{ display: "flex", alignItems: "center", mb: 1 }}>
                   <IconComponent
@@ -1660,10 +1660,10 @@ const ProductCards = forwardRef((props, ref) => {
                   {activeData.description}
                 </Typography>
               </Box>
-            </Grid>
+            </Grid> */}
 
             {/* RIGHT SIDE CARDS (PIXEL PERFECT GRID) */}
-            <Grid item xs={12} md={8}>
+            {/* <Grid item xs={12} md={8}>
               <Grid container spacing={3}>
                 {activeData.technologies.slice(0, 6).map((tech, index) => (
                   <Grid item xs={6} sm={4} key={index}>
@@ -1711,12 +1711,12 @@ const ProductCards = forwardRef((props, ref) => {
                 ))}
               </Grid>
             </Grid>
-          </Grid>
-        </Box>
-      </Container>
+          </Grid> */}
+        {/* </Box> 
+      </Container> */}
 
       {/* WHY CHOOSE HIPPOCLOUD SECTION */}
-      <Box sx={{ py: { xs: 6, md: 10 }, background: '#ffffff' }}>
+      {/* <Box sx={{ py: { xs: 6, md: 10 }, background: '#ffffff' }}>
         <Container maxWidth="lg">
           <Box sx={{ textAlign: 'center', mb: { xs: 4, md: 6 } }}>
             <Typography
@@ -1831,7 +1831,7 @@ const ProductCards = forwardRef((props, ref) => {
             ))}
           </Box>
         </Container>
-      </Box>
+      </Box> */}
 
 
       {/* Industries we serve section */}
