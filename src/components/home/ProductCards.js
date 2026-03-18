@@ -13,7 +13,7 @@ import {
 } from '@mui/material';
 import { motion } from 'framer-motion';
 import { styled, alpha } from '@mui/material/styles';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import {
   Code,
   Smartphone,
@@ -483,6 +483,7 @@ const FilterButton = styled(Button)(({ theme, active }) => ({
 
 // --- MAIN COMPONENT ---
 const ProductCards = forwardRef((props, ref) => {
+  const navigate = useNavigate();
   const [activeCategory, setActiveCategory] = useState('Testing');
   const theme = useTheme();
 
@@ -2156,7 +2157,7 @@ const ProductCards = forwardRef((props, ref) => {
                       boxShadow: '0 14px 30px rgba(37, 99, 235, 0.4)',
                     },
                   }}
-                  onClick={() => console.log('Start Transformation Clicked')}
+                  onClick={() => navigate('/contact')}
                 >
                   Start Now
                 </Button>
