@@ -46,31 +46,40 @@ const FooterContainer = styled(Box)({
   marginTop: 'auto',
   position: 'relative',
   overflow: 'hidden',
-  background: 'linear-gradient(135deg, #081325 0%, #0A1C36 50%, #102A4D 100%)',
+  background: 'linear-gradient(135deg, #050B16 0%, #091A33 52%, #0E2A4A 100%)',
   color: '#E8F0FF',
-  borderTop: `1px solid ${alpha('#B2C5E6', 0.22)}`,
+  borderTop: `1px solid ${alpha('#B2C5E6', 0.2)}`,
   '&::before': {
     content: '""',
     position: 'absolute',
-    top: -220,
-    right: -120,
-    width: 420,
-    height: 420,
+    top: -260,
+    right: -160,
+    width: 520,
+    height: 520,
     borderRadius: '50%',
-    background: `radial-gradient(circle, ${alpha('#4E9BFF', 0.2)} 0%, transparent 70%)`,
+    background: `radial-gradient(circle, ${alpha('#2E79FF', 0.2)} 0%, transparent 70%)`,
     pointerEvents: 'none',
   },
 });
 
-const FooterInner = styled(Box)({
+const FooterInner = styled(Box)(({ theme }) => ({
   width: '100%',
-  maxWidth: 1280,
+  maxWidth: 1320,
   margin: '0 auto',
-  padding: '64px 24px 24px',
+  padding: '56px 24px 22px',
   boxSizing: 'border-box',
   position: 'relative',
   zIndex: 1,
-});
+  [theme.breakpoints.between('md', 'lg')]: {
+    padding: '56px 16px 22px',
+  },
+  [theme.breakpoints.down('md')]: {
+    maxWidth: '100%',
+  },
+  [theme.breakpoints.down('sm')]: {
+    padding: '40px 16px 18px',
+  },
+}));
 
 const BrandLogo = styled('img')({
   width: 210,
@@ -81,7 +90,7 @@ const BrandLogo = styled('img')({
 const BrandText = styled(Typography)({
   marginTop: 16,
   maxWidth: 360,
-  color: alpha('#F4F8FF', 0.82),
+  color: alpha('#F4F8FF', 0.8),
   fontSize: 14,
   lineHeight: '24px',
 });
@@ -118,26 +127,37 @@ const SocialRow = styled(Box)({
 const SocialIcon = styled(IconButton)({
   width: 36,
   height: 36,
-  borderRadius: 10,
+  borderRadius: 12,
   color: alpha('#F4F8FF', 0.9),
   border: `1px solid ${alpha('#D7E4FF', 0.2)}`,
-  backgroundColor: alpha('#FFFFFF', 0.04),
+  backgroundColor: alpha('#FFFFFF', 0.03),
   transition: 'background-color 180ms ease, border-color 180ms ease, color 180ms ease',
   '&:hover': {
-    backgroundColor: alpha('#66B2FF', 0.18),
+    backgroundColor: alpha('#66B2FF', 0.16),
     borderColor: alpha('#9FD0FF', 0.5),
     color: '#FFFFFF',
   },
 });
 
-const InfoCard = styled(Box)({
-  padding: '18px 16px',
-  borderRadius: 14,
-  border: `1px solid ${alpha('#D3E2FF', 0.18)}`,
-  backgroundColor: alpha('#FFFFFF', 0.05),
-  backdropFilter: 'blur(2px)',
-  marginLeft: '30px',
+const LocationsTitle = styled(Typography)({
+  color: '#FFFFFF',
+  fontSize: 16,
+  lineHeight: '20px',
+  fontWeight: 700,
+  letterSpacing: '0.8px',
+  textTransform: 'uppercase',
+  marginBottom: 14,
 });
+
+const LocationCard = styled(Box)(({ theme }) => ({
+  padding: '8px 0 0',
+  color: alpha('#EFF5FF', 0.86),
+  fontSize: 13,
+  lineHeight: '20px',
+  [theme.breakpoints.down('md')]: {
+    paddingTop: 0,
+  },
+}));
 
 const ContactLine = styled(Box)({
   display: 'flex',
@@ -147,20 +167,21 @@ const ContactLine = styled(Box)({
   color: alpha('#EFF5FF', 0.86),
   fontSize: 13,
   lineHeight: '20px',
+  overflowWrap: 'anywhere',
 });
 
 const MapContainer = styled(Box)({
-  marginTop: 12,
-  borderRadius: 14,
+  borderRadius: 12,
   overflow: 'hidden',
   border: `1px solid ${alpha('#D3E2FF', 0.2)}`,
-  boxShadow: `0 16px 40px ${alpha('#01070F', 0.36)}`,
+  boxShadow: `0 16px 40px ${alpha('#01070F', 0.45)}`,
+  minHeight: 210,
   '& iframe': {
     width: '100%',
-    height: 170,
+    height: '100%',
     border: 0,
     display: 'block',
-    filter: 'saturate(0.85) contrast(1.02)',
+    filter: 'saturate(0.92) contrast(1.04)',
   },
 });
 
@@ -182,8 +203,24 @@ export default function Footer() {
   return (
     <FooterContainer component="footer">
       <FooterInner>
-        <Grid container spacing={{ xs: 4, md: 5 }}>
-          <Grid item xs={12} lg={4}>
+        <Grid
+          container
+          rowSpacing={{ xs: 4, md: 5 }}
+          columnSpacing={{ xs: 3, md: 1 }}
+          alignItems="stretch"
+        >
+          <Grid
+            item
+            xs={12}
+            sm={12}
+            md={3}
+            lg={3}
+            sx={{
+              minWidth: 0,
+              flexBasis: { md: '22%', lg: 'auto' },
+              maxWidth: { md: '22%', lg: 'none' },
+            }}
+          >
             <BrandLogo src={`${process.env.PUBLIC_URL}/Hippo_Logo_White.png`} alt="Hippocloud Technologies" />
             <BrandText>
               Enterprise-grade technology services and digital products designed to accelerate operations, reduce delivery risk, and scale growth.
@@ -207,8 +244,9 @@ export default function Footer() {
             </SocialRow>
           </Grid>
 
-          <Grid item xs={12} lg={5}>
+          <Grid item xs={12} sm={12} md={6} lg={6} sx={{ minWidth: 0 }}>
             <Grid container spacing={{ xs: 3, sm: 4 }}>
+
               {FOOTER_GROUPS.map((group) => (
                 <Grid key={group.title} item xs={6} sm={4}>
                   <SectionTitle>{group.title}</SectionTitle>
@@ -222,34 +260,78 @@ export default function Footer() {
                 </Grid>
               ))}
             </Grid>
+            <Grid container spacing={{ xs: 3, md: 4 }} sx={{ mt: 2 }}>
+              <Grid item xs={12} md={6}>
+                <LocationCard >
+                  <SectionTitle sx={{ mb: 1 }}>Head Office</SectionTitle>
+                  <ContactLine>
+                    <LocationOnOutlinedIcon sx={{ fontSize: 18, mt: '1px', color: '#9FD0FF' }} />
+                    <Box component="span">
+                      2nd floor, CBM Compound, 
+                      <br />
+                      Asilmetta, Visakhapatnam,
+                      <br />
+                      Andhra Pradesh 530003.
+
+                    </Box>                  </ContactLine>
+                  <ContactLine>
+                    <LocalPhoneOutlinedIcon sx={{ fontSize: 18, mt: '1px', color: '#9FD0FF' }} />
+                    <Box component="span">+91 93478 62547</Box>
+                  </ContactLine>
+                  <ContactLine sx={{ mb: 0 }}>
+                    <MailOutlineRoundedIcon sx={{ fontSize: 18, mt: '1px', color: '#9FD0FF' }} />
+                    <FooterLink href="mailto:info@hippoclouds.com" underline="none">
+                      info@hippoclouds.com
+                    </FooterLink>
+                  </ContactLine>
+                </LocationCard>
+              </Grid>
+              <Grid item xs={12} md={6}>
+                <LocationCard>
+                  <SectionTitle sx={{ mb: 1 }}>Madhurawada Branch</SectionTitle>
+                  <ContactLine>
+                    <LocationOnOutlinedIcon sx={{ fontSize: 18, mt: '1px', color: '#9FD0FF' }} />
+                    <Box component="span">
+                      122, D, No 3-73/2B, H. I. G,
+                      <br />
+                      near S F S school, Madhilapuri
+                      <br />
+                      Vuda Colony, Madhurawada,
+                      <br />
+                      Visakhapatnam,
+                      <Box component="br" sx={{ display: { xs: 'none', md: 'block', lg: 'none' } }} />
+                      Andhra Pradesh 530041
+                    </Box>
+                  </ContactLine>
+                  <ContactLine>
+                    <LocalPhoneOutlinedIcon sx={{ fontSize: 18, mt: '1px', color: '#9FD0FF' }} />
+                    <Box component="span">+91 93478 62547</Box>
+                  </ContactLine>
+                  <ContactLine sx={{ mb: 0 }}>
+                    <MailOutlineRoundedIcon sx={{ fontSize: 18, mt: '1px', color: '#9FD0FF' }} />
+                    <FooterLink href="mailto:info@hippoclouds.com" underline="none">
+                      info@hippoclouds.com
+                    </FooterLink>
+                  </ContactLine>
+                </LocationCard>
+              </Grid>
+            </Grid>
           </Grid>
-
-          <Grid item xs={12} lg={3}>
-            <InfoCard>
-              <SectionTitle sx={{ mb: 1.25 }}>Contact</SectionTitle>
-              <ContactLine>
-                <LocationOnOutlinedIcon sx={{ fontSize: 18, mt: '1px', color: '#9FD0FF' }} />
-                <Box component="span">Visakhapatnam, Andhra Pradesh, India</Box>
-              </ContactLine>
-              <ContactLine>
-                <LocalPhoneOutlinedIcon sx={{ fontSize: 18, mt: '1px', color: '#9FD0FF' }} />
-                <Box component="span">+91 93478 62547</Box>
-              </ContactLine>
-              <ContactLine sx={{ mb: 0 }}>
-                <MailOutlineRoundedIcon sx={{ fontSize: 18, mt: '1px', color: '#9FD0FF' }} />
-                <FooterLink href="mailto:info@hippoclouds.com" underline="none">
-                  info@hippoclouds.com
-                </FooterLink>
-              </ContactLine>
-            </InfoCard>
-
-            <MapContainer>
+          <Grid item xs={12} sm={12} md={3} lg={3} sx={{ display: 'flex', flexDirection: 'column', minWidth: 0 }}>
+            <LocationsTitle>OUR LOCATION</LocationsTitle>
+            <MapContainer
+              sx={{
+                flex: 1,
+                maxWidth: { md: 240, lg: 'none' },
+                ml: { md: 'auto', lg: 0 },
+                minHeight: { xs: 200, sm: 220, md: 210 },
+              }}
+            >
               <iframe
                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3800.3608297953783!2d83.30957121117216!3d17.727629583148765!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a39436951934c95%3A0xe19863490a0f8065!2sHIPPOCLOUD%20TECHNOLOGIES%20.!5e0!3m2!1sen!2sin!4v1760584245361!5m2!1sen!2sin"
                 loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"
                 title="HippoClouds Technologies Location"
-                style={{ marginLeft: '30px' }}
               />
             </MapContainer>
           </Grid>
