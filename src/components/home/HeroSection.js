@@ -21,7 +21,7 @@ const HeroRoot = styled(Box)(({ theme }) => ({
 const MediaLayer = styled(Box)({
   position: 'absolute',
   inset: 0,
-  zIndex: 0,
+  zIndex: 1,
 });
 
 const FallbackImage = styled('img')({
@@ -38,11 +38,23 @@ const BackgroundVideo = styled('video')({
   width: '100%',
   height: '100%',
   objectFit: 'cover',
+  filter: 'brightness(0.9) contrast(1.05)',
+});
+
+const OverlayLayer = styled(Box)({
+  position: 'absolute',
+  inset: 0,
+  zIndex: 2,
+  background: `
+    radial-gradient(circle at 25% 40%, rgba(0,0,0,0.55), transparent 60%),
+    linear-gradient(to right, rgba(0,0,0,0.5) 0%, rgba(0,0,0,0.2) 50%, rgba(0,0,0,0.05) 100%)
+  `,
+  pointerEvents: 'none',
 });
 
 const ContentLayer = styled(Box)({
   position: 'relative',
-  zIndex: 2,
+  zIndex: 3,
   width: '100%',
   height: '100%',
 });
@@ -163,6 +175,7 @@ const RevealLine = styled(Typography, {
   transform: $animate ? 'translateY(0)' : 'translateY(100%)',
   transition: 'transform 1500ms ease-in-out 400ms',
   willChange: 'transform',
+  textShadow: '0 2px 8px rgba(0,0,0,0.8), 0 0 12px rgba(116,255,224,0.3)',
   '@media (prefers-reduced-motion: reduce)': {
     transform: 'translateY(0)',
     transition: 'none',
@@ -170,8 +183,8 @@ const RevealLine = styled(Typography, {
 }));
 
 const PoweringText = styled(RevealLine)(({ theme }) => ({
-  color: ACCENT_COLOR,
-  // color: theme.palette.common.white,
+  // color: ACCENT_COLOR,
+  color: theme.palette.common.white,
   fontFamily: '"Poppins", sans-serif',
   fontWeight: 800,
   fontSize: 54,
@@ -191,7 +204,8 @@ const PoweringText = styled(RevealLine)(({ theme }) => ({
 }));
 
 const AccentHeading = styled(RevealLine)(({ theme }) => ({
-  color: ACCENT_COLOR,
+  // color: ACCENT_COLOR,
+    color: theme.palette.common.white,
   fontFamily: '"Poppins", sans-serif',
   fontWeight: 800,
   fontSize: 64,
@@ -388,6 +402,7 @@ const HeroSection = () => {
           </BackgroundVideo>
         )}
       </MediaLayer>
+      <OverlayLayer />
 
       <ContentLayer>
         <ContentInner>
