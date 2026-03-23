@@ -245,7 +245,7 @@ export default function Footer() {
           </Grid>
 
           <Grid item xs={12} sm={12} md={6} lg={6} sx={{ minWidth: 0 }}>
-            <Grid container spacing={{ xs: 3, sm: 4 }}>
+            <Grid container spacing={{ xs: 3, sm: 4  , md: 6 , lg: 10 }}>
 
               {FOOTER_GROUPS.map((group) => (
                 <Grid key={group.title} item xs={6} sm={4}>
@@ -317,7 +317,7 @@ export default function Footer() {
               </Grid>
             </Grid>
           </Grid>
-          <Grid item xs={12} sm={12} md={3} lg={3} sx={{ display: 'flex', flexDirection: 'column', minWidth: 0 }}>
+          <Grid item xs={12} sm={12} md={3} lg={3} sx={{ display: 'flex', flexDirection: 'column', minWidth: 0 ,ml: '60px'}}>
             <LocationsTitle>OUR LOCATION</LocationsTitle>
             <MapContainer
               sx={{
