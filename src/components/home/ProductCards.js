@@ -1014,6 +1014,14 @@ const ProductCards = forwardRef((props, ref) => {
               gap: { xs: 1.8, md: '14px' },
               alignItems: 'start',
               justifyContent: { lg: 'center' },
+              '@media (min-width: 1024px)': {
+                gridTemplateColumns: 'repeat(6, minmax(0, 1fr))',
+                justifyContent: 'center',
+              },
+              '@media (min-width: 1200px)': {
+                gridTemplateColumns: 'repeat(6, 162px)',
+                justifyContent: 'center',
+              },
             }}
           >
             {[
