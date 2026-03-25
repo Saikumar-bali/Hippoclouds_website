@@ -1073,108 +1073,108 @@ const ProductCards = forwardRef((props, ref) => {
               >
                 <Link to={item.route} style={{ textDecoration: 'none' }}>
                   <Card
-                  elevation={0}
-                  sx={{
-                    height: 'auto',
-                    minHeight: { xs: 214, md: index % 2 === 0 ? '238px' : '272px' },
-                    mt: { xs: 0, md: index % 2 === 0 ? '22px' : 0 },
-                    borderRadius: '14px',
-                    background: 'linear-gradient(180deg, #f4f5f7 0%, #e9edf3 100%)',
-                    border: '1px solid rgba(255,255,255,0.92)',
-                    boxShadow: '0 0 0 1px rgba(67, 170, 255, 0.34), 0 10px 28px rgba(0, 120, 255, 0.22)',
-                    alignContent: 'center',
-                    position: 'relative',
-                    overflow: 'hidden',
-                    transition: 'transform 0.3s ease, box-shadow 0.35s ease, border-color 0.3s ease',
-                    transformOrigin: 'center',
-                    '&::after': {
-                      content: '""',
-                      position: 'absolute',
-                      inset: '-20% -60%',
-                      background: 'linear-gradient(120deg, rgba(255,255,255,0.32) 0%, rgba(255,255,255,0) 55%)',
-                      transform: 'translateX(-120%) rotate(12deg)',
-                      transition: 'transform 0.7s ease',
-                      pointerEvents: 'none',
-                      mixBlendMode: 'screen',
-                    },
-                    '&:hover': {
-                      transform: 'translateY(-8px) scale(1.04)',
-                      borderColor: 'rgba(31,155,226,0.6)',
-                      boxShadow: '0 16px 42px rgba(0, 120, 255, 0.32)',
-                      '&::after': {
-                        transform: 'translateX(160%) rotate(12deg)',
-                      },
-                      '.scalable-icon': {
-                        transform: 'translateY(-4px) scale(1.12)',
-                        filter: 'drop-shadow(0 8px 14px rgba(0,120,255,0.28))',
-                      },
-                    },
-                  }}
-                >
-                  <CardContent
+                    elevation={0}
                     sx={{
-                      p: { xs: 1.8, md: '12px 14px 10px' },
-                      textAlign: 'center',
-                      height: '100%',
-                      display: 'flex',
-                      flexDirection: 'column',
-                      alignItems: 'center',
+                      height: 'auto',
+                      minHeight: { xs: 214, md: index % 2 === 0 ? '238px' : '272px' },
+                      mt: { xs: 0, md: index % 2 === 0 ? '22px' : 0 },
+                      borderRadius: '14px',
+                      background: 'linear-gradient(180deg, #f4f5f7 0%, #e9edf3 100%)',
+                      border: '1px solid rgba(255,255,255,0.92)',
+                      boxShadow: '0 0 0 1px rgba(67, 170, 255, 0.34), 0 10px 28px rgba(0, 120, 255, 0.22)',
+                      alignContent: 'center',
+                      position: 'relative',
+                      overflow: 'hidden',
+                      transition: 'transform 0.3s ease, box-shadow 0.35s ease, border-color 0.3s ease',
+                      transformOrigin: 'center',
+                      '&::after': {
+                        content: '""',
+                        position: 'absolute',
+                        inset: '-20% -60%',
+                        background: 'linear-gradient(120deg, rgba(255,255,255,0.32) 0%, rgba(255,255,255,0) 55%)',
+                        transform: 'translateX(-120%) rotate(12deg)',
+                        transition: 'transform 0.7s ease',
+                        pointerEvents: 'none',
+                        mixBlendMode: 'screen',
+                      },
+                      '&:hover': {
+                        transform: 'translateY(-8px) scale(1.04)',
+                        borderColor: 'rgba(31,155,226,0.6)',
+                        boxShadow: '0 16px 42px rgba(0, 120, 255, 0.32)',
+                        '&::after': {
+                          transform: 'translateX(160%) rotate(12deg)',
+                        },
+                        '.scalable-icon': {
+                          transform: 'translateY(-4px) scale(1.12)',
+                          filter: 'drop-shadow(0 8px 14px rgba(0,120,255,0.28))',
+                        },
+                      },
                     }}
                   >
-                    <Box
-                      component="img"
-                      className="scalable-icon"
-                      src={`${process.env.PUBLIC_URL}${item.iconSrc}`}
-                      alt={item.title.join(' ')}
+                    <CardContent
                       sx={{
-                        mt: 0.15,
-                        mb: { xs: 0.62, md: '5px' },
-                        width: { xs: 34, md: 48 },
-                        height: { xs: 34, md: 48 },
-                        objectFit: 'contain',
-                        transition: 'transform 0.35s ease, filter 0.35s ease',
-                      }}
-                    />
-
-                    <Typography
-                      sx={{
-                        color: '#0f2b58',
-                        fontSize: { xs: '1.35rem', md: '16px' },
-                        fontWeight: 500,
-                        lineHeight: 1.06,
-                        letterSpacing: '-0.15px',
-                        fontFamily: '"Poppins", "Inter", sans-serif',
+                        p: { xs: 1.8, md: '12px 14px 10px' },
+                        textAlign: 'center',
+                        height: '100%',
+                        display: 'flex',
+                        flexDirection: 'column',
+                        alignItems: 'center',
                       }}
                     >
-                      {item.title[0]}
-                      <br />
-                      {item.title[1]}
-                    </Typography>
+                      <Box
+                        component="img"
+                        className="scalable-icon"
+                        src={`${process.env.PUBLIC_URL}${item.iconSrc}`}
+                        alt={item.title.join(' ')}
+                        sx={{
+                          mt: 0.15,
+                          mb: { xs: 0.62, md: '5px' },
+                          width: { xs: 34, md: 48 },
+                          height: { xs: 34, md: 48 },
+                          objectFit: 'contain',
+                          transition: 'transform 0.35s ease, filter 0.35s ease',
+                        }}
+                      />
 
-                    <Box
-                      sx={{
-                        width: '86%',
-                        height: '2px',
-                        mt: { xs: 0.52, md: '8px' },
-                        mb: { xs: 0.68, md: '8px' },
-                        borderRadius: '2px',
-                        background: 'linear-gradient(90deg, rgba(29,151,229,0.22) 0%, #1f9be2 12%, #1f9be2 88%, rgba(29,151,229,0.22) 100%)',
-                      }}
-                    />
+                      <Typography
+                        sx={{
+                          color: '#0f2b58',
+                          fontSize: { xs: '1.35rem', md: '16px' },
+                          fontWeight: 500,
+                          lineHeight: 1.06,
+                          letterSpacing: '-0.15px',
+                          fontFamily: '"Poppins", "Inter", sans-serif',
+                        }}
+                      >
+                        {item.title[0]}
+                        <br />
+                        {item.title[1]}
+                      </Typography>
 
-                    <Typography
-                      sx={{
-                        color: '#1b2f52',
-                        fontSize: { xs: '0.92rem', md: '12px' },
-                        lineHeight: { xs: 1.34, md: 1.3 },
-                        fontWeight: 500,
-                        fontFamily: '"Poppins", "Inter", sans-serif',
-                      }}
-                    >
-                      {item.description}
-                    </Typography>
-                  </CardContent>
-                </Card>
+                      <Box
+                        sx={{
+                          width: '86%',
+                          height: '2px',
+                          mt: { xs: 0.52, md: '8px' },
+                          mb: { xs: 0.68, md: '8px' },
+                          borderRadius: '2px',
+                          background: 'linear-gradient(90deg, rgba(29,151,229,0.22) 0%, #1f9be2 12%, #1f9be2 88%, rgba(29,151,229,0.22) 100%)',
+                        }}
+                      />
+
+                      <Typography
+                        sx={{
+                          color: '#1b2f52',
+                          fontSize: { xs: '0.92rem', md: '12px' },
+                          lineHeight: { xs: 1.34, md: 1.3 },
+                          fontWeight: 500,
+                          fontFamily: '"Poppins", "Inter", sans-serif',
+                        }}
+                      >
+                        {item.description}
+                      </Typography>
+                    </CardContent>
+                  </Card>
                 </Link>
               </motion.div>
             ))}
@@ -1211,7 +1211,15 @@ const ProductCards = forwardRef((props, ref) => {
             transition={{ duration: 0.6 }}
             viewport={{ once: true }}
           >
-            <Box sx={{ textAlign: "center", mb: { xs: 2, md: 4 } }}>
+            <Box sx={{
+              textAlign: "center",
+              mt: {
+                xs: 0,
+                sm: 0,
+                md: "-30px",   // applies from 900px to 1199px (includes ~1024px)
+                lg: 0,
+              },
+            }}>
               <Typography
                 variant="h4"
                 sx={{
@@ -1245,45 +1253,59 @@ const ProductCards = forwardRef((props, ref) => {
           >
             {[
               {
-                icon: Handshake,
-                title: "Agile Integration",
-                description: "We work with you, not just for you.",
+                icon: Brain,
+                title: "AI-First Approach",
+                description: "Built on intelligent systems.",
                 color: "#42a5f5",
               },
               {
                 icon: TrendingUp,
-                title: "Industry Alignment",
-                description: "Synced with latest trends.",
+                title: "Real Business Impact",
+                description: "Measurable outcomes that matter.",
                 color: "#66bb6a",
               },
               {
-                icon: Target,
-                title: "Goal Focused",
-                description: "Built to drive your results.",
+                icon: GraduationCap,
+                title: "Industry-Ready Training",
+                description: "Talent aligned to real needs.",
                 color: "#ff9800",
               },
               {
-                icon: Scale,
-                title: "Scalability",
-                description: "From one developer to full teams.",
+                icon: Lightbulb,
+                title: "Innovation-Driven Culture",
+                description: "Continuous improvement mindset.",
                 color: "#ab47bc",
               },
+              {
+                icon: Handshake,
+                title: "Customer-Centric Execution",
+                description: "Partnership-led delivery.",
+                color: "#26a69a",
+              },
             ].map((item, index) => {
-              const positions = [
-                { top: "25%", left: "5%" },
-                { top: "0%", left: "30%" },
-                { top: "0%", left: "70%" },
-                { top: "25%", left: "95%" },
+              const positionsMd = [
+                { top: "42%", left: "6%" },
+                { top: "16%", left: "22%" },
+                { top: "6%", left: "50%" },
+                { top: "16%", left: "78%" },
+                { top: "42%", left: "94%" },
+              ];
+              const positionsLg = [
+                { top: "50%", left: "-5%" },
+                { top: "10%", left: "16%" },
+                { top: "0%", left: "50%" },
+                { top: "10%", left: "84%" },
+                { top: "50%", left: "105%" },
               ];
               return (
                 <Box
                   key={index}
                   sx={{
                     position: { xs: 'relative', md: 'absolute' },
-                    top: { xs: 'auto', md: positions[index].top },
-                    left: { xs: 'auto', md: positions[index].left },
+                    top: { xs: 'auto', md: positionsMd[index].top, lg: positionsLg[index].top },
+                    left: { xs: 'auto', md: positionsMd[index].left, lg: positionsLg[index].left },
                     transform: { xs: 'none', md: 'translateX(-50%)' },
-                    width: { xs: '100%', md: '200px' },
+                    width: { xs: '100%', md: '180px', lg: '200px' },
                     textAlign: 'center',
                     zIndex: 2,
                   }}
@@ -1589,8 +1611,8 @@ const ProductCards = forwardRef((props, ref) => {
       </Box>
 
       {/* <Container maxWidth="lg" sx={{ mt: 6, mb: 4 }}> */}
-        {/* Header Section */}
-        {/* <Grid container justifyContent="center">
+      {/* Header Section */}
+      {/* <Grid container justifyContent="center">
           <Grid item xs={12} md={10} sx={{ textAlign: "center" }}>
             <Typography
               variant="h4"
@@ -1616,8 +1638,8 @@ const ProductCards = forwardRef((props, ref) => {
           </Grid>
         </Grid> */}
 
-        {/* Tabs */}
-        {/* <Box
+      {/* Tabs */}
+      {/* <Box
           sx={{
             display: "flex",
             justifyContent: "center",
@@ -1638,8 +1660,8 @@ const ProductCards = forwardRef((props, ref) => {
           ))}
         </Box> */}
 
-        {/* CONTENT SECTION (EXACTLY LIKE YOUR IMAGE) */}
-        {/* <Box
+      {/* CONTENT SECTION (EXACTLY LIKE YOUR IMAGE) */}
+      {/* <Box
           sx={{
             background: "#f8f8f8",
             borderRadius: "18px",
@@ -1649,7 +1671,7 @@ const ProductCards = forwardRef((props, ref) => {
         >
           <Grid container spacing={4}>
             {/* LEFT SIDE TEXT */}
-            {/* <Grid item xs={12} md={4}>
+      {/* <Grid item xs={12} md={4}>
               <Box sx={{ pr: { md: 3 } }}>
                 <Box sx={{ display: "flex", alignItems: "center", mb: 1 }}>
                   <IconComponent
@@ -1671,8 +1693,8 @@ const ProductCards = forwardRef((props, ref) => {
               </Box>
             </Grid> */}
 
-            {/* RIGHT SIDE CARDS (PIXEL PERFECT GRID) */}
-            {/* <Grid item xs={12} md={8}>
+      {/* RIGHT SIDE CARDS (PIXEL PERFECT GRID) */}
+      {/* <Grid item xs={12} md={8}>
               <Grid container spacing={3}>
                 {activeData.technologies.slice(0, 6).map((tech, index) => (
                   <Grid item xs={6} sm={4} key={index}>
@@ -1721,7 +1743,7 @@ const ProductCards = forwardRef((props, ref) => {
               </Grid>
             </Grid>
           </Grid> */}
-        {/* </Box> 
+      {/* </Box> 
       </Container> */}
 
       {/* WHY CHOOSE HIPPOCLOUD SECTION */}
