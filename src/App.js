@@ -23,6 +23,8 @@ import DigitalMarketingPage from './components/digitalmarketing/DigitalMarketing
 import InfraSupportPage from './components/infrasupport/InfraSupportPage';
 import StaffAugmentationPage from './components/staffaugmentation/StaffAugmentationPage';
 import PartnershipPage from './components/partnership/PartnershipPage';
+import TallyXceleratorPage from './components/partnership/TallyXceleratorPage';
+import TallyCarePage from './components/partnership/TallyCarePage';
 import AboutUsPage from './components/about/AboutUsPage';
 import ServicesPage from './components/services/ServicesPage';
 // import ThreePage from './components/three/ThreePage';
@@ -86,6 +88,8 @@ function App() {
                 <Route path="/infrasupport" element={<InfraSupportPage />} />
                 <Route path="/staffaugmentation" element={<StaffAugmentationPage />} />
                 <Route path="/partnership" element={<PartnershipPage />} />
+                <Route path="/partnership/tally-xcelerator" element={<TallyXceleratorPage />} />
+                <Route path="/partnership/tally-care" element={<TallyCarePage />} />
                 <Route path="/about" element={<AboutUsPage />} />
                 <Route path="/services" element={<ServicesPage />} />
                 <Route path="/contact" element={<ContactForm />} />

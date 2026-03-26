@@ -93,6 +93,11 @@ const DROPDOWN_MENUS = {
     { label: 'Trainings & Projects', href: '/trainingsprojects' },
     { label: 'Internships', href: '/internships' },
   ],
+  partnership: [
+    { label: 'Tally-Xcelerator', href: '/partnership/tally-xcelerator' },
+    { label: 'Tally Care', href: '/partnership/tally-care' },
+    { label: 'Partner with Us', href: '/partnership' },
+  ],
 };
 
 const PRODUCTS_TABS = [
@@ -172,7 +177,7 @@ const NAV_ITEMS = [
   { key: 'products', label: 'Products', type: 'mega' },
   { key: 'services', label: 'Services', type: 'dropdown' },
   { key: 'skillHub', label: 'Acadamy', type: 'dropdown' },
-  { key: 'partnership', label: 'Partnership', type: 'link', href: '/partnership' },
+  { key: 'partnership', label: 'Partnership', type: 'dropdown' },
   { key: 'about', label: 'About Us', type: 'link', href: '/about' },
 ];
 
@@ -180,6 +185,7 @@ const DROPDOWN_LEFT = {
   company: '45%',
   services: '64%',
   skillHub: '73%',
+  partnership: '82%',
 };
 
 const Header = () => {
@@ -267,7 +273,8 @@ const Header = () => {
       { title: 'Products', items: PRODUCTS_TABS.map((tab) => ({ label: tab.title, href: tab.href })) },
       { title: 'Services', items: DROPDOWN_MENUS.services },
       { title: 'Acadamy', items: DROPDOWN_MENUS.skillHub },
-      { title: 'Quick Links', items: [{ label: 'Partnership', href: '/partnership' }, { label: 'About Us', href: '/about' }] },
+      { title: 'Partnership', items: DROPDOWN_MENUS.partnership },
+      { title: 'Quick Links', items: [{ label: 'About Us', href: '/about' }] },
     ],
     [],
   );
